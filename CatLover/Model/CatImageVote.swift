@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct CatImageVote {
+struct CatImageVote: Codable {
     let id: Int
     let imageId: String
     let subId: String

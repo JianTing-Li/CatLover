@@ -22,7 +22,7 @@ class CatBreedsDetailController: UIViewController {
     
     @IBOutlet weak var catDescription: UITextView!
     
-    var cat: Cat?
+    var cat: CatBreedWithImage?
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -8,8 +8,9 @@
 
 import Foundation
 
-struct Cat {
-    struct KittyBreed {
+struct CatBreedWithImage: Codable {
+    
+    struct CatInfo: Codable {
         let id: String
         let name: String
         let description: String
@@ -31,7 +32,7 @@ struct Cat {
         let strangerFriendly: Int
         let vocalisation: Int
         
-        private enum CodingKeys: String, CodingKey {
+        private enum KittyBreedCodingKeys: String, CodingKey {
             case id
             case name
             case description
@@ -54,7 +55,7 @@ struct Cat {
             case vocalisation
         }
     }
-    let breeds: [KittyBreed]
+    let breeds: [CatInfo]
     let id: String  //image id
     let url: URL    //image
 }

@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct CatImage {
+struct CatImage: Codable {
     let id: String
     let url: URL
 }

@@ -8,38 +8,38 @@
 
 import Foundation
 
-struct CatBreed {
+struct CatBreed: Codable {
     let id: String
     let name: String
-    let wikipedia_url: String
+    let wikipediaUrl: URL
     let temperament: String
     let description: String
     let origin: String
-    let country_code: String
-    let life_span: String
-    let weight_imperial: String
+    let countryCode: String
+    let lifeSpan: String
+    let weightImperial: String
     let adaptability: Int
-    let affection_level: Int
-    let child_friendly: Int
-    let dog_friendly: Int
-    let energy_level: Int
+    let affectionLevel: Int
+    let childFriendly: Int
+    let dogFriendly: Int
+    let energyLevel: Int
     let grooming: Int
-    let health_issues: Int
+    let healthIssues: Int
     let intelligence: Int
-    let shedding_level: Int
-    let social_needs: Int
-    let stranger_friendly: Int
+    let sheddingLevel: Int
+    let socialNeeds: Int
+    let strangerFriendly: Int
     let vocalisation: Int
     let experimental: Int
     let hairless: Int
     let natural: Int
     let rare: Int
     let rex: Int
-    let suppressed_tail: Int
-    let short_legs: Int
+    let suppressedTail: Int
+    let shortLegs: Int
     let hypoallergenic: Int
     
-    private enum CodingKeys: String, CodingKey {
+    private enum CatBreedCodingKeys: String, CodingKey {
         case id
         case name
         case wikipediaUrl = "wikipedia_url"
@@ -70,4 +70,5 @@ struct CatBreed {
         case shortLegs = "short_legs"
         case hypoallergenic
     }
+    
 }
