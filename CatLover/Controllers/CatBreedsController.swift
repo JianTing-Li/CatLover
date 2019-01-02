@@ -33,7 +33,9 @@ class CatBreedsController: UIViewController {
 //}
 
 extension CatBreedsController: UITableViewDelegate {
-    
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        <#code#>
+//    }
 }
 
 extension CatBreedsController: UISearchBarDelegate {

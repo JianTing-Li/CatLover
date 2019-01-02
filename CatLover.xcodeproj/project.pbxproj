@@ -16,6 +16,7 @@
 		D69B01B421D9DC8100690788 /* CatImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69B01B321D9DC8000690788 /* CatImage.swift */; };
 		D69B01B621D9E92E00690788 /* CatImageVoteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69B01B521D9E92E00690788 /* CatImageVoteController.swift */; };
 		D69B01B821D9E94A00690788 /* CatImageVoteDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69B01B721D9E94A00690788 /* CatImageVoteDetailController.swift */; };
+		D69B01BA21DC27F200690788 /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69B01B921DC27F200690788 /* AppError.swift */; };
 		D6BEF30921D18C84000BF117 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BEF30821D18C84000BF117 /* AppDelegate.swift */; };
 		D6BEF30B21D18C84000BF117 /* CatBreedsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BEF30A21D18C84000BF117 /* CatBreedsController.swift */; };
 		D6BEF30E21D18C85000BF117 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6BEF30C21D18C85000BF117 /* Main.storyboard */; };
@@ -36,6 +37,7 @@
 		D69B01B321D9DC8000690788 /* CatImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatImage.swift; sourceTree = "<group>"; };
 		D69B01B521D9E92E00690788 /* CatImageVoteController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatImageVoteController.swift; sourceTree = "<group>"; };
 		D69B01B721D9E94A00690788 /* CatImageVoteDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatImageVoteDetailController.swift; sourceTree = "<group>"; };
+		D69B01B921DC27F200690788 /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
 		D6BEF30521D18C84000BF117 /* CatLover.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CatLover.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6BEF30821D18C84000BF117 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D6BEF30A21D18C84000BF117 /* CatBreedsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatBreedsController.swift; sourceTree = "<group>"; };
@@ -133,9 +135,10 @@
 			isa = PBXGroup;
 			children = (
 				D6BEF31D21D18D48000BF117 /* NetworkHelper.swift */,
-				D6BEF31F21D18D54000BF117 /* ImageHelper.swift */,
 				D69B01AB21D9BD6A00690788 /* CatAPIClient.swift */,
+				D6BEF31F21D18D54000BF117 /* ImageHelper.swift */,
 				D69B01AF21D9CE7B00690788 /* SecretKey.swift */,
+				D69B01B921DC27F200690788 /* AppError.swift */,
 			);
 			path = Network_Services;
 			sourceTree = "<group>";
@@ -213,6 +216,7 @@
 			files = (
 				D69B01B621D9E92E00690788 /* CatImageVoteController.swift in Sources */,
 				D6BEF32321D18EE8000BF117 /* CatBreedsDetailController.swift in Sources */,
+				D69B01BA21DC27F200690788 /* AppError.swift in Sources */,
 				D69B01B021D9CE7B00690788 /* SecretKey.swift in Sources */,
 				D6BEF30B21D18C84000BF117 /* CatBreedsController.swift in Sources */,
 				D6BEF31E21D18D48000BF117 /* NetworkHelper.swift in Sources */,
