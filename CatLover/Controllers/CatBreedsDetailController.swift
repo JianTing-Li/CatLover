@@ -22,20 +22,34 @@ class CatBreedsDetailController: UIViewController {
     
     @IBOutlet weak var catDescription: UITextView!
     
-    var catWithImage: CatBreedWithImage?
+    var catWithoutImage: CatBreedWithNoImage!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        dump(catWithImage)
         updateCatUI()
+    }
+    
+    private func setCatWithImage() {
+        
     }
     
     //***how to make part of the text Bold?
     private func updateCatUI() {
-        guard let catInfo = catWithImage?.breeds[0] else { return }
+        catName.text = catWithoutImage.name
+        getNewImage()
         
-        catName.text = catInfo.name
-        ImageHelper.getCatImage(catWithNoImage: nil, catWithImage: catWithImage) { (appError, image) in
+        temperament.text = "Temperament: \(catWithoutImage.temperament)"
+        origin.text = "Origin: \(catWithoutImage.origin)"
+        affectionLevel.text = "Affection: \(catWithoutImage.affectionLevel)"
+        energyLevel.text = "Energy: \(catWithoutImage.energyLevel)"
+        vocalisation.text = "Vocalisation: \(catWithoutImage.vocalisation)"
+        intelligence.text = "Intelligence: \(catWithoutImage.intelligence)"
+        
+        catDescription.text = catWithoutImage.description
+    }
+    
+    private func getNewImage() {
+        ImageHelper.getCatImage(catWithNoImage: catWithoutImage, catWithImage: nil) { (appError, image) in
             if let appError = appError {
                 self.catImage.image = UIImage.init(named: "catImgPlaceholder2")
                 print(appError.errorMessage())
@@ -43,15 +57,6 @@ class CatBreedsDetailController: UIViewController {
                 self.catImage.image = image
             }
         }
-        
-        temperament.text = "Temperament: \(catInfo.temperament)"
-        origin.text = "Origin: \(catInfo.origin)"
-        affectionLevel.text = "Affection: \(catInfo.affectionLevel)"
-        energyLevel.text = "Energy: \(catInfo.energyLevel)"
-        vocalisation.text = "Vocalisation: \(catInfo.vocalisation)"
-        intelligence.text = "Intelligence: \(catInfo.intelligence)"
-        
-        catDescription.text = catInfo.description
     }
 
     @IBAction func voteImage(_ sender: UIButton) {
@@ -68,8 +73,7 @@ class CatBreedsDetailController: UIViewController {
     }
     
     @IBAction func getNewCatPic(_ sender: UIButton) {
-        //refresh cat and reset catImage
-        
+        getNewImage()
     }
 
 }

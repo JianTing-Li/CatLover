@@ -25,6 +25,7 @@ class CatBreedsController: UIViewController {
         super.viewDidLoad()
         catTableView.dataSource = self
         catTableView.delegate = self
+        catSearchBar.delegate = self
         
         CatAPIClient.getAllCats { (appError, catBreeds) in
             if let appError = appError {
@@ -43,15 +44,7 @@ class CatBreedsController: UIViewController {
             let detailController = segue.destination as? CatBreedsDetailController else { fatalError("indexPath or destination controller not found") }
         
         let catWithoutImage = allCatBreeds[indexPath.row]
-        
-        CatAPIClient.getCatWithImage(catBreedId: catWithoutImage.id) { (appError, catWithImage) in
-            if let appError = appError {
-                detailController.catWithImage = nil
-                print(appError.errorMessage())
-            } else if let catWithImage = catWithImage {
-                detailController.catWithImage = catWithImage
-            }
-        }
+        detailController.catWithoutImage = catWithoutImage
     }
     
 }
