@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D69B01A821D9B96400690788 /* CatBreed.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69B01A721D9B96400690788 /* CatBreed.swift */; };
+		D69B01A821D9B96400690788 /* CatBreedWithNoImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69B01A721D9B96400690788 /* CatBreedWithNoImage.swift */; };
 		D69B01AA21D9BA5600690788 /* CatImageVote.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69B01A921D9BA5600690788 /* CatImageVote.swift */; };
 		D69B01AC21D9BD6A00690788 /* CatAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69B01AB21D9BD6A00690788 /* CatAPIClient.swift */; };
 		D69B01AE21D9C09E00690788 /* CatBreedWithImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69B01AD21D9C09D00690788 /* CatBreedWithImage.swift */; };
@@ -28,7 +28,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		D69B01A721D9B96400690788 /* CatBreed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatBreed.swift; sourceTree = "<group>"; };
+		D69B01A721D9B96400690788 /* CatBreedWithNoImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatBreedWithNoImage.swift; sourceTree = "<group>"; };
 		D69B01A921D9BA5600690788 /* CatImageVote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatImageVote.swift; sourceTree = "<group>"; };
 		D69B01AB21D9BD6A00690788 /* CatAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatAPIClient.swift; sourceTree = "<group>"; };
 		D69B01AD21D9C09D00690788 /* CatBreedWithImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatBreedWithImage.swift; sourceTree = "<group>"; };
@@ -64,7 +64,7 @@
 		D69B01A621D9A75F00690788 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				D69B01A721D9B96400690788 /* CatBreed.swift */,
+				D69B01A721D9B96400690788 /* CatBreedWithNoImage.swift */,
 				D69B01AD21D9C09D00690788 /* CatBreedWithImage.swift */,
 				D69B01A921D9BA5600690788 /* CatImageVote.swift */,
 				D69B01B321D9DC8000690788 /* CatImage.swift */,
@@ -221,7 +221,7 @@
 				D6BEF30B21D18C84000BF117 /* CatBreedsController.swift in Sources */,
 				D6BEF31E21D18D48000BF117 /* NetworkHelper.swift in Sources */,
 				D69B01B421D9DC8100690788 /* CatImage.swift in Sources */,
-				D69B01A821D9B96400690788 /* CatBreed.swift in Sources */,
+				D69B01A821D9B96400690788 /* CatBreedWithNoImage.swift in Sources */,
 				D6BEF32021D18D54000BF117 /* ImageHelper.swift in Sources */,
 				D69B01B221D9D6E800690788 /* CatCell.swift in Sources */,
 				D69B01B821D9E94A00690788 /* CatImageVoteDetailController.swift in Sources */,

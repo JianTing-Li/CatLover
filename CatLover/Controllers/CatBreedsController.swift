@@ -13,7 +13,7 @@ class CatBreedsController: UIViewController {
     @IBOutlet weak var catTableView: UITableView!
     @IBOutlet weak var catSearchBar: UISearchBar!
     
-    var allCatBreeds = [CatBreed]() {
+    var allCatBreeds = [CatBreedWithNoImage]() {
         didSet {
             DispatchQueue.main.async {
                 self.catTableView.reloadData()
@@ -31,16 +31,28 @@ class CatBreedsController: UIViewController {
                 print(appError.errorMessage())
             } else if let catBreeds = catBreeds {
                 self.allCatBreeds = catBreeds
-                dump(self.allCatBreeds)
+                //dump(self.allCatBreeds)
             }
         }
         
         
     }
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        <#code#>
-//    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let indexPath = catTableView.indexPathForSelectedRow,
+            let detailController = segue.destination as? CatBreedsDetailController else { fatalError("indexPath or destination controller not found") }
+        
+        let catWithoutImage = allCatBreeds[indexPath.row]
+        
+        CatAPIClient.getCatWithImage(catBreedId: catWithoutImage.id) { (appError, catWithImage) in
+            if let appError = appError {
+                detailController.catWithImage = nil
+                print(appError.errorMessage())
+            } else if let catWithImage = catWithImage {
+                detailController.catWithImage = catWithImage
+            }
+        }
+    }
     
 }
 
@@ -54,9 +66,18 @@ extension CatBreedsController: UITableViewDataSource {
         guard let cell = catTableView.dequeueReusableCell(withIdentifier: "CatCell", for: indexPath) as? CatCell else { fatalError("cell not found") }
         
         let catBreed = allCatBreeds[indexPath.row]
+   
         cell.catBreedName.text = catBreed.name
         cell.catOrigin.text = catBreed.origin
-        cell.catImg.image = UIImage.init(named: "catImgPlaceholder")
+        
+        ImageHelper.getCatImage(catWithNoImage: catBreed, catWithImage: nil) { (appError, catImage) in
+            if let appError = appError {
+                cell.catImg.image = UIImage.init(named: "catImgPlaceholder")
+                print(appError.errorMessage())
+            } else if let catImage = catImage {
+                cell.catImg.image = catImage
+            }
+        }
         
         return cell
     }
@@ -64,7 +85,7 @@ extension CatBreedsController: UITableViewDataSource {
 
 extension CatBreedsController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 200
+        return 150
     }
 }
 

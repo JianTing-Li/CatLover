@@ -14,6 +14,8 @@ enum AppError: Error {
     case networkError(Error)
     case noResponse
     case decodingError(Error)
+    case invalidInputs
+    case noData
     
     public func errorMessage() -> String {
         switch self {
@@ -25,6 +27,10 @@ enum AppError: Error {
             return "no network response"
         case .decodingError(let error):
             return "decodingError: \(error)"
+        case .invalidInputs:
+            return "invalid input for imageHelper getCatImage method"
+        case .noData:
+            return "network request works but returns no data"
         }
     }
     

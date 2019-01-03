@@ -24,21 +24,41 @@ final class ImageHelper {
                 }
             }
         }
-        
     }
     
-    static func getCatImage(cat: CatBreedWithImage) -> UIImage? {
-        var catImage: UIImage? = nil
-        let imageURL = cat.url
+    
+    static func getCatImage(catWithNoImage: CatBreedWithNoImage?, catWithImage: CatBreedWithImage?, completionHandler: @escaping (AppError?, UIImage?) -> Void) {
         
-        fetchImage(urlString: imageURL.absoluteString) { (appError, image) in
-            if let appError = appError {
-                print(appError.errorMessage())
-            } else if let image = image {
-                catImage = image
+        //if we have a cat w/ no image url, we need to convert it to the one with image url
+        if let catWithNoImage = catWithNoImage {
+            CatAPIClient.getCatWithImage(catBreedId: catWithNoImage.id) { (error, catBreedWithImage) in
+                if let error = error {
+                    completionHandler(error, nil)
+                } else if let catBreedWithImage = catBreedWithImage {
+                    fetchImage(urlString: catBreedWithImage.url.absoluteString) { (error, image) in
+                        if let error = error {
+                            completionHandler(error, nil)
+                        } else if let image = image {
+                            completionHandler(nil, image)
+                        }
+                    }
+                }
             }
+            
+        //if we already have a cat with image url, we use the image url
+        } else if let catWithImage = catWithImage {
+            fetchImage(urlString: catWithImage.url.absoluteString) { (error, image) in
+                if let error = error {
+                    completionHandler(error, nil)
+                } else if let image = image {
+                    completionHandler(nil, image)
+                }
+            }
+        
+        //if both inputs are invalid
+        } else {
+            completionHandler(AppError.invalidInputs, nil)
         }
-        return catImage
     }
     
 }

@@ -22,20 +22,27 @@ class CatBreedsDetailController: UIViewController {
     
     @IBOutlet weak var catDescription: UITextView!
     
-    var cat: CatBreedWithImage?
+    var catWithImage: CatBreedWithImage?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //updateCatUI()
-        catImage.image = UIImage.init(named: "catImgPlaceholder2")
+        dump(catWithImage)
+        updateCatUI()
     }
     
-    //how to make part of the text Bold?
+    //***how to make part of the text Bold?
     private func updateCatUI() {
-        guard let catInfo = cat?.breeds[0] else { return }
+        guard let catInfo = catWithImage?.breeds[0] else { return }
         
         catName.text = catInfo.name
-        
+        ImageHelper.getCatImage(catWithNoImage: nil, catWithImage: catWithImage) { (appError, image) in
+            if let appError = appError {
+                self.catImage.image = UIImage.init(named: "catImgPlaceholder2")
+                print(appError.errorMessage())
+            } else if let image = image {
+                self.catImage.image = image
+            }
+        }
         
         temperament.text = "Temperament: \(catInfo.temperament)"
         origin.text = "Origin: \(catInfo.origin)"
@@ -62,6 +69,7 @@ class CatBreedsDetailController: UIViewController {
     
     @IBAction func getNewCatPic(_ sender: UIButton) {
         //refresh cat and reset catImage
+        
     }
 
 }

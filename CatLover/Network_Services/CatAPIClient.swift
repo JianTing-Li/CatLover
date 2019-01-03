@@ -10,7 +10,7 @@ import Foundation
 
 final class CatAPIClient {
     
-    static func getAllCats(completionHandler: @escaping (AppError?, [CatBreed]?) -> Void) {
+    static func getAllCats(completionHandler: @escaping (AppError?, [CatBreedWithNoImage]?) -> Void) {
         
         let urlString = "https://api.thecatapi.com/v1/breeds"
         
@@ -19,7 +19,7 @@ final class CatAPIClient {
                 completionHandler(error, nil)
             } else if let data = data {
                 do {
-                    let catBreeds = try JSONDecoder().decode([CatBreed].self, from: data)
+                    let catBreeds = try JSONDecoder().decode([CatBreedWithNoImage].self, from: data)
                     completionHandler(nil, catBreeds)
                 } catch {
                     completionHandler(AppError.decodingError(error), nil)
@@ -29,8 +29,8 @@ final class CatAPIClient {
     }
     
     
-    static func getCat(catBreedId: String, completionHandler: @escaping (AppError?, CatBreedWithImage?) -> Void) {
-        
+    static func getCatWithImage(catBreedId: String, completionHandler: @escaping (AppError?, CatBreedWithImage?) -> Void) {
+        print(catBreedId)
         let urlString = "https://api.thecatapi.com/v1/images/search?breed_ids=\(catBreedId)&api_key=\(SecretKey.key)"
         
         NetworkHelper.performDataTask(urlString: urlString, httpMethod: "GET") { (error, data, response) in
@@ -39,6 +39,11 @@ final class CatAPIClient {
             } else if let data = data {
                 do {
                     let catBreedOuter = try JSONDecoder().decode([CatBreedWithImage].self, from: data)
+                    //mala gives an empty array
+                    guard !catBreedOuter.isEmpty else {
+                        completionHandler(AppError.noData, nil)
+                        return
+                    }
                     completionHandler(nil, catBreedOuter[0])
                 } catch {
                     completionHandler(AppError.decodingError(error), nil)
