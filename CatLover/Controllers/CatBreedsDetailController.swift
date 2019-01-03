@@ -26,7 +26,8 @@ class CatBreedsDetailController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        updateCatUI()
+        //updateCatUI()
+        catImage.image = UIImage.init(named: "catImgPlaceholder2")
     }
     
     //how to make part of the text Bold?
@@ -34,7 +35,7 @@ class CatBreedsDetailController: UIViewController {
         guard let catInfo = cat?.breeds[0] else { return }
         
         catName.text = catInfo.name
-        //catImage.image
+        
         
         temperament.text = "Temperament: \(catInfo.temperament)"
         origin.text = "Origin: \(catInfo.origin)"

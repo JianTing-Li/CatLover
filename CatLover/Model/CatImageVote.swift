@@ -16,14 +16,14 @@ struct CatImageVote: Codable {
     let value: Int
     let countryCode: String
     
-    private enum CodingKeys: String, CodingKey {
-        case id
-        case imageId = "image_id"
-        case subId = "sub_id"
-        case createdAt = "created_at"
-        case value
-        case countryCode = "country_code"
-    }
+//    private enum CodingKeys: String, CodingKey {
+//        case id
+//        case imageId = "image_id"
+//        case subId = "sub_id"
+//        case createdAt = "created_at"
+//        case value
+//        case countryCode = "country_code"
+//    }
 }
 
 

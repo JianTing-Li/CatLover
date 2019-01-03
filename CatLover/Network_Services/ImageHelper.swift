@@ -27,4 +27,18 @@ final class ImageHelper {
         
     }
     
+    static func getCatImage(cat: CatBreedWithImage) -> UIImage? {
+        var catImage: UIImage? = nil
+        let imageURL = cat.url
+        
+        fetchImage(urlString: imageURL.absoluteString) { (appError, image) in
+            if let appError = appError {
+                print(appError.errorMessage())
+            } else if let image = image {
+                catImage = image
+            }
+        }
+        return catImage
+    }
+    
 }

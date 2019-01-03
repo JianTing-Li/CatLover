@@ -16,7 +16,7 @@ struct CatBreedWithImage: Codable {
         let description: String
         let lifeSpan: String
         let temperament: String
-        let wikipediaUrl: URL
+        let wikipediaUrl: URL?
         let origin: String
         let countryCode: String
         let adaptability: Int
@@ -32,7 +32,7 @@ struct CatBreedWithImage: Codable {
         let strangerFriendly: Int
         let vocalisation: Int
         
-        private enum KittyBreedCodingKeys: String, CodingKey {
+        private enum CodingKeys: String, CodingKey {
             case id
             case name
             case description
@@ -46,7 +46,7 @@ struct CatBreedWithImage: Codable {
             case childFriendly = "child_friendly"
             case dogFriendly = "dog_friendly"
             case energyLevel = "energy_level"
-            case groomimg
+            case grooming
             case healthIssues = "health_issues"
             case intelligence
             case sheddingLevel = "shedding_level"
@@ -55,6 +55,7 @@ struct CatBreedWithImage: Codable {
             case vocalisation
         }
     }
+    
     let breeds: [CatInfo]
     let id: String  //image id
     let url: URL    //image
