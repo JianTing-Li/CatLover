@@ -10,29 +10,72 @@ import Foundation
 
 
 final class NetworkHelper {
-
-    static func performDataTask(urlString: String, httpMethod: String, completionHandler: @escaping (AppError?, Data?, HTTPURLResponse?) -> Void) {
-        //get url
-        guard let url = URL(string: urlString) else {
-            completionHandler(AppError.badURL(urlString), nil, nil)
+    //setting up cache
+    private init() {
+        let cache = URLCache(memoryCapacity: 10 * 1024 * 1024, diskCapacity: 10 * 1024 * 1024, diskPath: nil)
+            URLCache.shared = cache
+    }
+    public static let shared = NetworkHelper()
+    
+    
+    //get & Parse jSON
+    public func performDataTask(endpointURLString: String,
+                                httpMethod: String,
+                                httpBody: Data?,
+                                completionHandler: @escaping (AppError?, Data?, HTTPURLResponse?) -> Void) {
+        
+        guard let url = URL(string: endpointURLString) else {
+            completionHandler(AppError.badURL(endpointURLString), nil, nil)
             return
         }
 
         var request = URLRequest(url: url)
         request.httpMethod = httpMethod
-
-        URLSession.shared.dataTask(with: request) { (data, response, error) in
+        
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             guard let response = response as? HTTPURLResponse else {
                 completionHandler(AppError.noResponse, nil, nil)
                 return
             }
 
-            print("response status code is \(response.statusCode)")
+            //print("response status code is \(response.statusCode)")
             if let error = error {
                 completionHandler(AppError.networkError(error), nil, response)
+                return
             } else if let data = data {
                 completionHandler(nil, data, response)
             }
-        }.resume()
+        }
+        task.resume()
     }
+    
+    
+    //send jSON to the internet (for requests like POST)
+    public func performUploadTask(endpointURLString: String,
+                                  httpMethod: String,
+                                  httpBody: Data?,
+                                  completionHandler: @escaping (AppError?, Data?, HTTPURLResponse?) -> Void) {
+        
+        guard let url = URL(string: endpointURLString) else {
+            completionHandler(AppError.badURL(endpointURLString), nil, nil)
+            return
+        }
+        
+        //initiated URL Request
+        var request = URLRequest(url: url)
+        //set the type of URL Method (Get, Post, etc)
+        request.httpMethod = httpMethod
+        //initialized the header
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        let task = URLSession.shared.uploadTask(with: request, from: httpBody) { (data, response, error) in
+            if let error = error {
+                completionHandler(AppError.networkError(error), nil, response as? HTTPURLResponse)
+            } else if let data = data {
+                completionHandler(nil, data, response as? HTTPURLResponse)
+            }
+        }
+        task.resume()
+    }
+    
 }

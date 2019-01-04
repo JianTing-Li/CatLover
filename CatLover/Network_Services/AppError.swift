@@ -16,6 +16,7 @@ enum AppError: Error {
     case decodingError(Error)
     case invalidInputs
     case noData
+    case badStatusCode(String)
     
     public func errorMessage() -> String {
         switch self {
@@ -31,6 +32,8 @@ enum AppError: Error {
             return "invalid input for imageHelper getCatImage method"
         case .noData:
             return "network request works but returns no data"
+        case .badStatusCode(let message):
+            return "bad status code: \(message)"
         }
     }
     

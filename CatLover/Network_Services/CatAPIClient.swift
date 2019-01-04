@@ -14,7 +14,7 @@ final class CatAPIClient {
         
         let urlString = "https://api.thecatapi.com/v1/breeds"
         
-        NetworkHelper.performDataTask(urlString: urlString, httpMethod: "GET") { (error, data, response) in
+        NetworkHelper.shared.performDataTask(endpointURLString: urlString, httpMethod: "GET", httpBody: nil) { (error, data, response) in
             if let error = error {
                 completionHandler(error, nil)
             } else if let data = data {
@@ -30,10 +30,10 @@ final class CatAPIClient {
     
     
     static func getCatWithImage(catBreedId: String, completionHandler: @escaping (AppError?, CatBreedWithImage?) -> Void) {
-        print(catBreedId)
+        //print(catBreedId)
         let urlString = "https://api.thecatapi.com/v1/images/search?breed_ids=\(catBreedId)&api_key=\(SecretKey.key)"
         
-        NetworkHelper.performDataTask(urlString: urlString, httpMethod: "GET") { (error, data, response) in
+        NetworkHelper.shared.performDataTask(endpointURLString: urlString, httpMethod: "GET", httpBody: nil) { (error, data, response) in
             if let error = error {
                 completionHandler(error, nil)
             } else if let data = data {
@@ -52,6 +52,10 @@ final class CatAPIClient {
         }
     }
     
+    
+    static func voteCatImage() {
+        
+    }
 //    static func getVotedImages() {
 //
 //    }

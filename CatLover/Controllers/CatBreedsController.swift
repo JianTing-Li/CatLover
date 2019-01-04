@@ -63,15 +63,18 @@ extension CatBreedsController: UITableViewDataSource {
         cell.catBreedName.text = catBreed.name
         cell.catOrigin.text = catBreed.origin
         
-        ImageHelper.getCatImage(catWithNoImage: catBreed, catWithImage: nil) { (appError, catImage) in
-            if let appError = appError {
-                cell.catImg.image = UIImage.init(named: "catImgPlaceholder")
-                print(appError.errorMessage())
-            } else if let catImage = catImage {
-                cell.catImg.image = catImage
+        if let image = ImageHelper.shared.getImageFromCache(forKey: catBreed.name as NSString) {
+            cell.catImg.image = image
+        } else {
+            ImageHelper.getCatImage(catWithNoImage: catBreed, catWithImage: nil) { (appError, catImage) in
+                if let appError = appError {
+                    cell.catImg.image = UIImage.init(named: "catImgPlaceholder")
+                    print(appError.errorMessage())
+                } else if let catImage = catImage {
+                    cell.catImg.image = catImage
+                }
             }
         }
-        
         return cell
     }
 }
