@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D671905621DF458C0039C4CD /* Vote.swift in Sources */ = {isa = PBXBuildFile; fileRef = D671905521DF458C0039C4CD /* Vote.swift */; };
+		D671905821DF46380039C4CD /* VoteResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = D671905721DF46380039C4CD /* VoteResult.swift */; };
 		D69B01A821D9B96400690788 /* CatBreedWithNoImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69B01A721D9B96400690788 /* CatBreedWithNoImage.swift */; };
 		D69B01AA21D9BA5600690788 /* CatImageVote.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69B01A921D9BA5600690788 /* CatImageVote.swift */; };
 		D69B01AC21D9BD6A00690788 /* CatAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69B01AB21D9BD6A00690788 /* CatAPIClient.swift */; };
@@ -28,6 +30,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D671905521DF458C0039C4CD /* Vote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vote.swift; sourceTree = "<group>"; };
+		D671905721DF46380039C4CD /* VoteResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoteResult.swift; sourceTree = "<group>"; };
 		D69B01A721D9B96400690788 /* CatBreedWithNoImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatBreedWithNoImage.swift; sourceTree = "<group>"; };
 		D69B01A921D9BA5600690788 /* CatImageVote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatImageVote.swift; sourceTree = "<group>"; };
 		D69B01AB21D9BD6A00690788 /* CatAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatAPIClient.swift; sourceTree = "<group>"; };
@@ -68,6 +72,8 @@
 				D69B01AD21D9C09D00690788 /* CatBreedWithImage.swift */,
 				D69B01A921D9BA5600690788 /* CatImageVote.swift */,
 				D69B01B321D9DC8000690788 /* CatImage.swift */,
+				D671905521DF458C0039C4CD /* Vote.swift */,
+				D671905721DF46380039C4CD /* VoteResult.swift */,
 				D69B01B121D9D6E800690788 /* CatCell.swift */,
 			);
 			path = Model;
@@ -215,8 +221,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				D69B01B621D9E92E00690788 /* CatImageVoteController.swift in Sources */,
+				D671905821DF46380039C4CD /* VoteResult.swift in Sources */,
 				D6BEF32321D18EE8000BF117 /* CatBreedsDetailController.swift in Sources */,
 				D69B01BA21DC27F200690788 /* AppError.swift in Sources */,
+				D671905621DF458C0039C4CD /* Vote.swift in Sources */,
 				D69B01B021D9CE7B00690788 /* SecretKey.swift in Sources */,
 				D6BEF30B21D18C84000BF117 /* CatBreedsController.swift in Sources */,
 				D6BEF31E21D18D48000BF117 /* NetworkHelper.swift in Sources */,

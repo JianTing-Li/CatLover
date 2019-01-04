@@ -68,7 +68,9 @@ extension CatBreedsController: UITableViewDataSource {
         } else {
             ImageHelper.getCatImage(catWithNoImage: catBreed, catWithImage: nil) { (appError, catImage) in
                 if let appError = appError {
-                    cell.catImg.image = UIImage.init(named: "catImgPlaceholder")
+                    DispatchQueue.main.async {
+                        cell.catImg.image = UIImage.init(named: "catImgPlaceholder")
+                    }
                     print(appError.errorMessage())
                 } else if let catImage = catImage {
                     cell.catImg.image = catImage

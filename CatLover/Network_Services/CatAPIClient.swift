@@ -52,11 +52,51 @@ final class CatAPIClient {
         }
     }
     
-    
-    static func voteCatImage() {
+    static func voteCatImage(bodyData: Data, completionHandler: @escaping (AppError?, Bool) -> Void) {
         
+        let urlString = "https://api.thecatapi.com/v1/votes?api_key=\(SecretKey.key)"
+        
+        NetworkHelper.shared.performUploadTask(endpointURLString: urlString, httpMethod: "POST", httpBody: bodyData) { (appError, data, httpResponse) in
+            if let appError = appError {
+                completionHandler(appError, false)
+            }
+            
+            guard let response = httpResponse, (200...299).contains(response.statusCode) else {
+                let statusCode = httpResponse?.statusCode ?? -999
+                completionHandler(AppError.badStatusCode(statusCode.description), false)
+                return
+            }
+            
+            if let _ = data {
+                completionHandler(nil, true)
+            }
+            
+        }
     }
-//    static func getVotedImages() {
+    
+    
+    
+    
+//    static func voteCatImage(bodyData: Data, completionHandler: @escaping (AppError?, VoteResult?) -> Void) {
 //
+//        let urlString = "https://api.thecatapi.com/v1/votes?api_key=\(SecretKey.key)"
+//
+//        NetworkHelper.shared.performUploadTask(endpointURLString: urlString, httpMethod: "POST", httpBody: bodyData) { (appError, data, httpResponse) in
+//            if let appError = appError {
+//                completionHandler(appError, nil)
+//            }
+//
+//            guard let response = httpResponse, (200...299).contains(response.statusCode) else {
+//                let statusCode = httpResponse?.statusCode ?? -999
+//                completionHandler(AppError.badStatusCode(statusCode.description), nil)
+//                return
+//            }
+//
+//            if let data = data {
+//                let voteResult = try JSONDecoder().decode(VoteResult.self, from: data)
+//                completionHandler(nil, VoteResult)
+//            }
+//
+//        }
 //    }
 }

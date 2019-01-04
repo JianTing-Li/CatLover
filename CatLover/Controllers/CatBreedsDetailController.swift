@@ -23,20 +23,37 @@ class CatBreedsDetailController: UIViewController {
     @IBOutlet weak var catDescription: UITextView!
     
     var catWithoutImage: CatBreedWithNoImage!
+    var catWithImage: CatBreedWithImage?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         updateCatUI()
+        setCatWithImage()
     }
     
     private func setCatWithImage() {
+        ImageHelper.getCatImage(catWithNoImage: catWithoutImage, catWithImage: nil) { (appError, image) in
+            if let appError = appError {
+                self.catImage.image = UIImage.init(named: "catImgPlaceholder2")
+                print(appError.errorMessage())
+            } else if let image = image {
+                self.catImage.image = image
+            }
+        }
         
+        CatAPIClient.getCatWithImage(catBreedId: catWithoutImage.id) { (appError, catWithImage) in
+            if let appError = appError {
+                self.catImage.image = UIImage.init(named: "catImgPlaceholder2")
+                print(appError.errorMessage())
+            } else if let catWithImage = catWithImage {
+                self.catWithImage = catWithImage
+            }
+        }
     }
     
     //***how to make part of the text Bold?
     private func updateCatUI() {
         catName.text = catWithoutImage.name
-        getNewImage()
         
         temperament.text = "Temperament: \(catWithoutImage.temperament)"
         origin.text = "Origin: \(catWithoutImage.origin)"
@@ -49,7 +66,16 @@ class CatBreedsDetailController: UIViewController {
     }
     
     private func getNewImage() {
-        ImageHelper.getCatImage(catWithNoImage: catWithoutImage, catWithImage: nil) { (appError, image) in
+        CatAPIClient.getCatWithImage(catBreedId: catWithoutImage.id) { (appError, catWithImage) in
+            if let appError = appError {
+                self.catImage.image = UIImage.init(named: "catImgPlaceholder2")
+                print(appError.errorMessage())
+            } else if let catWithImage = catWithImage {
+                self.catWithImage = catWithImage
+            }
+        }
+        
+        ImageHelper.getCatImage(catWithNoImage: nil, catWithImage: catWithImage) { (appError, image) in
             if let appError = appError {
                 self.catImage.image = UIImage.init(named: "catImgPlaceholder2")
                 print(appError.errorMessage())
@@ -60,15 +86,25 @@ class CatBreedsDetailController: UIViewController {
     }
 
     @IBAction func voteImage(_ sender: UIButton) {
-        switch sender.tag {
-        case 0: //dislike
-            //activate get request for dislike
-            break
-        case 1: //like
-            //activate get request for like
-            break
-        default:
-            return
+        guard let catWithImage = self.catWithImage else { return }
+        
+        let voteValue = sender.tag == 0 ? 0 : 1
+        let vote = Vote.init(imageId: catWithImage.id, subId: "Jian_Ting88", value: voteValue)
+        
+        do {
+            let data = try JSONEncoder().encode(vote)
+            
+            CatAPIClient.voteCatImage(bodyData: data) { (appError, success) in
+                if let appError = appError {
+                    print(appError.errorMessage())
+                } else if success {
+                    print("voted cat pic")
+                } else {
+                    print("vote didn't go through")
+                }
+            }
+        } catch {
+            print("Encoding Error: \(error)")
         }
     }
     
