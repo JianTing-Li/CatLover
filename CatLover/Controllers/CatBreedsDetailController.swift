@@ -84,21 +84,26 @@ class CatBreedsDetailController: UIViewController {
             }
         }
     }
-
+    
+    
     @IBAction func voteImage(_ sender: UIButton) {
         guard let catWithImage = self.catWithImage else { return }
         
         let voteValue = sender.tag == 0 ? 0 : 1
-        let vote = Vote.init(imageId: catWithImage.id, subId: "Jian_Ting88", value: voteValue)
+        let vote = VoteBody.init(imageId: catWithImage.id, subId: "Jian_Ting88", value: voteValue)
         
         do {
             let data = try JSONEncoder().encode(vote)
             
-            CatAPIClient.voteCatImage(bodyData: data) { (appError, success) in
+            CatAPIClient.voteCatImage(bodyData: data) { (appError, voteResult) in
                 if let appError = appError {
                     print(appError.errorMessage())
-                } else if success {
-                    print("voted cat pic")
+                } else if let voteResult = voteResult {
+                    if voteResult.message == "SUCCESS" {
+                        print("Successfuly Voted Cat Image")
+                    } else {
+                        print("Vote didn't go through")
+                    }
                 } else {
                     print("vote didn't go through")
                 }

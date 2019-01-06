@@ -9,13 +9,29 @@
 import UIKit
 
 class CatImageVoteController: UIViewController {
-
+    
+    @IBOutlet weak var voteTableView: UITableView!
+    var allVotes = [Vote]() {
+        didSet {
+            voteTableView.reloadData()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setAllVotes()
 
         
     }
     
-
-
+    private func setAllVotes() {
+        CatAPIClient.getAllVotes(userName: "Jian_Ting88") { (appError, allVotes) in
+            if let appError = appError {
+                print(appError.errorMessage())
+            } else if let allVotes = allVotes {
+                self.allVotes = allVotes
+            }
+        }
+    }
 }

@@ -52,6 +52,9 @@
                         <viewLayoutGuide key="safeArea" id="7Mc-Ne-d2t"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Voted Cat Pics" id="Mhn-aj-1kV"/>
+                    <connections>
+                        <outlet property="voteTableView" destination="hRM-NF-34C" id="hIl-cT-Jbq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TMS-GZ-R6u" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -151,7 +154,7 @@
                                             <outlet property="catBreedName" destination="aRM-lr-ede" id="DFI-QT-Wk4"/>
                                             <outlet property="catImg" destination="ZiI-JM-Xk4" id="qD0-6C-TcV"/>
                                             <outlet property="catOrigin" destination="5OM-Oj-R7q" id="4w1-V6-ojv"/>
-                                            <segue destination="ryO-ht-cW2" kind="show" id="VEC-WP-Yfe"/>
+                                            <segue destination="ryO-ht-cW2" kind="show" id="4e1-k9-S5H"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -320,7 +323,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Gp-0n-5QW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2525.5999999999999" y="-288.30584707646182"/>
+            <point key="canvasLocation" x="2609" y="-288"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="dFj-bD-9rF">
