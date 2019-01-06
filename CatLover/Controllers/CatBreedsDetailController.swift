@@ -86,6 +86,20 @@ class CatBreedsDetailController: UIViewController {
     }
     
     
+    private func showAlert(title: String, message: String) {
+        //create An Alert control & enter the alert title & message
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        //add an action to the alert so the user can interact w/ it such an ok button
+        let okAction = UIAlertAction(title: "OK", style: .default) { alert in }
+        
+        //offically add the action to the alert
+        alertController.addAction(okAction)
+        
+        //present the alert w/ action
+        present(alertController, animated: true, completion: nil)
+    }
+    
     @IBAction func voteImage(_ sender: UIButton) {
         guard let catWithImage = self.catWithImage else { return }
         
@@ -97,15 +111,24 @@ class CatBreedsDetailController: UIViewController {
             
             CatAPIClient.voteCatImage(bodyData: data) { (appError, voteResult) in
                 if let appError = appError {
-                    print(appError.errorMessage())
+                    DispatchQueue.main.async {
+                        self.showAlert(title: "Error Message", message: appError.errorMessage())
+                    }
                 } else if let voteResult = voteResult {
                     if voteResult.message == "SUCCESS" {
-                        print("Successfuly Voted Cat Image")
+                        let messageTitle = voteResult.id == 1 ? "You Liked the Cat Image" : "You Disliked the Cat Image"
+                        DispatchQueue.main.async {
+                            self.showAlert(title: messageTitle, message: "")
+                        }
                     } else {
-                        print("Vote didn't go through")
+                        DispatchQueue.main.async {
+                            self.showAlert(title: "Fail to Vote Cat Image", message: "")
+                        }
                     }
                 } else {
-                    print("vote didn't go through")
+                    DispatchQueue.main.async {
+                        self.showAlert(title: "Fail to Vote Cat Image", message: "")
+                    }
                 }
             }
         } catch {
