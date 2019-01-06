@@ -27,6 +27,10 @@ class CatBreedsController: UIViewController {
         catTableView.delegate = self
         catSearchBar.delegate = self
         
+        getAllCats()
+    }
+    
+    private func getAllCats() {
         CatAPIClient.getAllCats { (appError, catBreeds) in
             if let appError = appError {
                 print(appError.errorMessage())
@@ -35,8 +39,6 @@ class CatBreedsController: UIViewController {
                 //dump(self.allCatBreeds)
             }
         }
-        
-        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -88,5 +90,21 @@ extension CatBreedsController: UITableViewDelegate {
 }
 
 extension CatBreedsController: UISearchBarDelegate {
-    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        guard let searchText = searchBar.text?.lowercased() else { return }
+        
+        CatAPIClient.getAllCats() { (appError, allCats) in
+            if let appError = appError {
+                print(appError.errorMessage())
+                return
+            } else if let allCats = allCats {
+                if searchText.trimmingCharacters(in: .whitespaces) == "" {
+                    self.allCatBreeds = allCats
+                } else {
+                    self.allCatBreeds = allCats.filter { $0.name.lowercased().contains(searchText) }
+                }
+            }
+        }
+    }
 }

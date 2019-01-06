@@ -116,7 +116,7 @@ class CatBreedsDetailController: UIViewController {
                     }
                 } else if let voteResult = voteResult {
                     if voteResult.message == "SUCCESS" {
-                        let messageTitle = voteResult.id == 1 ? "You Liked the Cat Image" : "You Disliked the Cat Image"
+                        let messageTitle = voteValue == 1 ? "You Liked the Cat Image" : "You Disliked the Cat Image"
                         DispatchQueue.main.async {
                             self.showAlert(title: messageTitle, message: "")
                         }
