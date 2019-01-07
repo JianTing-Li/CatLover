@@ -19,8 +19,12 @@ class CatImageVoteDetailController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        updateUI()
         setCatImage()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        updateUI()
     }
     
     private func updateUI() {

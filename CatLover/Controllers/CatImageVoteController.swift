@@ -12,6 +12,7 @@ class CatImageVoteController: UIViewController {
     
     @IBOutlet weak var voteTableView: UITableView!
     
+    private var refreshControl: UIRefreshControl!
     var allImageVotes = [VoteCatImage]()
     var catsWithImage = [CatBreedWithImage]() {
         didSet {
@@ -23,14 +24,30 @@ class CatImageVoteController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         voteTableView.dataSource = self
         voteTableView.delegate = self
-        
+        setupRefreshControl()
+        //getAllCatsWithImage()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        //***what does this do?
+        super.viewWillAppear(true)
         getAllCatsWithImage()
     }
     
-    private func getAllCatsWithImage() {
+    private func setupRefreshControl() {
+        refreshControl = UIRefreshControl()
+        voteTableView.refreshControl = refreshControl
+        refreshControl.addTarget(self, action: #selector(getAllCatsWithImage), for: .valueChanged)
+    }
+    
+    
+    @objc private func getAllCatsWithImage() {
         //var catsWithImage = [CatBreedWithImage]()
+        self.catsWithImage = [CatBreedWithImage]()
+        refreshControl.beginRefreshing()
         
         CatAPIClient.getAllVotes(userName: "Jian_Ting88") { (appError, allVotes) in
             if let appError = appError {
@@ -43,13 +60,20 @@ class CatImageVoteController: UIViewController {
                 //dump(self.allImageVotes)
             }
             
-            allVotes?.forEach { voteCatImage in
+            self.allImageVotes.forEach { voteCatImage in
+                DispatchQueue.main.async {
+                    self.refreshControl.beginRefreshing()
+                }
+                
                 CatAPIClient.getCatWithImageFromImageId(catImageId: voteCatImage.imageId) { (appError, catWithImage) in
                     if let appError = appError {
                         print(appError.errorMessage())
                     } else if let catWithImage = catWithImage {
                         self.catsWithImage.append(catWithImage)
                         //print(self.catsWithImage.count)
+                    }
+                    DispatchQueue.main.async {
+                        self.refreshControl.endRefreshing()
                     }
                 }
             }
