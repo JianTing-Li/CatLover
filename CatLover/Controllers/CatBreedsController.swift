@@ -7,6 +7,8 @@
 //
 
 import UIKit
+//fix cache to urls string
+//not getting all data
 
 class CatBreedsController: UIViewController {
     
@@ -14,21 +16,39 @@ class CatBreedsController: UIViewController {
     @IBOutlet weak var catSearchBar: UISearchBar!
     private var refreshControl: UIRefreshControl!
     
-    var allCatBreeds = [CatBreedWithNoImage]() {
+    var allCatBreedsWithoutImage = [CatBreedWithNoImage]()
+    var allCatBreedsWithImage = [CatBreedWithImage]() {
         didSet {
             DispatchQueue.main.async {
                 self.catTableView.reloadData()
             }
         }
     }
-    //refactor to this later
-//    var allCatBreedsWithImage = [CatBreedWithImage]() {
-//        didSet {
-//            DispatchQueue.main.async {
-//                self.catTableView.reloadData()
-//            }
-//        }
-//    }
+    
+    private var apiCall1GetAllCatsFinished = false {
+        didSet {
+            guard apiCall1GetAllCatsFinished else { return }
+            var catsWithImage = [CatBreedWithImage]()
+            let lastIndexOfCatWithoutImage = allCatBreedsWithoutImage.count - 1
+            
+            //TO DO: still not getting all cats (need to be fixed)
+            allCatBreedsWithoutImage.enumerated().forEach { (index, catWithoutImage) in
+                CatAPIClient.getCatWithImageFromBreedId(catBreedId: catWithoutImage.id) { (appError, catWithImage) in
+                    if let appError = appError {
+                        print(appError.errorMessage())
+                    } else if let catWithImage = catWithImage {
+                        catsWithImage.append(catWithImage)
+                        
+                        if index == lastIndexOfCatWithoutImage {
+                            self.allCatBreedsWithImage = catsWithImage
+                            //dump(self.allCatBreedsWithImage)
+                            print("WithImage1: \(self.allCatBreedsWithImage.count)")
+                        }
+                    }
+                }
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,17 +56,19 @@ class CatBreedsController: UIViewController {
         catTableView.delegate = self
         catSearchBar.delegate = self
         
-        getAllCats()
+        getAllCatsWithNoImage()
         setupRefreshControl()
     }
     
-    private func getAllCats() {
+    private func getAllCatsWithNoImage() {
         CatAPIClient.getAllCats { (appError, catBreeds) in
             if let appError = appError {
                 print(appError.errorMessage())
             } else if let catBreeds = catBreeds {
-                self.allCatBreeds = catBreeds
+                self.allCatBreedsWithoutImage = catBreeds
+                self.apiCall1GetAllCatsFinished = true
                 //dump(self.allCatBreeds)
+                print("noImage: \(self.allCatBreedsWithoutImage.count)")
             }
         }
     }
@@ -64,7 +86,7 @@ class CatBreedsController: UIViewController {
             if let appError = appError {
                 print(appError.errorMessage())
             } else if let allCats = allCats {
-                self.allCatBreeds = allCats
+                self.allCatBreedsWithoutImage = allCats
             }
             
             DispatchQueue.main.async {
@@ -77,8 +99,10 @@ class CatBreedsController: UIViewController {
         guard let indexPath = catTableView.indexPathForSelectedRow,
             let detailVC = segue.destination as? CatBreedsDetailController else { fatalError("indexPath or destination controller not found") }
         
-        let catWithoutImage = allCatBreeds[indexPath.row]
+        let catWithoutImage = allCatBreedsWithoutImage[indexPath.row]
+        let catWithImage = allCatBreedsWithImage[indexPath.row]
         detailVC.catWithoutImage = catWithoutImage
+        detailVC.catWithImage = catWithImage
     }
     
 }
@@ -86,13 +110,13 @@ class CatBreedsController: UIViewController {
 
 extension CatBreedsController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return allCatBreeds.count
+        return allCatBreedsWithImage.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = catTableView.dequeueReusableCell(withIdentifier: "CatCell", for: indexPath) as? CatCell else { fatalError("cell not found") }
         
-        let catBreed = allCatBreeds[indexPath.row]
+        let catBreed = allCatBreedsWithImage[indexPath.row]
         //how come the cell doesn't return right away in this async call?
         cell.configureCell(catBreed: catBreed)
         return cell
@@ -115,9 +139,9 @@ extension CatBreedsController: UISearchBarDelegate {
                 print(appError.errorMessage())
             } else if let allCats = allCats {
                 if searchText.trimmingCharacters(in: .whitespaces) == "" {
-                    self.allCatBreeds = allCats
+                    self.allCatBreedsWithoutImage = allCats
                 } else {
-                    self.allCatBreeds = allCats.filter { $0.name.lowercased().contains(searchText) }
+                    self.allCatBreedsWithoutImage = allCats.filter { $0.name.lowercased().contains(searchText) }
                 }
             }
             DispatchQueue.main.async {

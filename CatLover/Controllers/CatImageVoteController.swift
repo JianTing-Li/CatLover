@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+//fix get all cat with images
 class CatImageVoteController: UIViewController {
     
     @IBOutlet weak var voteTableView: UITableView!
@@ -32,7 +32,6 @@ class CatImageVoteController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        //***what does this do?
         super.viewWillAppear(true)
         getAllCatsWithImage()
     }
@@ -60,6 +59,7 @@ class CatImageVoteController: UIViewController {
                 //dump(self.allImageVotes)
             }
             
+            //5a***how can I refactor this?
             self.allImageVotes.forEach { voteCatImage in
                 DispatchQueue.main.async {
                     self.refreshControl.beginRefreshing()
@@ -78,7 +78,7 @@ class CatImageVoteController: UIViewController {
                 }
             }
             
-            //***is there a way I can assign a variable here?
+            //5b***is there a way I can assign a variable here?
 //            self.catsWithImage = catsWithImage
 //            dump(self.catsWithImage)
         }

@@ -14,6 +14,7 @@ enum AppError: Error {
     case networkError(Error)
     case noResponse
     case decodingError(Error)
+    case encodingError(Error)
     case invalidInputs
     case noData
     case badStatusCode(String)
@@ -28,6 +29,8 @@ enum AppError: Error {
             return "no network response"
         case .decodingError(let error):
             return "decodingError: \(error)"
+        case .encodingError(let error):
+            return "encodingError: \(error)"
         case .invalidInputs:
             return "invalid input for imageHelper getCatImage method"
         case .noData:

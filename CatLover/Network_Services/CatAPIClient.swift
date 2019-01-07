@@ -165,3 +165,17 @@ final class CatAPIClient {
         }
     }
 }
+
+
+
+
+//use this for encryption to add different users
+//https://docs.vapor.codes/3.0/async/overview/
+//func toBase64() -> String {
+//    guard let data = self.data(using: String.Encoding.utf8) else {
+//        return ""
+//    }
+//    return data.base64EncodedData(options: .init(rawValue: 0)).base64EncodedString()
+//}
+
+

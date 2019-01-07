@@ -34,11 +34,14 @@ final class ImageHelper {
             } else if let data = data {
                 let image = UIImage.init(data: data)
                 DispatchQueue.main.async {
-                    if let image = image, let cat = cat {
-                        ImageHelper.shared.imageCache.setObject(image, forKey: cat.name as NSString)
-                    } else if let image = image {
+                    if let image = image {
                         ImageHelper.shared.imageCache.setObject(image, forKey: urlString as NSString)
                     }
+//                    if let image = image, let cat = cat {
+//                        ImageHelper.shared.imageCache.setObject(image, forKey: cat.name as NSString)
+//                    } else if let image = image {
+//                        ImageHelper.shared.imageCache.setObject(image, forKey: urlString as NSString)
+//                    }
                     completionHandler(nil, image)
                 }
             }

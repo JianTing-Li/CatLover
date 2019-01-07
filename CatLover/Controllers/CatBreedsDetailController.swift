@@ -8,6 +8,11 @@
 
 import UIKit
 
+//add activity indicator & cache
+//remodel UI so Description is so not cramped
+//nsattributed string
+    //2***how to make part of the text Bold?
+
 class CatBreedsDetailController: UIViewController {
 
     @IBOutlet weak var catName: UILabel!
@@ -32,11 +37,11 @@ class CatBreedsDetailController: UIViewController {
         updateCatUI()
         setNewCatImage()
     }
-    //***how to make part of the text Bold?
+    
     private func updateCatUI() {
         catName.text = catWithoutImage.name
         
-        temperament.text = "Temperament: \(catWithoutImage.temperament)"
+        temperament.text = "\(catWithoutImage.temperament)"
         origin.text = "Origin: \(catWithoutImage.origin)"
         affectionLevel.text = "Affection: \(catWithoutImage.affectionLevel)"
         energyLevel.text = "Energy: \(catWithoutImage.energyLevel)"
@@ -104,16 +109,12 @@ class CatBreedsDetailController: UIViewController {
                         DispatchQueue.main.async {
                             self.showAlert(title: messageTitle, message: "")
                         }
-                    } else {
+                    } else { //3***is this necessary?
                         DispatchQueue.main.async {
                             self.showAlert(title: "Fail to Vote Cat Image", message: "")
                         }
                     }
-                } else {
-                    DispatchQueue.main.async {
-                        self.showAlert(title: "Fail to Vote Cat Image", message: "")
-                    }
-                }
+                } 
             }
         } catch {
             print("Encoding Error: \(error)")

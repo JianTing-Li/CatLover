@@ -87,15 +87,10 @@ class CatImageVoteDetailController: UIViewController {
                             self.showAlert(title: "Fail to Vote Cat Image", message: "")
                         }
                     }
-                } else {
-                    DispatchQueue.main.async {
-                        self.showAlert(title: "Fail to Vote Cat Image", message: "")
-                    }
-                }
+                } 
             }
         } catch {
-            //***add this to enum later
-            print("Encoding Error: \(error)")
+            print(AppError.encodingError(error))
         }
     }
     
@@ -117,11 +112,7 @@ class CatImageVoteDetailController: UIViewController {
                         self.showAlert(title: "Fail to Delete Vote", message: "")
                     }
                 }
-            } else {
-                DispatchQueue.main.async {
-                    self.showAlert(title: "Fail to Delete Vote", message: "")
-                }
-            }
+            } 
         }
     }
     

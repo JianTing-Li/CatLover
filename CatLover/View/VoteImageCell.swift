@@ -8,7 +8,6 @@
 
 import UIKit
 
-//***why only class can inherit UITableViewCell?
 class VoteImageCell: UITableViewCell {
     @IBOutlet weak var catImage: UIImageView!
     @IBOutlet weak var catBreed: UILabel!
