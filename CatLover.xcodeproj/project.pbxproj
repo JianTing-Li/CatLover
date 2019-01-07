@@ -9,7 +9,8 @@
 /* Begin PBXBuildFile section */
 		D671905621DF458C0039C4CD /* VoteBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = D671905521DF458C0039C4CD /* VoteBody.swift */; };
 		D671905821DF46380039C4CD /* VoteResultStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = D671905721DF46380039C4CD /* VoteResultStatus.swift */; };
-		D671907121E1579B0039C4CD /* Vote.swift in Sources */ = {isa = PBXBuildFile; fileRef = D671907021E1579B0039C4CD /* Vote.swift */; };
+		D671907121E1579B0039C4CD /* VoteCatImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D671907021E1579B0039C4CD /* VoteCatImage.swift */; };
+		D671907321E2F8810039C4CD /* VoteImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D671907221E2F8810039C4CD /* VoteImageCell.swift */; };
 		D69B01A821D9B96400690788 /* CatBreedWithNoImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69B01A721D9B96400690788 /* CatBreedWithNoImage.swift */; };
 		D69B01AA21D9BA5600690788 /* CatImageVote.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69B01A921D9BA5600690788 /* CatImageVote.swift */; };
 		D69B01AC21D9BD6A00690788 /* CatAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69B01AB21D9BD6A00690788 /* CatAPIClient.swift */; };
@@ -33,7 +34,8 @@
 /* Begin PBXFileReference section */
 		D671905521DF458C0039C4CD /* VoteBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoteBody.swift; sourceTree = "<group>"; };
 		D671905721DF46380039C4CD /* VoteResultStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoteResultStatus.swift; sourceTree = "<group>"; };
-		D671907021E1579B0039C4CD /* Vote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vote.swift; sourceTree = "<group>"; };
+		D671907021E1579B0039C4CD /* VoteCatImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoteCatImage.swift; sourceTree = "<group>"; };
+		D671907221E2F8810039C4CD /* VoteImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoteImageCell.swift; sourceTree = "<group>"; };
 		D69B01A721D9B96400690788 /* CatBreedWithNoImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatBreedWithNoImage.swift; sourceTree = "<group>"; };
 		D69B01A921D9BA5600690788 /* CatImageVote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatImageVote.swift; sourceTree = "<group>"; };
 		D69B01AB21D9BD6A00690788 /* CatAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatAPIClient.swift; sourceTree = "<group>"; };
@@ -76,7 +78,7 @@
 				D69B01B321D9DC8000690788 /* CatImage.swift */,
 				D671905521DF458C0039C4CD /* VoteBody.swift */,
 				D671905721DF46380039C4CD /* VoteResultStatus.swift */,
-				D671907021E1579B0039C4CD /* Vote.swift */,
+				D671907021E1579B0039C4CD /* VoteCatImage.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -125,6 +127,7 @@
 			children = (
 				D6BEF30C21D18C85000BF117 /* Main.storyboard */,
 				D69B01B121D9D6E800690788 /* CatCell.swift */,
+				D671907221E2F8810039C4CD /* VoteImageCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -230,10 +233,11 @@
 				D671905621DF458C0039C4CD /* VoteBody.swift in Sources */,
 				D69B01B021D9CE7B00690788 /* SecretKey.swift in Sources */,
 				D6BEF30B21D18C84000BF117 /* CatBreedsController.swift in Sources */,
-				D671907121E1579B0039C4CD /* Vote.swift in Sources */,
+				D671907121E1579B0039C4CD /* VoteCatImage.swift in Sources */,
 				D6BEF31E21D18D48000BF117 /* NetworkHelper.swift in Sources */,
 				D69B01B421D9DC8100690788 /* CatImage.swift in Sources */,
 				D69B01A821D9B96400690788 /* CatBreedWithNoImage.swift in Sources */,
+				D671907321E2F8810039C4CD /* VoteImageCell.swift in Sources */,
 				D6BEF32021D18D54000BF117 /* ImageHelper.swift in Sources */,
 				D69B01B221D9D6E800690788 /* CatCell.swift in Sources */,
 				D69B01B821D9E94A00690788 /* CatImageVoteDetailController.swift in Sources */,

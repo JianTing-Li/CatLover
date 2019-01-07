@@ -22,20 +22,38 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="598"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CatImageCell" rowHeight="162" id="Jqe-Pi-wd5">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="VoteImageCell" rowHeight="162" id="Jqe-Pi-wd5" customClass="VoteImageCell" customModule="CatLover" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="162"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Jqe-Pi-wd5" id="dNo-ud-P1G">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="161.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YaF-it-t7w">
-                                                    <rect key="frame" x="58" y="16" width="240" height="128"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Breed Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hr7-Ve-iac">
+                                                    <rect key="frame" x="221.5" y="65.5" width="133.5" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YaF-it-t7w">
+                                                    <rect key="frame" x="15" y="0.0" width="201.5" height="151"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="YaF-it-t7w" secondAttribute="height" multiplier="4:3" id="o4q-mH-Y0X"/>
+                                                    </constraints>
                                                 </imageView>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="hr7-Ve-iac" firstAttribute="leading" secondItem="YaF-it-t7w" secondAttribute="trailing" constant="5" id="19O-P2-nXi"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="hr7-Ve-iac" secondAttribute="trailing" constant="5" id="BOe-oa-ury"/>
+                                                <constraint firstItem="hr7-Ve-iac" firstAttribute="centerY" secondItem="YaF-it-t7w" secondAttribute="centerY" id="L0b-uH-IsF"/>
+                                                <constraint firstAttribute="bottom" secondItem="YaF-it-t7w" secondAttribute="bottom" constant="10.5" id="eiB-Ak-fdO"/>
+                                                <constraint firstItem="YaF-it-t7w" firstAttribute="top" secondItem="dNo-ud-P1G" secondAttribute="top" id="lJ9-TI-9AE"/>
+                                                <constraint firstItem="YaF-it-t7w" firstAttribute="leading" secondItem="dNo-ud-P1G" secondAttribute="leading" constant="15" id="oMb-of-QD6"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="catBreed" destination="hr7-Ve-iac" id="sYy-sJ-DPg"/>
+                                            <outlet property="catImage" destination="YaF-it-t7w" id="XFS-Vz-2uM"/>
                                             <segue destination="R72-wa-Nx6" kind="show" id="NKR-sA-9ic"/>
                                         </connections>
                                     </tableViewCell>
@@ -82,7 +100,7 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ySP-bc-zqA">
                                 <rect key="frame" x="144" y="509" width="80" height="49"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Delete"/>
+                                <state key="normal" title="Delete Vote"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Cat Breed Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="chN-1W-7sg">
                                 <rect key="frame" x="121" y="54" width="126" height="21"/>
@@ -91,6 +109,16 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JEI-Cq-CRo">
+                                <rect key="frame" x="95" y="340" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Like"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ida-BN-hQh">
+                                <rect key="frame" x="249" y="340" width="45" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Dislike"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="x7H-Us-hC0"/>
@@ -137,6 +165,10 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="TxF-gm-NkU">
+                                                    <rect key="frame" x="82" y="57" width="37" height="37"/>
+                                                    <color key="color" red="0.11764705882352941" green="0.56470588235294117" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </activityIndicatorView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="5OM-Oj-R7q" firstAttribute="leading" secondItem="ZiI-JM-Xk4" secondAttribute="trailing" constant="5" id="5M3-l0-E9t"/>
@@ -146,11 +178,14 @@
                                                 <constraint firstItem="5OM-Oj-R7q" firstAttribute="top" secondItem="aRM-lr-ede" secondAttribute="bottom" constant="25" id="PJo-f1-VH2"/>
                                                 <constraint firstItem="ZiI-JM-Xk4" firstAttribute="leading" secondItem="8g1-gu-ghM" secondAttribute="leadingMargin" constant="5" id="Pa8-cO-soV"/>
                                                 <constraint firstItem="aRM-lr-ede" firstAttribute="top" secondItem="ZiI-JM-Xk4" secondAttribute="top" multiplier="2" id="QUR-jb-WH2"/>
+                                                <constraint firstItem="TxF-gm-NkU" firstAttribute="centerY" secondItem="ZiI-JM-Xk4" secondAttribute="centerY" id="SpR-Fc-T5Q"/>
                                                 <constraint firstItem="ZiI-JM-Xk4" firstAttribute="top" secondItem="8g1-gu-ghM" secondAttribute="topMargin" constant="5" id="UX1-IC-u5G"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="aRM-lr-ede" secondAttribute="trailing" constant="5" id="eLb-OF-eu4"/>
+                                                <constraint firstItem="TxF-gm-NkU" firstAttribute="centerX" secondItem="ZiI-JM-Xk4" secondAttribute="centerX" id="h11-H7-j67"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="activityIndicator" destination="TxF-gm-NkU" id="h1Y-ws-cQp"/>
                                             <outlet property="catBreedName" destination="aRM-lr-ede" id="DFI-QT-Wk4"/>
                                             <outlet property="catImg" destination="ZiI-JM-Xk4" id="qD0-6C-TcV"/>
                                             <outlet property="catOrigin" destination="5OM-Oj-R7q" id="4w1-V6-ojv"/>
@@ -220,8 +255,8 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4RO-xJ-yQ9">
-                                <rect key="frame" x="161" y="342" width="53" height="30"/>
-                                <state key="normal" title="Refresh"/>
+                                <rect key="frame" x="149" y="342" width="77" height="30"/>
+                                <state key="normal" title="New Image"/>
                                 <connections>
                                     <action selector="getNewCatPic:" destination="ryO-ht-cW2" eventType="touchUpInside" id="Esd-Gn-Mr2"/>
                                 </connections>

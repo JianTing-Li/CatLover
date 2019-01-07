@@ -12,6 +12,7 @@ class CatBreedsController: UIViewController {
     
     @IBOutlet weak var catTableView: UITableView!
     @IBOutlet weak var catSearchBar: UISearchBar!
+    private var refreshControl: UIRefreshControl!
     
     var allCatBreeds = [CatBreedWithNoImage]() {
         didSet {
@@ -28,6 +29,7 @@ class CatBreedsController: UIViewController {
         catSearchBar.delegate = self
         
         getAllCats()
+        setupRefreshControl()
     }
     
     private func getAllCats() {
@@ -37,6 +39,28 @@ class CatBreedsController: UIViewController {
             } else if let catBreeds = catBreeds {
                 self.allCatBreeds = catBreeds
                 //dump(self.allCatBreeds)
+            }
+        }
+    }
+
+    private func setupRefreshControl() {
+        refreshControl = UIRefreshControl()
+        catTableView.refreshControl = refreshControl
+        refreshControl.addTarget(self, action: #selector(fetchCats), for: .valueChanged)
+    }
+
+    @objc private func fetchCats() {
+        refreshControl.beginRefreshing()
+        
+        CatAPIClient.getAllCats() { (appError, allCats) in
+            if let appError = appError {
+                print(appError.errorMessage())
+            } else if let allCats = allCats {
+                self.allCatBreeds = allCats
+            }
+            
+            DispatchQueue.main.async {
+                self.refreshControl.endRefreshing()
             }
         }
     }
@@ -61,24 +85,7 @@ extension CatBreedsController: UITableViewDataSource {
         guard let cell = catTableView.dequeueReusableCell(withIdentifier: "CatCell", for: indexPath) as? CatCell else { fatalError("cell not found") }
         
         let catBreed = allCatBreeds[indexPath.row]
-   
-        cell.catBreedName.text = catBreed.name
-        cell.catOrigin.text = catBreed.origin
-        
-        if let image = ImageHelper.shared.getImageFromCache(forKey: catBreed.name as NSString) {
-            cell.catImg.image = image
-        } else {
-            ImageHelper.getCatImage(catWithNoImage: catBreed, catWithImage: nil) { (appError, catImage) in
-                if let appError = appError {
-                    DispatchQueue.main.async {
-                        cell.catImg.image = UIImage.init(named: "catImgPlaceholder")
-                    }
-                    print(appError.errorMessage())
-                } else if let catImage = catImage {
-                    cell.catImg.image = catImage
-                }
-            }
-        }
+        cell.configureCell(catBreed: catBreed)
         return cell
     }
 }
@@ -97,13 +104,15 @@ extension CatBreedsController: UISearchBarDelegate {
         CatAPIClient.getAllCats() { (appError, allCats) in
             if let appError = appError {
                 print(appError.errorMessage())
-                return
             } else if let allCats = allCats {
                 if searchText.trimmingCharacters(in: .whitespaces) == "" {
                     self.allCatBreeds = allCats
                 } else {
                     self.allCatBreeds = allCats.filter { $0.name.lowercased().contains(searchText) }
                 }
+            }
+            DispatchQueue.main.async {
+                searchBar.text = ""
             }
         }
     }

@@ -104,7 +104,7 @@ final class CatAPIClient {
     
     
     //username is Jian_Ting88
-    public static func getAllVotes(userName: String, completionHandler: @escaping (AppError?, [Vote]?) -> Void) {
+    public static func getAllVotes(userName: String, completionHandler: @escaping (AppError?, [VoteCatImage]?) -> Void) {
         let urlString = "https://api.thecatapi.com/v1/votes?api_key=\(SecretKey.key)&sub_id=\(userName)"
         
         NetworkHelper.shared.performDataTask(endpointURLString: urlString, httpMethod: "GET", httpBody: nil) { (appError, data, httpResponse) in
@@ -121,7 +121,7 @@ final class CatAPIClient {
             if let data = data {
                 //***once I know what the JSON looks like
                 do {
-                    let allVotes = try JSONDecoder().decode([Vote].self, from: data)
+                    let allVotes = try JSONDecoder().decode([VoteCatImage].self, from: data)
                     completionHandler(nil, allVotes)
                 } catch {
                     completionHandler(AppError.decodingError(error), nil)

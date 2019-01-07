@@ -11,7 +11,8 @@ import UIKit
 class CatImageVoteController: UIViewController {
     
     @IBOutlet weak var voteTableView: UITableView!
-    var allVotes = [Vote]() {
+    
+    var allImageVotes = [VoteCatImage]() {
         didSet {
             voteTableView.reloadData()
         }
@@ -19,10 +20,8 @@ class CatImageVoteController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setAllVotes()
 
-        
     }
     
     private func setAllVotes() {
@@ -30,8 +29,26 @@ class CatImageVoteController: UIViewController {
             if let appError = appError {
                 print(appError.errorMessage())
             } else if let allVotes = allVotes {
-                self.allVotes = allVotes
+                self.allImageVotes = allVotes
             }
         }
+    }
+}
+
+extension CatImageVoteController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return allImageVotes.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = voteTableView.dequeueReusableCell(withIdentifier: "VoteImageCell", for: indexPath) as? VoteImageCell else { fatalError("Cell Not Found") }
+        let voteCatImage = allImageVotes[indexPath.row]
+        return cell
+    }
+}
+
+extension CatImageVoteController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 115
     }
 }

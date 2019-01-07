@@ -12,6 +12,29 @@ class CatCell: UITableViewCell {
     @IBOutlet weak var catImg: UIImageView!
     @IBOutlet weak var catBreedName: UILabel!
     @IBOutlet weak var catOrigin: UILabel!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
+    public func configureCell(catBreed: CatBreedWithNoImage) {
+        catBreedName.text = catBreed.name
+        catOrigin.text = catBreed.origin
+        
+        if let image = ImageHelper.shared.getImageFromCache(forKey: catBreed.name as NSString) {
+            catImg.image = image
+        } else {
+            activityIndicator.startAnimating()
+            ImageHelper.getCatImage(catWithNoImage: catBreed, catWithImage: nil) { (appError, catImage) in
+                if let appError = appError {
+                    DispatchQueue.main.async {
+                        self.catImg.image = UIImage.init(named: "catImgPlaceholder")
+                    }
+                    print(appError.errorMessage())
+                } else if let catImage = catImage {
+                    self.catImg.image = catImage
+                }
+                self.activityIndicator.stopAnimating()
+            }
+        }
+    }
 }
 
 
