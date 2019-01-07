@@ -14,6 +14,8 @@ class CatCell: UITableViewCell {
     @IBOutlet weak var catOrigin: UILabel!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
+    private var urlString = ""
+    
     public func configureCell(catBreed: CatBreedWithNoImage) {
         catBreedName.text = catBreed.name
         catOrigin.text = catBreed.origin
@@ -22,7 +24,7 @@ class CatCell: UITableViewCell {
             catImg.image = image
         } else {
             activityIndicator.startAnimating()
-            ImageHelper.getCatImage(catWithNoImage: catBreed, catWithImage: nil) { (appError, catImage) in
+            ImageHelper.getCatImage(catWithNoImage: catBreed, catWithImage: nil) { (appError, catWithImage, catImage) in
                 if let appError = appError {
                     DispatchQueue.main.async {
                         self.catImg.image = UIImage.init(named: "catImgPlaceholder")

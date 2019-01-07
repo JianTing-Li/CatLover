@@ -12,37 +12,49 @@ class CatImageVoteController: UIViewController {
     
     @IBOutlet weak var voteTableView: UITableView!
     
-    var allImageVotes = [VoteCatImage]() {
+    var allImageVotes = [VoteCatImage]()
+    var allCatsWithImage = [CatBreedWithImage]() {
         didSet {
-            voteTableView.reloadData()
+            DispatchQueue.main.async {
+                self.voteTableView.reloadData()
+            }
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setAllVotes()
+        getAllCatsWithImage()
 
     }
     
-    private func setAllVotes() {
+    private func getAllCatsWithImage() {
         CatAPIClient.getAllVotes(userName: "Jian_Ting88") { (appError, allVotes) in
             if let appError = appError {
                 print(appError.errorMessage())
-            } else if let allVotes = allVotes {
-                self.allImageVotes = allVotes
+                return
             }
+            if let allVotes = allVotes {
+                self.allImageVotes = allVotes
+                //dump(self.allImageVotes)
+            }
+            allVotes?.forEach { $0 }
         }
     }
+    
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        <#code#>
+//    }
 }
 
 extension CatImageVoteController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return allImageVotes.count
+        return allCatsWithImage.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = voteTableView.dequeueReusableCell(withIdentifier: "VoteImageCell", for: indexPath) as? VoteImageCell else { fatalError("Cell Not Found") }
-        let voteCatImage = allImageVotes[indexPath.row]
+        let catWithImage = allCatsWithImage[indexPath.row]
+        cell.configureCell(catWithImage: catWithImage)
         return cell
     }
 }

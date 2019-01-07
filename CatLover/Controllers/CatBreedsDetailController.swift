@@ -32,7 +32,7 @@ class CatBreedsDetailController: UIViewController {
     }
     
     private func setCatWithImage() {
-        ImageHelper.getCatImage(catWithNoImage: catWithoutImage, catWithImage: nil) { (appError, image) in
+        ImageHelper.getCatImage(catWithNoImage: catWithoutImage, catWithImage: nil) { (appError, catWithImage, image) in
             if let appError = appError {
                 self.catImage.image = UIImage.init(named: "catImgPlaceholder2")
                 print(appError.errorMessage())
@@ -41,7 +41,7 @@ class CatBreedsDetailController: UIViewController {
             }
         }
         
-        CatAPIClient.getCatWithImage(catBreedId: catWithoutImage.id) { (appError, catWithImage) in
+        CatAPIClient.getCatWithImageFromBreedId(catBreedId: catWithoutImage.id) { (appError, catWithImage) in
             if let appError = appError {
                 self.catImage.image = UIImage.init(named: "catImgPlaceholder2")
                 print(appError.errorMessage())
@@ -66,7 +66,7 @@ class CatBreedsDetailController: UIViewController {
     }
     
     private func getNewImage() {
-        CatAPIClient.getCatWithImage(catBreedId: catWithoutImage.id) { (appError, catWithImage) in
+        CatAPIClient.getCatWithImageFromBreedId(catBreedId: catWithoutImage.id) { (appError, catWithImage) in
             if let appError = appError {
                 self.catImage.image = UIImage.init(named: "catImgPlaceholder2")
                 print(appError.errorMessage())
@@ -75,7 +75,7 @@ class CatBreedsDetailController: UIViewController {
             }
         }
         
-        ImageHelper.getCatImage(catWithNoImage: nil, catWithImage: catWithImage) { (appError, image) in
+        ImageHelper.getCatImage(catWithNoImage: nil, catWithImage: catWithImage) { (appError, catWithImage, image) in
             if let appError = appError {
                 self.catImage.image = UIImage.init(named: "catImgPlaceholder2")
                 print(appError.errorMessage())

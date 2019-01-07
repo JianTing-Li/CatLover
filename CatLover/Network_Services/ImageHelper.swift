@@ -46,19 +46,19 @@ final class ImageHelper {
     }
     
     
-    static func getCatImage(catWithNoImage: CatBreedWithNoImage?, catWithImage: CatBreedWithImage?, completionHandler: @escaping (AppError?, UIImage?) -> Void) {
+    static func getCatImage(catWithNoImage: CatBreedWithNoImage?, catWithImage: CatBreedWithImage?, completionHandler: @escaping (AppError?, CatBreedWithImage?, UIImage?) -> Void) {
         
         //if we have a cat w/ no image url, we need to convert it to the one with image url
         if let catWithNoImage = catWithNoImage {
-            CatAPIClient.getCatWithImage(catBreedId: catWithNoImage.id) { (error, catBreedWithImage) in
+            CatAPIClient.getCatWithImageFromBreedId(catBreedId: catWithNoImage.id) { (error, catBreedWithImage) in
                 if let error = error {
-                    completionHandler(error, nil)
+                    completionHandler(error, nil, nil)
                 } else if let catBreedWithImage = catBreedWithImage {
                     fetchImage(urlString: catBreedWithImage.url.absoluteString, cat: catWithNoImage) { (error, image) in
                         if let error = error {
-                            completionHandler(error, nil)
+                            completionHandler(error, nil, nil)
                         } else if let image = image {
-                            completionHandler(nil, image)
+                            completionHandler(nil, catBreedWithImage, image)
                         }
                     }
                 }
@@ -68,15 +68,15 @@ final class ImageHelper {
         } else if let catWithImage = catWithImage {
             fetchImage(urlString: catWithImage.url.absoluteString, cat: nil) { (error, image) in
                 if let error = error {
-                    completionHandler(error, nil)
+                    completionHandler(error, nil, nil)
                 } else if let image = image {
-                    completionHandler(nil, image)
+                    completionHandler(nil, catWithImage, image)
                 }
             }
         
         //if both inputs are invalid
         } else {
-            completionHandler(AppError.invalidInputs, nil)
+            completionHandler(AppError.invalidInputs, nil, nil)
         }
     }
     

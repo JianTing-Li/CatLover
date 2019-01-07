@@ -23,7 +23,7 @@ struct VoteCatImage: Codable {
         case subId = "sub_id"
         case createdAt = "created_at"
         case value
-        case countryCode
+        case countryCode = "country_code"
     }
 }
 

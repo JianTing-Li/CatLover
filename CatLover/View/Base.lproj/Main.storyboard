@@ -29,22 +29,28 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="161.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Breed Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hr7-Ve-iac">
-                                                    <rect key="frame" x="221.5" y="65.5" width="133.5" height="20.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YaF-it-t7w">
                                                     <rect key="frame" x="15" y="0.0" width="201.5" height="151"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="YaF-it-t7w" secondAttribute="height" multiplier="4:3" id="o4q-mH-Y0X"/>
                                                     </constraints>
                                                 </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Breed Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hr7-Ve-iac">
+                                                    <rect key="frame" x="221.5" y="65.5" width="133.5" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="XES-Y5-glA">
+                                                    <rect key="frame" x="97" y="57" width="37" height="37"/>
+                                                    <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </activityIndicatorView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="hr7-Ve-iac" firstAttribute="leading" secondItem="YaF-it-t7w" secondAttribute="trailing" constant="5" id="19O-P2-nXi"/>
+                                                <constraint firstItem="XES-Y5-glA" firstAttribute="centerY" secondItem="YaF-it-t7w" secondAttribute="centerY" id="7Vh-dS-Bq6"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="hr7-Ve-iac" secondAttribute="trailing" constant="5" id="BOe-oa-ury"/>
+                                                <constraint firstItem="XES-Y5-glA" firstAttribute="centerX" secondItem="YaF-it-t7w" secondAttribute="centerX" id="JIN-4G-09z"/>
                                                 <constraint firstItem="hr7-Ve-iac" firstAttribute="centerY" secondItem="YaF-it-t7w" secondAttribute="centerY" id="L0b-uH-IsF"/>
                                                 <constraint firstAttribute="bottom" secondItem="YaF-it-t7w" secondAttribute="bottom" constant="10.5" id="eiB-Ak-fdO"/>
                                                 <constraint firstItem="YaF-it-t7w" firstAttribute="top" secondItem="dNo-ud-P1G" secondAttribute="top" id="lJ9-TI-9AE"/>
@@ -52,6 +58,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="activityIndicator" destination="XES-Y5-glA" id="DyN-WC-k8b"/>
                                             <outlet property="catBreed" destination="hr7-Ve-iac" id="sYy-sJ-DPg"/>
                                             <outlet property="catImage" destination="YaF-it-t7w" id="XFS-Vz-2uM"/>
                                             <segue destination="R72-wa-Nx6" kind="show" id="NKR-sA-9ic"/>
@@ -166,8 +173,8 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="TxF-gm-NkU">
-                                                    <rect key="frame" x="82" y="57" width="37" height="37"/>
-                                                    <color key="color" red="0.11764705882352941" green="0.56470588235294117" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <rect key="frame" x="81.5" y="57.5" width="37" height="37"/>
+                                                    <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </activityIndicatorView>
                                             </subviews>
                                             <constraints>

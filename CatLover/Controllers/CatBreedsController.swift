@@ -21,6 +21,14 @@ class CatBreedsController: UIViewController {
             }
         }
     }
+    //refactor to this later
+//    var allCatBreedsWithImage = [CatBreedWithImage]() {
+//        didSet {
+//            DispatchQueue.main.async {
+//                self.catTableView.reloadData()
+//            }
+//        }
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
