@@ -8,7 +8,11 @@
 
 import Foundation
 
-struct VoteResult: Codable {
+struct VoteSuccess: Codable {
     let message: String
     let id: Int
+}
+
+struct DeleteSuccess: Codable {
+    let message: String
 }

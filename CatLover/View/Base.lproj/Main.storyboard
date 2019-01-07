@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Voted Cat Pics-->
+        <!--Cat Image Vote Controller-->
         <scene sceneID="JWw-Hu-PMD">
             <objects>
                 <viewController id="qxG-Kv-zNT" customClass="CatImageVoteController" customModule="CatLover" customModuleProvider="target" sceneMemberID="viewController">
@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hRM-NF-34C">
-                                <rect key="frame" x="0.0" y="20" width="375" height="598"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="VoteImageCell" rowHeight="162" id="Jqe-Pi-wd5" customClass="VoteImageCell" customModule="CatLover" customModuleProvider="target">
@@ -76,14 +76,14 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="7Mc-Ne-d2t"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Voted Cat Pics" id="Mhn-aj-1kV"/>
+                    <navigationItem key="navigationItem" id="jfU-mb-XpW"/>
                     <connections>
                         <outlet property="voteTableView" destination="hRM-NF-34C" id="hIl-cT-Jbq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TMS-GZ-R6u" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="756" y="458.32083958020991"/>
+            <point key="canvasLocation" x="1695.2" y="458.32083958020991"/>
         </scene>
         <!--Cat Image Vote Detail Controller-->
         <scene sceneID="GBH-rl-W2J">
@@ -93,47 +93,75 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="G46-T0-eGC">
-                                <rect key="frame" x="67" y="104" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="G46-T0-eGC">
+                                <rect key="frame" x="5" y="148" width="365" height="274"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="G46-T0-eGC" secondAttribute="height" multiplier="4:3" id="cjj-u8-Ktp"/>
+                                </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Vote Status" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BDq-eY-heE">
-                                <rect key="frame" x="140" y="267" width="89" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vote Status" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BDq-eY-heE">
+                                <rect key="frame" x="20" y="437" width="335" height="21.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ySP-bc-zqA">
-                                <rect key="frame" x="144" y="509" width="80" height="49"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Delete Vote"/>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Cat Breed Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="chN-1W-7sg">
-                                <rect key="frame" x="121" y="54" width="126" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cat Breed Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="chN-1W-7sg">
+                                <rect key="frame" x="20" y="94" width="335" height="29"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JEI-Cq-CRo">
-                                <rect key="frame" x="95" y="340" width="30" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JEI-Cq-CRo">
+                                <rect key="frame" x="79" y="481.5" width="30" height="30"/>
                                 <state key="normal" title="Like"/>
+                                <connections>
+                                    <action selector="changeVoteImage:" destination="R72-wa-Nx6" eventType="touchUpInside" id="Ggi-Pk-fsc"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ida-BN-hQh">
-                                <rect key="frame" x="249" y="340" width="45" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G5g-Rr-MyG">
+                                <rect key="frame" x="259" y="481.5" width="45" height="30"/>
                                 <state key="normal" title="Dislike"/>
+                                <connections>
+                                    <action selector="changeVoteImage:" destination="R72-wa-Nx6" eventType="touchUpInside" id="Kyk-c7-MFh"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ySP-bc-zqA">
+                                <rect key="frame" x="147.5" y="538.5" width="80" height="30"/>
+                                <state key="normal" title="Delete Vote"/>
+                                <connections>
+                                    <action selector="deleteVote:" destination="R72-wa-Nx6" eventType="touchUpInside" id="9wD-bt-K5l"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="G5g-Rr-MyG" firstAttribute="top" secondItem="BDq-eY-heE" secondAttribute="bottom" constant="23" id="6wJ-rs-8Mm"/>
+                            <constraint firstItem="x7H-Us-hC0" firstAttribute="trailing" secondItem="G46-T0-eGC" secondAttribute="trailing" constant="5" id="7Hz-Eo-Fwa"/>
+                            <constraint firstItem="JEI-Cq-CRo" firstAttribute="top" secondItem="BDq-eY-heE" secondAttribute="bottom" constant="23" id="7KZ-LM-buL"/>
+                            <constraint firstItem="BDq-eY-heE" firstAttribute="leading" secondItem="x7H-Us-hC0" secondAttribute="leading" constant="20" id="FXL-Ax-A5n"/>
+                            <constraint firstItem="BDq-eY-heE" firstAttribute="top" secondItem="G46-T0-eGC" secondAttribute="bottom" constant="15" id="Ftq-dH-VkN"/>
+                            <constraint firstItem="chN-1W-7sg" firstAttribute="leading" secondItem="x7H-Us-hC0" secondAttribute="leading" constant="20" id="LT0-LN-Mtg"/>
+                            <constraint firstItem="G46-T0-eGC" firstAttribute="leading" secondItem="x7H-Us-hC0" secondAttribute="leading" constant="5" id="LyO-vA-aW4"/>
+                            <constraint firstItem="x7H-Us-hC0" firstAttribute="trailing" secondItem="chN-1W-7sg" secondAttribute="trailing" constant="20" id="QEp-H0-jf4"/>
+                            <constraint firstItem="chN-1W-7sg" firstAttribute="top" secondItem="x7H-Us-hC0" secondAttribute="top" constant="30" id="TOP-EI-DbO"/>
+                            <constraint firstItem="ySP-bc-zqA" firstAttribute="top" secondItem="BDq-eY-heE" secondAttribute="bottom" constant="80" id="lEJ-5l-HEY"/>
+                            <constraint firstItem="JEI-Cq-CRo" firstAttribute="centerX" secondItem="G46-T0-eGC" secondAttribute="centerX" multiplier="0.5" id="mjo-Fa-y7m"/>
+                            <constraint firstItem="x7H-Us-hC0" firstAttribute="trailing" secondItem="BDq-eY-heE" secondAttribute="trailing" constant="20" id="qL6-ag-hg4"/>
+                            <constraint firstItem="ySP-bc-zqA" firstAttribute="centerX" secondItem="G46-T0-eGC" secondAttribute="centerX" id="qV1-9K-Aov"/>
+                            <constraint firstItem="G46-T0-eGC" firstAttribute="top" secondItem="chN-1W-7sg" secondAttribute="bottom" constant="25" id="tWC-Gx-LV0"/>
+                            <constraint firstItem="G5g-Rr-MyG" firstAttribute="centerX" secondItem="G46-T0-eGC" secondAttribute="centerX" multiplier="1.5" id="yRp-CJ-e46"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="x7H-Us-hC0"/>
                     </view>
+                    <connections>
+                        <outlet property="catBreedName" destination="chN-1W-7sg" id="CbP-il-FfZ"/>
+                        <outlet property="catImage" destination="G46-T0-eGC" id="HgD-dH-TAu"/>
+                        <outlet property="voteStatus" destination="BDq-eY-heE" id="imc-J1-hDp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R9u-bo-989" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1692" y="453.82308845577217"/>
+            <point key="canvasLocation" x="2631.1999999999998" y="453.82308845577217"/>
         </scene>
         <!--Cat Breeds Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -379,7 +407,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="vT2-PN-0ir" kind="relationship" relationship="viewControllers" id="PX6-Bn-jtI"/>
-                        <segue destination="qxG-Kv-zNT" kind="relationship" relationship="viewControllers" id="Y0g-oA-1yv"/>
+                        <segue destination="kvE-H8-jVZ" kind="relationship" relationship="viewControllers" id="Y0g-oA-1yv"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4CI-oK-34w" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -404,6 +432,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FH2-vN-Ccy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="756" y="-288.30584707646182"/>
+        </scene>
+        <!--Voted Cat Pics-->
+        <scene sceneID="OjU-ra-B91">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="kvE-H8-jVZ" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Voted Cat Pics" id="Mhn-aj-1kV"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="frd-ku-Wdr">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="qxG-Kv-zNT" kind="relationship" relationship="rootViewController" id="Rzo-vx-3hz"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8Af-VX-dDs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="756" y="458.32083958020991"/>
         </scene>
     </scenes>
 </document>

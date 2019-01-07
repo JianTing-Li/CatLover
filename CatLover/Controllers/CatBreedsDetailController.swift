@@ -22,35 +22,16 @@ class CatBreedsDetailController: UIViewController {
     
     @IBOutlet weak var catDescription: UITextView!
     
+    //this variable is not needed once I segue the catWithImage directly
     var catWithoutImage: CatBreedWithNoImage!
+    
     var catWithImage: CatBreedWithImage?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         updateCatUI()
-        setCatWithImage()
+        setNewCatImage()
     }
-    
-    private func setCatWithImage() {
-        ImageHelper.getCatImage(catWithNoImage: catWithoutImage, catWithImage: nil) { (appError, catWithImage, image) in
-            if let appError = appError {
-                self.catImage.image = UIImage.init(named: "catImgPlaceholder2")
-                print(appError.errorMessage())
-            } else if let image = image {
-                self.catImage.image = image
-            }
-        }
-        
-        CatAPIClient.getCatWithImageFromBreedId(catBreedId: catWithoutImage.id) { (appError, catWithImage) in
-            if let appError = appError {
-                self.catImage.image = UIImage.init(named: "catImgPlaceholder2")
-                print(appError.errorMessage())
-            } else if let catWithImage = catWithImage {
-                self.catWithImage = catWithImage
-            }
-        }
-    }
-    
     //***how to make part of the text Bold?
     private func updateCatUI() {
         catName.text = catWithoutImage.name
@@ -65,22 +46,25 @@ class CatBreedsDetailController: UIViewController {
         catDescription.text = catWithoutImage.description
     }
     
-    private func getNewImage() {
+    private func setNewCatImage() {
+        //get the cat breed with an image (the image is random)
         CatAPIClient.getCatWithImageFromBreedId(catBreedId: catWithoutImage.id) { (appError, catWithImage) in
             if let appError = appError {
                 self.catImage.image = UIImage.init(named: "catImgPlaceholder2")
                 print(appError.errorMessage())
             } else if let catWithImage = catWithImage {
+                //set the cat breed (w/ a random image) to a variable
                 self.catWithImage = catWithImage
-            }
-        }
-        
-        ImageHelper.getCatImage(catWithNoImage: nil, catWithImage: catWithImage) { (appError, catWithImage, image) in
-            if let appError = appError {
-                self.catImage.image = UIImage.init(named: "catImgPlaceholder2")
-                print(appError.errorMessage())
-            } else if let image = image {
-                self.catImage.image = image
+                
+                //convert the url to a uiimage and set to imageview
+                ImageHelper.getCatImage(catWithNoImage: self.catWithoutImage, catWithImage: nil) { (appError, catWithImage, image) in
+                    if let appError = appError {
+                        self.catImage.image = UIImage.init(named: "catImgPlaceholder2")
+                        print(appError.errorMessage())
+                    } else if let image = image {
+                        self.catImage.image = image
+                    }
+                }
             }
         }
     }
@@ -137,7 +121,7 @@ class CatBreedsDetailController: UIViewController {
     }
     
     @IBAction func getNewCatPic(_ sender: UIButton) {
-        getNewImage()
+        setNewCatImage()
     }
 
 }

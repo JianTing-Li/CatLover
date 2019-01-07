@@ -75,10 +75,10 @@ class CatBreedsController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let indexPath = catTableView.indexPathForSelectedRow,
-            let detailController = segue.destination as? CatBreedsDetailController else { fatalError("indexPath or destination controller not found") }
+            let detailVC = segue.destination as? CatBreedsDetailController else { fatalError("indexPath or destination controller not found") }
         
         let catWithoutImage = allCatBreeds[indexPath.row]
-        detailController.catWithoutImage = catWithoutImage
+        detailVC.catWithoutImage = catWithoutImage
     }
     
 }
@@ -93,6 +93,7 @@ extension CatBreedsController: UITableViewDataSource {
         guard let cell = catTableView.dequeueReusableCell(withIdentifier: "CatCell", for: indexPath) as? CatCell else { fatalError("cell not found") }
         
         let catBreed = allCatBreeds[indexPath.row]
+        //how come the cell doesn't return right away in this async call?
         cell.configureCell(catBreed: catBreed)
         return cell
     }

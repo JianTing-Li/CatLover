@@ -86,7 +86,7 @@ final class CatAPIClient {
     }
     
    
-    public static func voteCatImage(bodyData: Data, completionHandler: @escaping (AppError?, VoteResult?) -> Void) {
+    public static func voteCatImage(bodyData: Data, completionHandler: @escaping (AppError?, VoteSuccess?) -> Void) {
 
         let urlString = "https://api.thecatapi.com/v1/votes?api_key=\(SecretKey.key)"
 
@@ -103,13 +103,38 @@ final class CatAPIClient {
 
             if let data = data {
                 do {
-                    let voteResult = try JSONDecoder().decode(VoteResult.self, from: data)
+                    let voteResult = try JSONDecoder().decode(VoteSuccess.self, from: data)
                     completionHandler(nil, voteResult)
                 } catch {
                     completionHandler(AppError.decodingError(error), nil)
                 }
             }
 
+        }
+    }
+    
+    public static func deleteCatImageVote(voteId: String, completionHandler: @escaping (AppError?, DeleteSuccess?) -> Void) {
+        
+        let urlString = "https://api.thecatapi.com/v1/votes/\(voteId)?api_key=\(SecretKey.key)"
+        
+        NetworkHelper.shared.performDataTask(endpointURLString: urlString, httpMethod: "DELETE", httpBody: nil) { (appError, data, httpResponse) in
+            if let appError = appError {
+                completionHandler(appError, nil)
+            }
+            
+            guard let response = httpResponse, (200...299).contains(response.statusCode) else {
+                let statusCode = httpResponse?.statusCode ?? -999
+                completionHandler(AppError.badStatusCode(statusCode.description), nil)
+                return
+            }
+            
+            if let data = data {
+                do {
+                    completionHandler(nil, try JSONDecoder().decode(DeleteSuccess.self, from: data))
+                } catch {
+                    completionHandler(AppError.decodingError(error), nil)
+                }
+            }
         }
     }
     

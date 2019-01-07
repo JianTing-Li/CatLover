@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D671905621DF458C0039C4CD /* VoteBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = D671905521DF458C0039C4CD /* VoteBody.swift */; };
-		D671905821DF46380039C4CD /* VoteResultStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = D671905721DF46380039C4CD /* VoteResultStatus.swift */; };
+		D671905821DF46380039C4CD /* VoteAndDeleteSuccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = D671905721DF46380039C4CD /* VoteAndDeleteSuccess.swift */; };
 		D671907121E1579B0039C4CD /* VoteCatImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D671907021E1579B0039C4CD /* VoteCatImage.swift */; };
 		D671907321E2F8810039C4CD /* VoteImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D671907221E2F8810039C4CD /* VoteImageCell.swift */; };
 		D671907521E31E2F0039C4CD /* CatCellBackgroundColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D671907421E31E2F0039C4CD /* CatCellBackgroundColor.swift */; };
@@ -34,7 +34,7 @@
 
 /* Begin PBXFileReference section */
 		D671905521DF458C0039C4CD /* VoteBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoteBody.swift; sourceTree = "<group>"; };
-		D671905721DF46380039C4CD /* VoteResultStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoteResultStatus.swift; sourceTree = "<group>"; };
+		D671905721DF46380039C4CD /* VoteAndDeleteSuccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoteAndDeleteSuccess.swift; sourceTree = "<group>"; };
 		D671907021E1579B0039C4CD /* VoteCatImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoteCatImage.swift; sourceTree = "<group>"; };
 		D671907221E2F8810039C4CD /* VoteImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoteImageCell.swift; sourceTree = "<group>"; };
 		D671907421E31E2F0039C4CD /* CatCellBackgroundColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatCellBackgroundColor.swift; sourceTree = "<group>"; };
@@ -78,8 +78,8 @@
 				D69B01AD21D9C09D00690788 /* CatBreedWithImage.swift */,
 				D69B01A921D9BA5600690788 /* CatImageVote.swift */,
 				D69B01B321D9DC8000690788 /* CatImage.swift */,
+				D671905721DF46380039C4CD /* VoteAndDeleteSuccess.swift */,
 				D671905521DF458C0039C4CD /* VoteBody.swift */,
-				D671905721DF46380039C4CD /* VoteResultStatus.swift */,
 				D671907021E1579B0039C4CD /* VoteCatImage.swift */,
 			);
 			path = Model;
@@ -230,7 +230,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D69B01B621D9E92E00690788 /* CatImageVoteController.swift in Sources */,
-				D671905821DF46380039C4CD /* VoteResultStatus.swift in Sources */,
+				D671905821DF46380039C4CD /* VoteAndDeleteSuccess.swift in Sources */,
 				D6BEF32321D18EE8000BF117 /* CatBreedsDetailController.swift in Sources */,
 				D69B01BA21DC27F200690788 /* AppError.swift in Sources */,
 				D671905621DF458C0039C4CD /* VoteBody.swift in Sources */,

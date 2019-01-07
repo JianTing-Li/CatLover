@@ -33,6 +33,7 @@ final class NetworkHelper {
         request.httpMethod = httpMethod
         
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+           
             guard let response = response as? HTTPURLResponse else {
                 completionHandler(AppError.noResponse, nil, nil)
                 return
@@ -69,8 +70,15 @@ final class NetworkHelper {
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
         let task = URLSession.shared.uploadTask(with: request, from: httpBody) { (data, response, error) in
+            //how come I can't put this here?
+//            guard let response = response as? HTTPURLResponse else {
+//                completionHandler(AppError.noResponse, nil, nil)
+//                return
+//            }
+            
             if let error = error {
                 completionHandler(AppError.networkError(error), nil, response as? HTTPURLResponse)
+                return
             } else if let data = data {
                 completionHandler(nil, data, response as? HTTPURLResponse)
             }
