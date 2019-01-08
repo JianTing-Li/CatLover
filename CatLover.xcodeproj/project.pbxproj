@@ -11,7 +11,7 @@
 		D671905821DF46380039C4CD /* VoteAndDeleteSuccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = D671905721DF46380039C4CD /* VoteAndDeleteSuccess.swift */; };
 		D671907121E1579B0039C4CD /* VoteCatImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D671907021E1579B0039C4CD /* VoteCatImage.swift */; };
 		D671907321E2F8810039C4CD /* VoteImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D671907221E2F8810039C4CD /* VoteImageCell.swift */; };
-		D671907521E31E2F0039C4CD /* CatCellBackgroundColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D671907421E31E2F0039C4CD /* CatCellBackgroundColor.swift */; };
+		D671907521E31E2F0039C4CD /* TableviewBackGroundColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D671907421E31E2F0039C4CD /* TableviewBackGroundColors.swift */; };
 		D69B01A821D9B96400690788 /* CatBreedWithNoImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69B01A721D9B96400690788 /* CatBreedWithNoImage.swift */; };
 		D69B01AA21D9BA5600690788 /* CatImageVote.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69B01A921D9BA5600690788 /* CatImageVote.swift */; };
 		D69B01AC21D9BD6A00690788 /* CatAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69B01AB21D9BD6A00690788 /* CatAPIClient.swift */; };
@@ -37,7 +37,7 @@
 		D671905721DF46380039C4CD /* VoteAndDeleteSuccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoteAndDeleteSuccess.swift; sourceTree = "<group>"; };
 		D671907021E1579B0039C4CD /* VoteCatImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoteCatImage.swift; sourceTree = "<group>"; };
 		D671907221E2F8810039C4CD /* VoteImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoteImageCell.swift; sourceTree = "<group>"; };
-		D671907421E31E2F0039C4CD /* CatCellBackgroundColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatCellBackgroundColor.swift; sourceTree = "<group>"; };
+		D671907421E31E2F0039C4CD /* TableviewBackGroundColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableviewBackGroundColors.swift; sourceTree = "<group>"; };
 		D69B01A721D9B96400690788 /* CatBreedWithNoImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatBreedWithNoImage.swift; sourceTree = "<group>"; };
 		D69B01A921D9BA5600690788 /* CatImageVote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatImageVote.swift; sourceTree = "<group>"; };
 		D69B01AB21D9BD6A00690788 /* CatAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatAPIClient.swift; sourceTree = "<group>"; };
@@ -104,6 +104,7 @@
 		D6BEF30721D18C84000BF117 /* CatLover */ = {
 			isa = PBXGroup;
 			children = (
+				D6BEF30C21D18C85000BF117 /* Main.storyboard */,
 				D6BEF32121D18D6A000BF117 /* Network_Services */,
 				D69B01A621D9A75F00690788 /* Model */,
 				D6BEF31B21D18D25000BF117 /* View */,
@@ -127,9 +128,8 @@
 		D6BEF31B21D18D25000BF117 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				D6BEF30C21D18C85000BF117 /* Main.storyboard */,
 				D69B01B121D9D6E800690788 /* CatCell.swift */,
-				D671907421E31E2F0039C4CD /* CatCellBackgroundColor.swift */,
+				D671907421E31E2F0039C4CD /* TableviewBackGroundColors.swift */,
 				D671907221E2F8810039C4CD /* VoteImageCell.swift */,
 			);
 			path = View;
@@ -239,7 +239,7 @@
 				D671907121E1579B0039C4CD /* VoteCatImage.swift in Sources */,
 				D6BEF31E21D18D48000BF117 /* NetworkHelper.swift in Sources */,
 				D69B01B421D9DC8100690788 /* CatImage.swift in Sources */,
-				D671907521E31E2F0039C4CD /* CatCellBackgroundColor.swift in Sources */,
+				D671907521E31E2F0039C4CD /* TableviewBackGroundColors.swift in Sources */,
 				D69B01A821D9B96400690788 /* CatBreedWithNoImage.swift in Sources */,
 				D671907321E2F8810039C4CD /* VoteImageCell.swift in Sources */,
 				D6BEF32021D18D54000BF117 /* ImageHelper.swift in Sources */,

@@ -55,6 +55,7 @@ class CatBreedsController: UIViewController {
         catTableView.dataSource = self
         catTableView.delegate = self
         catSearchBar.delegate = self
+        title = "Cat Breeds"
         
         getAllCatsWithNoImage()
         setupRefreshControl()

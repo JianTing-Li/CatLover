@@ -15,6 +15,7 @@ import UIKit
 
 class CatBreedsDetailController: UIViewController {
 
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var catName: UILabel!
     @IBOutlet weak var catImage: UIImageView!
     
@@ -27,53 +28,69 @@ class CatBreedsDetailController: UIViewController {
     
     @IBOutlet weak var catDescription: UITextView!
     
-    //this variable is not needed once I segue the catWithImage directly
     var catWithoutImage: CatBreedWithNoImage!
+    var catWithImage: CatBreedWithImage!
     
-    var catWithImage: CatBreedWithImage?
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        updateCatUI()
-        setNewCatImage()
-    }
-    
-    private func updateCatUI() {
-        catName.text = catWithoutImage.name
-        
-        temperament.text = "\(catWithoutImage.temperament)"
-        origin.text = "Origin: \(catWithoutImage.origin)"
-        affectionLevel.text = "Affection: \(catWithoutImage.affectionLevel)"
-        energyLevel.text = "Energy: \(catWithoutImage.energyLevel)"
-        vocalisation.text = "Vocalisation: \(catWithoutImage.vocalisation)"
-        intelligence.text = "Intelligence: \(catWithoutImage.intelligence)"
-        
-        catDescription.text = catWithoutImage.description
-    }
-    
-    private func setNewCatImage() {
-        //get the cat breed with an image (the image is random)
-        CatAPIClient.getCatWithImageFromBreedId(catBreedId: catWithoutImage.id) { (appError, catWithImage) in
-            if let appError = appError {
-                self.catImage.image = UIImage.init(named: "catImgPlaceholder2")
-                print(appError.errorMessage())
-            } else if let catWithImage = catWithImage {
-                //set the cat breed (w/ a random image) to a variable
-                self.catWithImage = catWithImage
-                
-                //convert the url to a uiimage and set to imageview
+    private var gotCatWithImage = false {
+        didSet {
+            if let image = ImageHelper.shared.getImageFromCache(forKey: catWithImage.url.absoluteString as NSString) {
+                DispatchQueue.main.async {
+                    self.catImage.image = image
+                }
+            } else {
+                activityIndicator.startAnimating()
                 ImageHelper.getCatImage(catWithNoImage: self.catWithoutImage, catWithImage: nil) { (appError, catWithImage, image) in
                     if let appError = appError {
-                        self.catImage.image = UIImage.init(named: "catImgPlaceholder2")
+                        self.setPlaceHolderImage()
                         print(appError.errorMessage())
                     } else if let image = image {
-                        self.catImage.image = image
+                        DispatchQueue.main.async {
+                            self.catImage.image = image
+                        }
                     }
+                    self.activityIndicator.stopAnimating()
                 }
             }
         }
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        gotCatWithImage = true
+        updateCatUI()
+    }
+    
+    private func updateCatUI() {
+        let catInfo =  catWithImage.breeds[0]
+        catName.text = catInfo.name
+        
+        temperament.text = "\(catInfo.temperament)"
+        origin.text = "Origin: \(catInfo.origin)"
+        affectionLevel.text = "Affection: \(catInfo.affectionLevel)"
+        energyLevel.text = "Energy: \(catInfo.energyLevel)"
+        vocalisation.text = "Vocalisation: \(catInfo.vocalisation)"
+        intelligence.text = "Intelligence: \(catInfo.intelligence)"
+        
+        catDescription.text = catInfo.description
+    }
+    
+    private func setNewCatImage() {
+        CatAPIClient.getCatWithImageFromBreedId(catBreedId: catWithoutImage.id) { (appError, catWithImage) in
+            if let appError = appError {
+                self.setPlaceHolderImage()
+                print(appError.errorMessage())
+            } else if let catWithImage = catWithImage {
+                self.catWithImage = catWithImage
+                self.gotCatWithImage = true
+            }
+        }
+    }
+    
+    private func setPlaceHolderImage() {
+        DispatchQueue.main.async {
+            self.catImage.image = UIImage.init(named: "catImgPlaceholder2")
+        }
+    }
     
     private func showAlert(title: String, message: String) {
         //create An Alert control & enter the alert title & message
@@ -109,7 +126,7 @@ class CatBreedsDetailController: UIViewController {
                         DispatchQueue.main.async {
                             self.showAlert(title: messageTitle, message: "")
                         }
-                    } else { //3***is this necessary?
+                    } else {
                         DispatchQueue.main.async {
                             self.showAlert(title: "Fail to Vote Cat Image", message: "")
                         }
@@ -117,7 +134,7 @@ class CatBreedsDetailController: UIViewController {
                 } 
             }
         } catch {
-            print("Encoding Error: \(error)")
+            print(AppError.encodingError(error))
         }
     }
     

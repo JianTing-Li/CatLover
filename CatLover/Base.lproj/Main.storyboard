@@ -182,7 +182,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="151.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZiI-JM-Xk4">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="catInitalPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="ZiI-JM-Xk4">
                                                     <rect key="frame" x="20" y="16" width="160" height="120"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="ZiI-JM-Xk4" secondAttribute="height" multiplier="4:3" id="RWm-IG-Rbe"/>
@@ -339,6 +339,10 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="IQ0-ez-Eh3">
+                                <rect key="frame" x="169" y="206.5" width="37" height="37"/>
+                                <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </activityIndicatorView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Hello😸🐈😹🐱😻😼😽😾😿🙀 Kitty Cat" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jWh-w1-CM3">
                                 <rect key="frame" x="25" y="514.5" width="325" height="91.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -349,6 +353,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="9cj-jv-fys" firstAttribute="trailing" secondItem="jWh-w1-CM3" secondAttribute="trailing" constant="25" id="3mk-WA-t4A"/>
+                            <constraint firstItem="IQ0-ez-Eh3" firstAttribute="centerY" secondItem="RYr-Uz-EDp" secondAttribute="centerY" id="3tp-v5-DTe"/>
                             <constraint firstItem="9cj-jv-fys" firstAttribute="trailing" secondItem="RYr-Uz-EDp" secondAttribute="trailing" constant="45" id="6CW-F9-BeC"/>
                             <constraint firstItem="JF6-g0-Evm" firstAttribute="leading" secondItem="9cj-jv-fys" secondAttribute="leading" constant="15" id="ADo-6N-Yxj"/>
                             <constraint firstItem="HT5-Rr-4xZ" firstAttribute="top" secondItem="JF6-g0-Evm" secondAttribute="bottom" constant="12" id="CNO-hl-TmS"/>
@@ -364,6 +369,7 @@
                             <constraint firstItem="RYr-Uz-EDp" firstAttribute="top" secondItem="5c0-VJ-pwD" secondAttribute="bottom" constant="18" id="QBQ-L0-id5"/>
                             <constraint firstItem="RYr-Uz-EDp" firstAttribute="leading" secondItem="9cj-jv-fys" secondAttribute="leading" constant="45" id="SU6-5h-3lK"/>
                             <constraint firstItem="8dG-id-Jn1" firstAttribute="leading" secondItem="9cj-jv-fys" secondAttribute="leading" constant="15" id="Zoc-pJ-1dG"/>
+                            <constraint firstItem="IQ0-ez-Eh3" firstAttribute="centerX" secondItem="RYr-Uz-EDp" secondAttribute="centerX" id="bhN-fn-0cj"/>
                             <constraint firstItem="Qw2-fS-guU" firstAttribute="leading" secondItem="HZ8-lW-0B2" secondAttribute="trailing" constant="5" id="bye-bf-ms2"/>
                             <constraint firstItem="iIg-L1-jRV" firstAttribute="top" secondItem="HT5-Rr-4xZ" secondAttribute="bottom" constant="12" id="f21-6Q-1XO"/>
                             <constraint firstItem="4RO-xJ-yQ9" firstAttribute="centerX" secondItem="RYr-Uz-EDp" secondAttribute="centerX" id="gFI-N7-Ffo"/>
@@ -389,6 +395,7 @@
                         <viewLayoutGuide key="safeArea" id="9cj-jv-fys"/>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="IQ0-ez-Eh3" id="m3m-NQ-fzQ"/>
                         <outlet property="affectionLevel" destination="iIg-L1-jRV" id="g7D-TD-jMN"/>
                         <outlet property="catDescription" destination="jWh-w1-CM3" id="2ge-8a-iMd"/>
                         <outlet property="catImage" destination="RYr-Uz-EDp" id="6TA-Sz-fjL"/>
@@ -423,11 +430,11 @@
             </objects>
             <point key="canvasLocation" x="-170" y="92"/>
         </scene>
-        <!--Cat Breeds-->
+        <!--Breeds-->
         <scene sceneID="fhH-Se-jgy">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="vT2-PN-0ir" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Cat Breeds" id="UVg-Ub-oYz"/>
+                    <tabBarItem key="tabBarItem" title="Breeds" image="tabBreeds30" id="UVg-Ub-oYz"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="KeS-TP-dL8">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -442,11 +449,11 @@
             </objects>
             <point key="canvasLocation" x="756" y="-288.30584707646182"/>
         </scene>
-        <!--Voted Cat Pics-->
+        <!--Votes-->
         <scene sceneID="OjU-ra-B91">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="kvE-H8-jVZ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Voted Cat Pics" id="Mhn-aj-1kV"/>
+                    <tabBarItem key="tabBarItem" title="Votes" image="tabVotes30" id="Mhn-aj-1kV"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="frd-ku-Wdr">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -462,4 +469,9 @@
             <point key="canvasLocation" x="756" y="458.32083958020991"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="catInitalPlaceholder" width="799.67999267578125" height="799.67999267578125"/>
+        <image name="tabBreeds30" width="22.5" height="22.5"/>
+        <image name="tabVotes30" width="22.5" height="22.5"/>
+    </resources>
 </document>
