@@ -9,6 +9,7 @@
 import UIKit
 //TO DO List:
     //1) Not getting all data for allCatBreedsWithImage
+            //--FIXED(compare count w/ count instead of index in enumerated)
 
 class CatBreedsController: UIViewController {
     
@@ -32,6 +33,10 @@ class CatBreedsController: UIViewController {
             var catsWithImage = [CatBreedWithImage]()
             let totalCatsNum = allCatBreedsWithoutImage.count
             
+            guard !allCatBreedsWithoutImage.isEmpty else {
+                allCatBreedsWithImage = [CatBreedWithImage]()
+                return
+            }
             //1) TO DO: still not getting all cats (need to be fixed)
             allCatBreedsWithoutImage.forEach { catWithoutImage in
                 CatAPIClient.getCatWithImageFromBreedId(catBreedId: catWithoutImage.id) { (appError, catWithImage) in
@@ -89,6 +94,7 @@ class CatBreedsController: UIViewController {
                 print(appError.errorMessage())
             } else if let allCats = allCats {
                 self.allCatBreedsWithoutImage = allCats
+                self.apiCall1GetAllCatsFinished = true
             }
             
             DispatchQueue.main.async {
@@ -144,8 +150,10 @@ extension CatBreedsController: UISearchBarDelegate {
             } else if let allCats = allCats {
                 if searchText.trimmingCharacters(in: .whitespaces) == "" {
                     self.allCatBreedsWithoutImage = allCats
+                    self.apiCall1GetAllCatsFinished = true
                 } else {
                     self.allCatBreedsWithoutImage = allCats.filter { $0.name.lowercased().contains(searchText) }
+                    self.apiCall1GetAllCatsFinished = true
                 }
             }
             DispatchQueue.main.async {
