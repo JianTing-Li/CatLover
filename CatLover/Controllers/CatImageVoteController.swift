@@ -22,13 +22,36 @@ class CatImageVoteController: UIViewController {
         }
     }
     
+    var gotAllImageVotes = false {
+        didSet {
+            var cats = [CatBreedWithImage]()
+            let totalVotesNum = allImageVotes.count
+            allImageVotes.forEach { voteCatImage in         
+                CatAPIClient.getCatWithImageFromImageId(catImageId: voteCatImage.imageId) { (appError, catWithImage) in
+                    if let appError = appError {
+                        print(appError.errorMessage())
+                    } else if let catWithImage = catWithImage {
+                        cats.append(catWithImage)
+                        //print(self.catsWithImage.count)
+                    }
+                    
+                    if cats.count == totalVotesNum {
+                        self.catsWithImage = cats
+                        DispatchQueue.main.async {
+                            self.refreshControl.endRefreshing()
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         voteTableView.dataSource = self
         voteTableView.delegate = self
         setupRefreshControl()
-        //getAllCatsWithImage()
+        title = "Voted Images"
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -44,7 +67,6 @@ class CatImageVoteController: UIViewController {
     
     
     @objc private func getAllCatsWithImage() {
-        //var catsWithImage = [CatBreedWithImage]()
         self.catsWithImage = [CatBreedWithImage]()
         refreshControl.beginRefreshing()
         
@@ -56,31 +78,9 @@ class CatImageVoteController: UIViewController {
             
             if let allVotes = allVotes {
                 self.allImageVotes = allVotes
+                self.gotAllImageVotes = true
                 //dump(self.allImageVotes)
             }
-            
-            //5a***how can I refactor this?
-            self.allImageVotes.forEach { voteCatImage in
-                DispatchQueue.main.async {
-                    self.refreshControl.beginRefreshing()
-                }
-                
-                CatAPIClient.getCatWithImageFromImageId(catImageId: voteCatImage.imageId) { (appError, catWithImage) in
-                    if let appError = appError {
-                        print(appError.errorMessage())
-                    } else if let catWithImage = catWithImage {
-                        self.catsWithImage.append(catWithImage)
-                        //print(self.catsWithImage.count)
-                    }
-                    DispatchQueue.main.async {
-                        self.refreshControl.endRefreshing()
-                    }
-                }
-            }
-            
-            //5b***is there a way I can assign a variable here?
-//            self.catsWithImage = catsWithImage
-//            dump(self.catsWithImage)
         }
     }
     

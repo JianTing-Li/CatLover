@@ -7,8 +7,8 @@
 //
 
 import UIKit
-//fix cache to urls string
-//not getting all data
+//TO DO List:
+    //1) Not getting all data for allCatBreedsWithImage
 
 class CatBreedsController: UIViewController {
     
@@ -16,6 +16,7 @@ class CatBreedsController: UIViewController {
     @IBOutlet weak var catSearchBar: UISearchBar!
     private var refreshControl: UIRefreshControl!
     
+    private var cellBackgroundColor = CatCellBackgroundColor.lightBlue
     var allCatBreedsWithoutImage = [CatBreedWithNoImage]()
     var allCatBreedsWithImage = [CatBreedWithImage]() {
         didSet {
@@ -29,17 +30,17 @@ class CatBreedsController: UIViewController {
         didSet {
             guard apiCall1GetAllCatsFinished else { return }
             var catsWithImage = [CatBreedWithImage]()
-            let lastIndexOfCatWithoutImage = allCatBreedsWithoutImage.count - 1
+            let totalCatsNum = allCatBreedsWithoutImage.count
             
-            //TO DO: still not getting all cats (need to be fixed)
-            allCatBreedsWithoutImage.enumerated().forEach { (index, catWithoutImage) in
+            //1) TO DO: still not getting all cats (need to be fixed)
+            allCatBreedsWithoutImage.forEach { catWithoutImage in
                 CatAPIClient.getCatWithImageFromBreedId(catBreedId: catWithoutImage.id) { (appError, catWithImage) in
                     if let appError = appError {
                         print(appError.errorMessage())
                     } else if let catWithImage = catWithImage {
                         catsWithImage.append(catWithImage)
                         
-                        if index == lastIndexOfCatWithoutImage {
+                        if catsWithImage.count == totalCatsNum {
                             self.allCatBreedsWithImage = catsWithImage
                             //dump(self.allCatBreedsWithImage)
                             print("WithImage1: \(self.allCatBreedsWithImage.count)")
@@ -113,12 +114,14 @@ extension CatBreedsController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return allCatBreedsWithImage.count
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = catTableView.dequeueReusableCell(withIdentifier: "CatCell", for: indexPath) as? CatCell else { fatalError("cell not found") }
-        
         let catBreed = allCatBreedsWithImage[indexPath.row]
-        //how come the cell doesn't return right away in this async call?
+        
+        let color = UIColor(hexString: cellBackgroundColor.rawValue)
+        cell.backgroundColor = color
+        cellBackgroundColor.getNextColor()
         cell.configureCell(catBreed: catBreed)
         return cell
     }

@@ -38,7 +38,9 @@ class CatBreedsDetailController: UIViewController {
                     self.catImage.image = image
                 }
             } else {
-                activityIndicator.startAnimating()
+                DispatchQueue.main.async {
+                    self.activityIndicator.startAnimating()
+                }
                 ImageHelper.getCatImage(catWithNoImage: self.catWithoutImage, catWithImage: nil) { (appError, catWithImage, image) in
                     if let appError = appError {
                         self.setPlaceHolderImage()
