@@ -10,6 +10,7 @@ import UIKit
 //TO DO List:
     //1) Not getting all data for allCatBreedsWithImage
             //--FIXED(compare count w/ count instead of index in enumerated)
+            //new problem:  during refresh, the cats are not a alphabet order
 
 class CatBreedsController: UIViewController {
     
@@ -47,7 +48,6 @@ class CatBreedsController: UIViewController {
                         
                         if catsWithImage.count == totalCatsNum {
                             self.allCatBreedsWithImage = catsWithImage
-                            //dump(self.allCatBreedsWithImage)
                             print("WithImage1: \(self.allCatBreedsWithImage.count)")
                         }
                     }
@@ -62,9 +62,8 @@ class CatBreedsController: UIViewController {
         catTableView.delegate = self
         catSearchBar.delegate = self
         title = "Cat Breeds"
-        
-        getAllCatsWithNoImage()
         setupRefreshControl()
+        getAllCatsWithNoImage()
     }
     
     private func getAllCatsWithNoImage() {
@@ -128,6 +127,7 @@ extension CatBreedsController: UITableViewDataSource {
         let color = UIColor(hexString: cellBackgroundColor.rawValue)
         cell.backgroundColor = color
         cellBackgroundColor.getNextColor()
+        
         cell.configureCell(catBreed: catBreed)
         return cell
     }
@@ -162,3 +162,5 @@ extension CatBreedsController: UISearchBarDelegate {
         }
     }
 }
+
+

@@ -12,12 +12,13 @@ import Foundation
 enum AppError: Error {
     case badURL(String)
     case networkError(Error)
-    case noResponse
-    case decodingError(Error)
-    case encodingError(Error)
+    case jsonDecodingError(Error)
+    case jsonEncodingError(Error)
+    case propertyListDecodingError(Error)
+    case propertyListEncodingError(Error)
     case invalidInputs
-    case noData
     case badStatusCode(String)
+    case fileNameNotExist(String)
     
     public func errorMessage() -> String {
         switch self {
@@ -25,18 +26,20 @@ enum AppError: Error {
             return "badURL: \(str)"
         case .networkError(let error):
             return "networkError: \(error)"
-        case .noResponse:
-            return "no network response"
-        case .decodingError(let error):
-            return "decodingError: \(error)"
-        case .encodingError(let error):
-            return "encodingError: \(error)"
+        case .jsonDecodingError(let error):
+            return "json decoding error: \(error)"
+        case .jsonEncodingError(let error):
+            return "json encoding error: \(error)"
+        case .propertyListDecodingError(let error):
+            return "Property List Decoding Error: \(error)"
+        case .propertyListEncodingError(let error):
+            return "Property List Encoding Error: \(error)"
         case .invalidInputs:
             return "invalid input for imageHelper getCatImage method"
-        case .noData:
-            return "network request works but returns no data"
         case .badStatusCode(let message):
             return "bad status code: \(message)"
+        case .fileNameNotExist(let fileName):
+            return "\(fileName) doesn't exist"
         }
     }
     

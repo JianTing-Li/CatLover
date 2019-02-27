@@ -26,7 +26,7 @@ final class ImageHelper {
     
     static func fetchImage(urlString: String, cat: CatBreedWithNoImage?, completionHandler: @escaping (AppError?, UIImage?) -> Void) {
         
-        NetworkHelper.shared.performDataTask(endpointURLString: urlString, httpMethod: "GET", httpBody: nil) { (error, data, response) in
+        NetworkHelper.shared.performDataTask(endpointURLString: urlString, httpMethod: "GET", httpBody: nil) { (error, data) in
             
             if let error = error {
                 completionHandler(error, nil)
@@ -37,11 +37,6 @@ final class ImageHelper {
                     if let image = image {
                         ImageHelper.shared.imageCache.setObject(image, forKey: urlString as NSString)
                     }
-//                    if let image = image, let cat = cat {
-//                        ImageHelper.shared.imageCache.setObject(image, forKey: cat.name as NSString)
-//                    } else if let image = image {
-//                        ImageHelper.shared.imageCache.setObject(image, forKey: urlString as NSString)
-//                    }
                     completionHandler(nil, image)
                 }
             }

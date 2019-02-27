@@ -6,6 +6,7 @@
 //  Copyright © 2018 Jian Ting Li. All rights reserved.
 
 import UIKit
+import Kingfisher
 
 class CatCell: UITableViewCell {
     @IBOutlet weak var catImg: UIImageView!
@@ -19,7 +20,10 @@ class CatCell: UITableViewCell {
         catBreedName.text = catBreed.breeds[0].name
         catOrigin.text = catBreed.breeds[0].origin
         
+        //catImg.kf.setImage(with: catBreed.url)
+        
         urlString = catBreed.url.absoluteString
+        catImg.image = nil
         if let image = ImageHelper.shared.getImageFromCache(forKey: catBreed.url.absoluteString as NSString) {
             catImg.image = image
         } else {
@@ -40,10 +44,3 @@ class CatCell: UITableViewCell {
         }
     }
 }
-
-
-//self.labels?.forEach {
-//    $0.layer.borderWidth = 2.0
-//    $0.layer.cornerRadius = 5.0
-//    $0.layer.masksToBounds = true
-//}

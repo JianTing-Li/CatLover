@@ -1,36 +1,14 @@
 //
-//  catCellBackgroundColor.swift
+//  UIColor+Extensions.swift
 //  CatLover
 //
-//  Created by Jian Ting Li on 1/7/19.
+//  Created by Jian Ting Li on 2/25/19.
 //  Copyright © 2019 Jian Ting Li. All rights reserved.
 //
 
 import UIKit
 
-//TO DO: Study the extension
-enum CatCellBackgroundColor: String {
-    case lightBlue = "#A8D8EA"
-    case lightViolet = "#AA96DA"
-    case lightPink = "#FCBAD3"
-    case lightYellow = "#FFFFD2"
-    
-    public mutating func getNextColor() {
-        switch self {
-        case .lightBlue:
-            self = .lightViolet
-        case .lightViolet:
-            self = .lightPink
-        case .lightPink:
-            self = .lightYellow
-        case .lightYellow:
-            self = .lightBlue
-        }
-    }
-}
-
-
-//https://www.iosapptemplates.com/blog/swift-programming/convert-hex-colors-to-uicolor-swift-4
+// https://www.iosapptemplates.com/blog/swift-programming/convert-hex-colors-to-uicolor-swift-4
 extension UIColor {
     convenience init(hexString: String, alpha: CGFloat = 1.0) {
         let hexString: String = hexString.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)

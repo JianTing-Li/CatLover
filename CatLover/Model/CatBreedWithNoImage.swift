@@ -17,7 +17,7 @@ struct CatBreedWithNoImage: Codable {
     let origin: String
     let countryCode: String
     let lifeSpan: String
-    let weightImperial: String
+    let weightImperial: String?
     let adaptability: Int
     let affectionLevel: Int
     let childFriendly: Int

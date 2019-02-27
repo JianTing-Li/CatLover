@@ -60,3 +60,4 @@ struct CatBreedWithImage: Codable {
     let id: String  //image id
     let url: URL    //image
 }
+
