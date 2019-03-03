@@ -29,7 +29,7 @@ final class CatAPIClient {
     
     
     public static func getCatWithImageFromBreedId(catBreedId: String, completionHandler: @escaping (AppError?, CatBreedWithImage?) -> Void) {
-        let urlEnpointString = "https://api.thecatapi.com/v1/images/search?breed_ids=\(catBreedId)&api_key=\(SecretKey.key)"
+        let urlEnpointString = "https://api.thecatapi.com/v1/images/search?breed_ids=\(catBreedId)&api_key=\(SecretKeys.catAPIKey)"
         
         NetworkHelper.shared.performDataTask(endpointURLString: urlEnpointString, httpMethod: "GET", httpBody: nil) { (appError, data) in
             if let appError = appError {
@@ -49,21 +49,21 @@ final class CatAPIClient {
         }
     }
     
-    public static func getCatWithImageFromImageId(catImageId: String, completionHandler: @escaping (AppError?, CatBreedWithImage?) -> Void) {
-        let urlEnpointString = "https://api.thecatapi.com/v1/images/\(catImageId)"
-        
-        NetworkHelper.shared.performDataTask(endpointURLString: urlEnpointString, httpMethod: "GET", httpBody: nil) { (appError, data) in
-            if let appError = appError {
-                completionHandler(appError, nil)
-            } else if let data = data {
-                do {
-                    let catWithImage = try JSONDecoder().decode(CatBreedWithImage.self, from: data)
-                    completionHandler(nil, catWithImage)
-                } catch {
-                    completionHandler(AppError.jsonDecodingError(error), nil)
-                }
-            }
-        } 
-    }
+//    public static func getCatWithImageFromImageId(catImageId: String, completionHandler: @escaping (AppError?, CatBreedWithImage?) -> Void) {
+//        let urlEnpointString = "https://api.thecatapi.com/v1/images/\(catImageId)"
+//
+//        NetworkHelper.shared.performDataTask(endpointURLString: urlEnpointString, httpMethod: "GET", httpBody: nil) { (appError, data) in
+//            if let appError = appError {
+//                completionHandler(appError, nil)
+//            } else if let data = data {
+//                do {
+//                    let catWithImage = try JSONDecoder().decode(CatBreedWithImage.self, from: data)
+//                    completionHandler(nil, catWithImage)
+//                } catch {
+//                    completionHandler(AppError.jsonDecodingError(error), nil)
+//                }
+//            }
+//        }
+//    }
 }
 

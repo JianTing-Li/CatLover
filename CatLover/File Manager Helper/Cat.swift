@@ -17,4 +17,6 @@ struct Cat: Codable {
     let vocalisation: Int
     let affection: Int
     let description: String
+    let id: String
+    let imageURL: URL
 }

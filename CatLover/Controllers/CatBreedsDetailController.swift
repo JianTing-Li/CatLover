@@ -25,65 +25,60 @@ class CatBreedsDetailController: UIViewController {
     @IBOutlet weak var energyLevel: UILabel!
     @IBOutlet weak var vocalisation: UILabel!
     @IBOutlet weak var intelligence: UILabel!
-    
     @IBOutlet weak var catDescription: UITextView!
     
-    var catWithoutImage: CatBreedWithNoImage!
-    var catWithImage: CatBreedWithImage!
-    
-    private var gotCatWithImage = false {
+    var cat: Cat!
+    var catWithImage: CatBreedWithImage? {
         didSet {
-            if let image = ImageHelper.shared.getImageFromCache(forKey: catWithImage.url.absoluteString as NSString) {
-                DispatchQueue.main.async {
-                    self.catImage.image = image
-                }
-            } else {
-                DispatchQueue.main.async {
-                    self.activityIndicator.startAnimating()
-                }
-                ImageHelper.getCatImage(catWithNoImage: self.catWithoutImage, catWithImage: nil) { (appError, catWithImage, image) in
-                    if let appError = appError {
-                        self.setPlaceHolderImage()
-                        print(appError.errorMessage())
-                    } else if let image = image {
-                        DispatchQueue.main.async {
-                            self.catImage.image = image
-                        }
-                    }
-                    self.activityIndicator.stopAnimating()
-                }
-            }
+            setCatImage(imageURLString: (catWithImage!.url.absoluteString))
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        gotCatWithImage = true
         updateCatUI()
+        setCatImage(imageURLString: cat.imageURL.absoluteString)
     }
     
     private func updateCatUI() {
-        let catInfo =  catWithImage.breeds[0]
-        catName.text = catInfo.name
-        
-        temperament.text = "\(catInfo.temperament)"
-        origin.text = "Origin: \(catInfo.origin)"
-        affectionLevel.text = "Affection: \(catInfo.affectionLevel)"
-        energyLevel.text = "Energy: \(catInfo.energyLevel)"
-        vocalisation.text = "Vocalisation: \(catInfo.vocalisation)"
-        intelligence.text = "Intelligence: \(catInfo.intelligence)"
-        
-        catDescription.text = catInfo.description
+        temperament.text = "\(cat.temperament)"
+        origin.text = "Origin: \(cat.origin)"
+        affectionLevel.text = "Affection: \(cat.affection)"
+        energyLevel.text = "Energy: \(cat.energy)"
+        vocalisation.text = "Vocalisation: \(cat.vocalisation)"
+        intelligence.text = "Intelligence: \(cat.intelligence)"
+        catDescription.text = cat.description
+    }
+    
+    private func setCatImage(imageURLString: String) {
+        if let image = ImageHelper.shared.getImageFromCache(forKey: imageURLString as NSString) {
+            DispatchQueue.main.async {
+                self.catImage.image = image
+            }
+        } else {
+            DispatchQueue.main.async {
+                self.activityIndicator.startAnimating()
+            }
+            ImageHelper.fetchImage(urlString: imageURLString) { [weak self] (appError, image) in
+                DispatchQueue.main.async {
+                    if let appError = appError {
+                        print(appError.errorMessage())
+                    } else if let image = image {
+                        self?.catImage.image = image
+                    }
+                    self?.activityIndicator.stopAnimating()
+                }
+            }
+        }
     }
     
     private func setNewCatImage() {
-        CatAPIClient.getCatWithImageFromBreedId(catBreedId: catWithoutImage.id) { (appError, catWithImage) in
+        CatAPIClient.getCatWithImageFromBreedId(catBreedId: cat.id) { [weak self] (appError, catWithImage) in
             if let appError = appError {
-                self.setPlaceHolderImage()
+                self?.setPlaceHolderImage()
                 print(appError.errorMessage())
             } else if let catWithImage = catWithImage {
-                self.catWithImage = catWithImage
-                self.gotCatWithImage = true
+                self?.catWithImage = catWithImage
             }
         }
     }

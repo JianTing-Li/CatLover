@@ -8,13 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		D63127812226509500DC60B5 /* CatBreedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63127802226509500DC60B5 /* CatBreedModel.swift */; };
+		D63127A1222719A700DC60B5 /* UserDefaultsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63127A0222719A700DC60B5 /* UserDefaultsKeys.swift */; };
 		D671907521E31E2F0039C4CD /* CatCellBackgroundColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D671907421E31E2F0039C4CD /* CatCellBackgroundColor.swift */; };
 		D69B01A821D9B96400690788 /* CatBreedWithNoImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69B01A721D9B96400690788 /* CatBreedWithNoImage.swift */; };
 		D69B01AC21D9BD6A00690788 /* CatAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69B01AB21D9BD6A00690788 /* CatAPIClient.swift */; };
 		D69B01AE21D9C09E00690788 /* CatBreedWithImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69B01AD21D9C09D00690788 /* CatBreedWithImage.swift */; };
-		D69B01B021D9CE7B00690788 /* SecretKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69B01AF21D9CE7B00690788 /* SecretKey.swift */; };
+		D69B01B021D9CE7B00690788 /* SecretKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69B01AF21D9CE7B00690788 /* SecretKeys.swift */; };
 		D69B01B221D9D6E800690788 /* CatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69B01B121D9D6E800690788 /* CatCell.swift */; };
 		D69B01BA21DC27F200690788 /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69B01B921DC27F200690788 /* AppError.swift */; };
+		D6B5CB22222C8754003A9EC1 /* PetFinderAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B5CB21222C8754003A9EC1 /* PetFinderAPIClient.swift */; };
 		D6BEF30921D18C84000BF117 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BEF30821D18C84000BF117 /* AppDelegate.swift */; };
 		D6BEF30B21D18C84000BF117 /* CatBreedsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BEF30A21D18C84000BF117 /* CatBreedsController.swift */; };
 		D6BEF30E21D18C85000BF117 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6BEF30C21D18C85000BF117 /* Main.storyboard */; };
@@ -35,13 +37,15 @@
 		0417E3A56A5AFE2BE7D885BB /* Pods_CatLover.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CatLover.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5B2E13966449F7A1B729EF7 /* Pods-CatLover.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CatLover.release.xcconfig"; path = "Target Support Files/Pods-CatLover/Pods-CatLover.release.xcconfig"; sourceTree = "<group>"; };
 		D63127802226509500DC60B5 /* CatBreedModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatBreedModel.swift; sourceTree = "<group>"; };
+		D63127A0222719A700DC60B5 /* UserDefaultsKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKeys.swift; sourceTree = "<group>"; };
 		D671907421E31E2F0039C4CD /* CatCellBackgroundColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatCellBackgroundColor.swift; sourceTree = "<group>"; };
 		D69B01A721D9B96400690788 /* CatBreedWithNoImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatBreedWithNoImage.swift; sourceTree = "<group>"; };
 		D69B01AB21D9BD6A00690788 /* CatAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatAPIClient.swift; sourceTree = "<group>"; };
 		D69B01AD21D9C09D00690788 /* CatBreedWithImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatBreedWithImage.swift; sourceTree = "<group>"; };
-		D69B01AF21D9CE7B00690788 /* SecretKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretKey.swift; sourceTree = "<group>"; };
+		D69B01AF21D9CE7B00690788 /* SecretKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretKeys.swift; sourceTree = "<group>"; };
 		D69B01B121D9D6E800690788 /* CatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatCell.swift; sourceTree = "<group>"; };
 		D69B01B921DC27F200690788 /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
+		D6B5CB21222C8754003A9EC1 /* PetFinderAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetFinderAPIClient.swift; sourceTree = "<group>"; };
 		D6BEF30521D18C84000BF117 /* CatLover.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CatLover.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6BEF30821D18C84000BF117 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D6BEF30A21D18C84000BF117 /* CatBreedsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatBreedsController.swift; sourceTree = "<group>"; };
@@ -113,6 +117,7 @@
 			children = (
 				D6BEF30C21D18C85000BF117 /* Main.storyboard */,
 				D69B01B921DC27F200690788 /* AppError.swift */,
+				D63127A0222719A700DC60B5 /* UserDefaultsKeys.swift */,
 				D69B01A621D9A75F00690788 /* Model */,
 				D6BEF31B21D18D25000BF117 /* View */,
 				D6BEF31C21D18D2D000BF117 /* Controllers */,
@@ -159,8 +164,9 @@
 			children = (
 				D6BEF31D21D18D48000BF117 /* NetworkHelper.swift */,
 				D69B01AB21D9BD6A00690788 /* CatAPIClient.swift */,
+				D6B5CB21222C8754003A9EC1 /* PetFinderAPIClient.swift */,
 				D6BEF31F21D18D54000BF117 /* ImageHelper.swift */,
-				D69B01AF21D9CE7B00690788 /* SecretKey.swift */,
+				D69B01AF21D9CE7B00690788 /* SecretKeys.swift */,
 			);
 			path = Network_Services;
 			sourceTree = "<group>";
@@ -324,8 +330,10 @@
 				D6E6AF07222496AD000A8396 /* UIColor+Extensions.swift in Sources */,
 				D69B01BA21DC27F200690788 /* AppError.swift in Sources */,
 				D6E6AF0E22249B98000A8396 /* Cat.swift in Sources */,
-				D69B01B021D9CE7B00690788 /* SecretKey.swift in Sources */,
+				D69B01B021D9CE7B00690788 /* SecretKeys.swift in Sources */,
+				D6B5CB22222C8754003A9EC1 /* PetFinderAPIClient.swift in Sources */,
 				D6BEF30B21D18C84000BF117 /* CatBreedsController.swift in Sources */,
+				D63127A1222719A700DC60B5 /* UserDefaultsKeys.swift in Sources */,
 				D6BEF31E21D18D48000BF117 /* NetworkHelper.swift in Sources */,
 				D63127812226509500DC60B5 /* CatBreedModel.swift in Sources */,
 				D671907521E31E2F0039C4CD /* CatCellBackgroundColor.swift in Sources */,

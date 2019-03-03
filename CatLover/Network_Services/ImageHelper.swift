@@ -24,7 +24,7 @@ final class ImageHelper {
     }
 
     
-    static func fetchImage(urlString: String, cat: CatBreedWithNoImage?, completionHandler: @escaping (AppError?, UIImage?) -> Void) {
+    static func fetchImage(urlString: String, completionHandler: @escaping (AppError?, UIImage?) -> Void) {
         
         NetworkHelper.shared.performDataTask(endpointURLString: urlString, httpMethod: "GET", httpBody: nil) { (error, data) in
             
@@ -44,38 +44,36 @@ final class ImageHelper {
     }
     
     
-    static func getCatImage(catWithNoImage: CatBreedWithNoImage?, catWithImage: CatBreedWithImage?, completionHandler: @escaping (AppError?, CatBreedWithImage?, UIImage?) -> Void) {
-        
-        //if we have a cat w/ no image url, we need to convert it to the one with image url
-        if let catWithNoImage = catWithNoImage {
-            CatAPIClient.getCatWithImageFromBreedId(catBreedId: catWithNoImage.id) { (error, catBreedWithImage) in
-                if let error = error {
-                    completionHandler(error, nil, nil)
-                } else if let catBreedWithImage = catBreedWithImage {
-                    fetchImage(urlString: catBreedWithImage.url.absoluteString, cat: catWithNoImage) { (error, image) in
-                        if let error = error {
-                            completionHandler(error, nil, nil)
-                        } else if let image = image {
-                            completionHandler(nil, catBreedWithImage, image)
-                        }
-                    }
-                }
-            }
-            
-        //if we already have a cat with image url, we use the image url
-        } else if let catWithImage = catWithImage {
-            fetchImage(urlString: catWithImage.url.absoluteString, cat: nil) { (error, image) in
-                if let error = error {
-                    completionHandler(error, nil, nil)
-                } else if let image = image {
-                    completionHandler(nil, catWithImage, image)
-                }
-            }
-        
-        //if both inputs are invalid
-        } else {
-            completionHandler(AppError.invalidInputs, nil, nil)
-        }
-    }
+//    static func getCatImage(catWithNoImage: CatBreedWithNoImage?, catWithImage: CatBreedWithImage?, completionHandler: @escaping (AppError?, CatBreedWithImage?, UIImage?) -> Void) {
+//
+//        //if we have a cat w/ no image url, we need to convert it to the one with image url
+//        if let catWithNoImage = catWithNoImage {
+//            CatAPIClient.getCatWithImageFromBreedId(catBreedId: catWithNoImage.id) { (error, catBreedWithImage) in
+//                if let error = error {
+//                    completionHandler(error, nil, nil)
+//                } else if let catBreedWithImage = catBreedWithImage {
+//                    fetchImage(urlString: catBreedWithImage.url.absoluteString, cat: catWithNoImage) { (error, image) in
+//                        if let error = error {
+//                            completionHandler(error, nil, nil)
+//                        } else if let image = image {
+//                            completionHandler(nil, catBreedWithImage, image)
+//                        }
+//                    }
+//                }
+//            }
+//        //if we already have a cat with image url, we use the image url
+//        } else if let catWithImage = catWithImage {
+//            fetchImage(urlString: catWithImage.url.absoluteString, cat: nil) { (error, image) in
+//                if let error = error {
+//                    completionHandler(error, nil, nil)
+//                } else if let image = image {
+//                    completionHandler(nil, catWithImage, image)
+//                }
+//            }
+//        //if both inputs are invalid
+//        } else {
+//            completionHandler(AppError.invalidInputs, nil, nil)
+//        }
+//    }
     
 }

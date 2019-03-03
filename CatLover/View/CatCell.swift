@@ -14,32 +14,30 @@ class CatCell: UITableViewCell {
     @IBOutlet weak var catOrigin: UILabel!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
-    private var urlString = ""
+    private var imageURLString = ""
     
-    public func configureCell(catBreed: CatBreedWithImage) {
-        catBreedName.text = catBreed.breeds[0].name
-        catOrigin.text = catBreed.breeds[0].origin
+    public func configureCell(catBreed: Cat) {
+        catBreedName.text = catBreed.breed
+        catOrigin.text = catBreed.origin
         
         //catImg.kf.setImage(with: catBreed.url)
         
-        urlString = catBreed.url.absoluteString
+        imageURLString = catBreed.imageURL.absoluteString
         catImg.image = nil
-        if let image = ImageHelper.shared.getImageFromCache(forKey: catBreed.url.absoluteString as NSString) {
+        if let image = ImageHelper.shared.getImageFromCache(forKey: imageURLString as NSString) {
             catImg.image = image
         } else {
             activityIndicator.startAnimating()
-            ImageHelper.getCatImage(catWithNoImage: nil, catWithImage: catBreed) { (appError, catWithImage, catImage) in
+            ImageHelper.fetchImage(urlString: imageURLString) { [weak self] (appError, image) in
                 if let appError = appError {
-                    DispatchQueue.main.async {
-                        self.catImg.image = UIImage.init(named: "catImgPlaceholder")
-                    }
                     print(appError.errorMessage())
-                } else if let catImage = catImage {
-                    if self.urlString == catBreed.url.absoluteString {
-                        self.catImg.image = catImage
+                    // use custom delegate to show alert
+                } else if let image = image {
+                    if self?.imageURLString == catBreed.imageURL.absoluteString {
+                        self?.catImg.image = image
                     }
                 }
-                self.activityIndicator.stopAnimating()
+                self?.activityIndicator.stopAnimating()
             }
         }
     }
