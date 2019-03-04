@@ -16,7 +16,9 @@
 		D69B01B021D9CE7B00690788 /* SecretKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69B01AF21D9CE7B00690788 /* SecretKeys.swift */; };
 		D69B01B221D9D6E800690788 /* CatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69B01B121D9D6E800690788 /* CatCell.swift */; };
 		D69B01BA21DC27F200690788 /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69B01B921DC27F200690788 /* AppError.swift */; };
-		D6B5CB22222C8754003A9EC1 /* PetFinderAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B5CB21222C8754003A9EC1 /* PetFinderAPIClient.swift */; };
+		D6B5CB22222C8754003A9EC1 /* PetfinderAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B5CB21222C8754003A9EC1 /* PetfinderAPIClient.swift */; };
+		D6B5CB24222C8D16003A9EC1 /* Pet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B5CB23222C8D16003A9EC1 /* Pet.swift */; };
+		D6B5CB26222C93EA003A9EC1 /* PetfinderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B5CB25222C93EA003A9EC1 /* PetfinderController.swift */; };
 		D6BEF30921D18C84000BF117 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BEF30821D18C84000BF117 /* AppDelegate.swift */; };
 		D6BEF30B21D18C84000BF117 /* CatBreedsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BEF30A21D18C84000BF117 /* CatBreedsController.swift */; };
 		D6BEF30E21D18C85000BF117 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6BEF30C21D18C85000BF117 /* Main.storyboard */; };
@@ -45,7 +47,9 @@
 		D69B01AF21D9CE7B00690788 /* SecretKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretKeys.swift; sourceTree = "<group>"; };
 		D69B01B121D9D6E800690788 /* CatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatCell.swift; sourceTree = "<group>"; };
 		D69B01B921DC27F200690788 /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
-		D6B5CB21222C8754003A9EC1 /* PetFinderAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetFinderAPIClient.swift; sourceTree = "<group>"; };
+		D6B5CB21222C8754003A9EC1 /* PetfinderAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetfinderAPIClient.swift; sourceTree = "<group>"; };
+		D6B5CB23222C8D16003A9EC1 /* Pet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pet.swift; sourceTree = "<group>"; };
+		D6B5CB25222C93EA003A9EC1 /* PetfinderController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetfinderController.swift; sourceTree = "<group>"; };
 		D6BEF30521D18C84000BF117 /* CatLover.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CatLover.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6BEF30821D18C84000BF117 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D6BEF30A21D18C84000BF117 /* CatBreedsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatBreedsController.swift; sourceTree = "<group>"; };
@@ -90,6 +94,7 @@
 			children = (
 				D69B01A721D9B96400690788 /* CatBreedWithNoImage.swift */,
 				D69B01AD21D9C09D00690788 /* CatBreedWithImage.swift */,
+				D6B5CB23222C8D16003A9EC1 /* Pet.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -155,6 +160,7 @@
 			children = (
 				D6BEF30A21D18C84000BF117 /* CatBreedsController.swift */,
 				D6BEF32221D18EE8000BF117 /* CatBreedsDetailController.swift */,
+				D6B5CB25222C93EA003A9EC1 /* PetfinderController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -164,7 +170,7 @@
 			children = (
 				D6BEF31D21D18D48000BF117 /* NetworkHelper.swift */,
 				D69B01AB21D9BD6A00690788 /* CatAPIClient.swift */,
-				D6B5CB21222C8754003A9EC1 /* PetFinderAPIClient.swift */,
+				D6B5CB21222C8754003A9EC1 /* PetfinderAPIClient.swift */,
 				D6BEF31F21D18D54000BF117 /* ImageHelper.swift */,
 				D69B01AF21D9CE7B00690788 /* SecretKeys.swift */,
 			);
@@ -326,12 +332,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D6B5CB24222C8D16003A9EC1 /* Pet.swift in Sources */,
 				D6BEF32321D18EE8000BF117 /* CatBreedsDetailController.swift in Sources */,
 				D6E6AF07222496AD000A8396 /* UIColor+Extensions.swift in Sources */,
 				D69B01BA21DC27F200690788 /* AppError.swift in Sources */,
 				D6E6AF0E22249B98000A8396 /* Cat.swift in Sources */,
 				D69B01B021D9CE7B00690788 /* SecretKeys.swift in Sources */,
-				D6B5CB22222C8754003A9EC1 /* PetFinderAPIClient.swift in Sources */,
+				D6B5CB22222C8754003A9EC1 /* PetfinderAPIClient.swift in Sources */,
+				D6B5CB26222C93EA003A9EC1 /* PetfinderController.swift in Sources */,
 				D6BEF30B21D18C84000BF117 /* CatBreedsController.swift in Sources */,
 				D63127A1222719A700DC60B5 /* UserDefaultsKeys.swift in Sources */,
 				D6BEF31E21D18D48000BF117 /* NetworkHelper.swift in Sources */,

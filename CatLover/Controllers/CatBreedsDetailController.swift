@@ -36,11 +36,13 @@ class CatBreedsDetailController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = ""
         updateCatUI()
         setCatImage(imageURLString: cat.imageURL.absoluteString)
     }
     
     private func updateCatUI() {
+        catName.text = cat.breed
         temperament.text = "\(cat.temperament)"
         origin.text = "Origin: \(cat.origin)"
         affectionLevel.text = "Affection: \(cat.affection)"

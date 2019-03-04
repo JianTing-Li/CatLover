@@ -9,6 +9,8 @@
 import Foundation
 
 final class CatAPIClient {
+    private init() {}
+    
     public static func getAllCats(completionHandler: @escaping (AppError?, [CatBreedWithNoImage]?) -> Void) {
         
         let urlEnpointString = "https://api.thecatapi.com/v1/breeds"
