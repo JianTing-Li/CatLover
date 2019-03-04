@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Cat Breeds Controller-->
+        <!--Cats Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="CatBreedsController" customModule="CatLover" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="CatsController" customModule="CatLover" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -108,7 +108,7 @@
         <!--Title-->
         <scene sceneID="8dE-b1-dAO">
             <objects>
-                <viewController id="ryO-ht-cW2" customClass="CatBreedsDetailController" customModule="CatLover" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ryO-ht-cW2" customClass="CatsDetailController" customModule="CatLover" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZWJ-eR-QyI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -310,7 +310,87 @@
                     <view key="view" contentMode="scaleToFill" id="c6J-Qn-WWV">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="iLp-rc-HFe">
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="lH6-TC-BJR">
+                                    <size key="itemSize" width="375" height="375"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PetCell" id="cq8-jp-d42" customClass="PetCell" customModule="CatLover" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="375"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="375"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="catImgPlaceholder3" translatesAutoresizingMaskIntoConstraints="NO" id="Ael-m5-73c">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="225"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pet's Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="THc-zQ-0XC">
+                                                    <rect key="frame" x="13" y="237" width="349" height="30"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="25"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="City, State ZipCode" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YLF-wU-BoH">
+                                                    <rect key="frame" x="13" y="315" width="349" height="24"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="iqc-VA-aby">
+                                                    <rect key="frame" x="169" y="94" width="37" height="37"/>
+                                                    <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </activityIndicatorView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Age · Breed" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hXP-Et-3fQ">
+                                                    <rect key="frame" x="13" y="279" width="349" height="24"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </view>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="hXP-Et-3fQ" firstAttribute="leading" secondItem="cq8-jp-d42" secondAttribute="leadingMargin" constant="5" id="4rr-7c-kKz"/>
+                                            <constraint firstItem="THc-zQ-0XC" firstAttribute="top" secondItem="Ael-m5-73c" secondAttribute="bottom" constant="12" id="E4U-jM-aZE"/>
+                                            <constraint firstItem="THc-zQ-0XC" firstAttribute="leading" secondItem="cq8-jp-d42" secondAttribute="leadingMargin" constant="5" id="EKq-by-X4l"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="THc-zQ-0XC" secondAttribute="trailing" constant="5" id="RiI-0d-GIC"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="YLF-wU-BoH" secondAttribute="trailing" constant="5" id="Vsb-5l-eow"/>
+                                            <constraint firstItem="Ael-m5-73c" firstAttribute="leading" secondItem="cq8-jp-d42" secondAttribute="leading" id="WlF-nS-sR7"/>
+                                            <constraint firstItem="iqc-VA-aby" firstAttribute="centerX" secondItem="Ael-m5-73c" secondAttribute="centerX" id="YEg-5y-A3G"/>
+                                            <constraint firstItem="Ael-m5-73c" firstAttribute="height" secondItem="cq8-jp-d42" secondAttribute="height" multiplier="0.6" id="dHR-oL-r1U"/>
+                                            <constraint firstItem="Ael-m5-73c" firstAttribute="top" secondItem="cq8-jp-d42" secondAttribute="top" id="geJ-dW-wpe"/>
+                                            <constraint firstItem="YLF-wU-BoH" firstAttribute="leading" secondItem="cq8-jp-d42" secondAttribute="leadingMargin" constant="5" id="jg2-Hc-d8B"/>
+                                            <constraint firstItem="hXP-Et-3fQ" firstAttribute="top" secondItem="THc-zQ-0XC" secondAttribute="bottom" constant="12" id="kJn-D4-ZCa"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="hXP-Et-3fQ" secondAttribute="trailing" constant="5" id="lnO-ef-G75"/>
+                                            <constraint firstItem="iqc-VA-aby" firstAttribute="centerY" secondItem="Ael-m5-73c" secondAttribute="centerY" id="m5Q-qv-lV1"/>
+                                            <constraint firstAttribute="trailing" secondItem="Ael-m5-73c" secondAttribute="trailing" id="sGR-53-GNe"/>
+                                            <constraint firstItem="YLF-wU-BoH" firstAttribute="top" secondItem="hXP-Et-3fQ" secondAttribute="bottom" constant="12" id="uAi-RZ-5rV"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="activityIndicator" destination="iqc-VA-aby" id="l7c-ZM-aeQ"/>
+                                            <outlet property="petAgeAndBreedLabel" destination="hXP-Et-3fQ" id="5BR-Vu-3la"/>
+                                            <outlet property="petImageView" destination="Ael-m5-73c" id="AHk-RS-D5R"/>
+                                            <outlet property="petLocationLabel" destination="YLF-wU-BoH" id="aj8-2S-1b3"/>
+                                            <outlet property="petNameLabel" destination="THc-zQ-0XC" id="H1w-Wn-guE"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="iLp-rc-HFe" firstAttribute="top" secondItem="CY9-4d-1zO" secondAttribute="top" id="4ZJ-W8-gpx"/>
+                            <constraint firstItem="iLp-rc-HFe" firstAttribute="leading" secondItem="CY9-4d-1zO" secondAttribute="leading" id="DAG-ss-JuJ"/>
+                            <constraint firstItem="CY9-4d-1zO" firstAttribute="trailing" secondItem="iLp-rc-HFe" secondAttribute="trailing" id="Ey2-5A-jYd"/>
+                            <constraint firstItem="CY9-4d-1zO" firstAttribute="bottom" secondItem="iLp-rc-HFe" secondAttribute="bottom" id="NEo-7d-mOV"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="CY9-4d-1zO"/>
                     </view>
                     <navigationItem key="navigationItem" id="vAa-D8-y7F">
@@ -319,7 +399,103 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gbu-ek-B5G" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1695" y="458"/>
+            <point key="canvasLocation" x="1693.5999999999999" y="457.42128935532236"/>
+        </scene>
+        <!--Pet's Name-->
+        <scene sceneID="FAH-Vb-3sG">
+            <objects>
+                <viewController id="99u-qx-fVn" customClass="PetfinderDetailController" customModule="CatLover" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Bm7-5Z-Vff">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oqo-89-4tH">
+                                <rect key="frame" x="0.0" y="64" width="375" height="267"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Breed · Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ns6-jM-M0X">
+                                <rect key="frame" x="16" y="371" width="148" height="24"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Age · Gender · " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5g0-qG-x0H">
+                                <rect key="frame" x="16" y="339" width="134" height="24"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="catlover@kittycat.kitten" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZNm-D6-AZY">
+                                <rect key="frame" x="74" y="403" width="285" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(cat) cat-cats" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NcX-Wb-YL9">
+                                <rect key="frame" x="81" y="432" width="278" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rsB-Yk-zEC">
+                                <rect key="frame" x="16" y="403" width="53" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="53" id="21y-e6-h1u"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JKQ-TU-Xli">
+                                <rect key="frame" x="16" y="432" width="60" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="0zq-bm-1PZ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="m00-QH-0pk">
+                                <rect key="frame" x="16" y="461" width="343" height="186"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ns6-jM-M0X" firstAttribute="leading" secondItem="gAR-7P-0IG" secondAttribute="leading" constant="16" id="0Py-ut-iUT"/>
+                            <constraint firstItem="rsB-Yk-zEC" firstAttribute="leading" secondItem="gAR-7P-0IG" secondAttribute="leading" constant="16" id="3kl-vJ-EFt"/>
+                            <constraint firstItem="ns6-jM-M0X" firstAttribute="top" secondItem="5g0-qG-x0H" secondAttribute="bottom" constant="8" id="4Oq-fH-LT8"/>
+                            <constraint firstItem="5g0-qG-x0H" firstAttribute="top" secondItem="oqo-89-4tH" secondAttribute="bottom" constant="8" id="4qd-7c-Dq3"/>
+                            <constraint firstItem="oqo-89-4tH" firstAttribute="trailing" secondItem="gAR-7P-0IG" secondAttribute="trailing" id="5U6-B0-NE7"/>
+                            <constraint firstItem="oqo-89-4tH" firstAttribute="top" secondItem="gAR-7P-0IG" secondAttribute="top" id="KI6-JU-bF8"/>
+                            <constraint firstItem="gAR-7P-0IG" firstAttribute="trailing" secondItem="ZNm-D6-AZY" secondAttribute="trailing" constant="16" id="NOk-jD-2lF"/>
+                            <constraint firstItem="oqo-89-4tH" firstAttribute="leading" secondItem="gAR-7P-0IG" secondAttribute="leading" id="PPd-oB-cRO"/>
+                            <constraint firstItem="m00-QH-0pk" firstAttribute="leading" secondItem="gAR-7P-0IG" secondAttribute="leading" constant="16" id="Q2u-vd-WuU"/>
+                            <constraint firstItem="rsB-Yk-zEC" firstAttribute="top" secondItem="ns6-jM-M0X" secondAttribute="bottom" constant="8" id="Rxv-jA-xwV"/>
+                            <constraint firstItem="ZNm-D6-AZY" firstAttribute="top" secondItem="ns6-jM-M0X" secondAttribute="bottom" constant="8" id="aKC-jD-53Q"/>
+                            <constraint firstItem="NcX-Wb-YL9" firstAttribute="top" secondItem="ZNm-D6-AZY" secondAttribute="bottom" constant="8" id="d7R-xT-KOw"/>
+                            <constraint firstItem="5g0-qG-x0H" firstAttribute="leading" secondItem="gAR-7P-0IG" secondAttribute="leading" constant="16" id="dyM-ff-OVd"/>
+                            <constraint firstItem="NcX-Wb-YL9" firstAttribute="leading" secondItem="JKQ-TU-Xli" secondAttribute="trailing" constant="5" id="kAS-lC-aup"/>
+                            <constraint firstItem="oqo-89-4tH" firstAttribute="height" secondItem="Bm7-5Z-Vff" secondAttribute="height" multiplier="0.4" id="l15-p6-Hrs"/>
+                            <constraint firstItem="JKQ-TU-Xli" firstAttribute="leading" secondItem="gAR-7P-0IG" secondAttribute="leading" constant="16" id="p2w-bj-Rvi"/>
+                            <constraint firstItem="ZNm-D6-AZY" firstAttribute="leading" secondItem="rsB-Yk-zEC" secondAttribute="trailing" constant="5" id="pX4-8G-sWW"/>
+                            <constraint firstItem="gAR-7P-0IG" firstAttribute="bottom" secondItem="m00-QH-0pk" secondAttribute="bottom" constant="20" id="sa3-5f-ivT"/>
+                            <constraint firstItem="m00-QH-0pk" firstAttribute="top" secondItem="NcX-Wb-YL9" secondAttribute="bottom" constant="8" id="vZe-ae-4Q7"/>
+                            <constraint firstItem="gAR-7P-0IG" firstAttribute="trailing" secondItem="NcX-Wb-YL9" secondAttribute="trailing" constant="16" id="vce-uC-m17"/>
+                            <constraint firstItem="gAR-7P-0IG" firstAttribute="trailing" secondItem="m00-QH-0pk" secondAttribute="trailing" constant="16" id="vdE-o1-JyM"/>
+                            <constraint firstItem="JKQ-TU-Xli" firstAttribute="top" secondItem="rsB-Yk-zEC" secondAttribute="bottom" constant="8" id="zzb-Cj-Flm"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="gAR-7P-0IG"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Pet's Name" id="K2a-PA-Pvs">
+                        <barButtonItem key="rightBarButtonItem" title="Favorite" id="Ebm-RE-BI5"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nlx-QQ-bpu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3752.8000000000002" y="456.52173913043481"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="wMN-3z-5Ia">
@@ -385,10 +561,25 @@
             </objects>
             <point key="canvasLocation" x="756" y="1213.9430284857572"/>
         </scene>
+        <!--Login Controller-->
+        <scene sceneID="wNy-wy-LEd">
+            <objects>
+                <viewController id="oCn-Ax-dSc" customClass="LoginController" customModule="CatLover" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="SLq-Xq-nBM">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="ifr-18-VOQ"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="As8-OR-bYC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1294" y="930"/>
+        </scene>
         <!--Item-->
         <scene sceneID="CAR-Xt-Sja">
             <objects>
-                <viewController id="SSf-ul-cQW" sceneMemberID="viewController">
+                <viewController id="SSf-ul-cQW" customClass="ProfileController" customModule="CatLover" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4M4-jH-LKs">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -428,10 +619,29 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6ES-YW-aSC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="758" y="1928"/>
+            <point key="canvasLocation" x="756" y="2029"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Nrv-0I-3vS">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Xz9-ws-fY9" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="EHo-La-giu">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="99u-qx-fVn" kind="relationship" relationship="rootViewController" id="hTw-Ws-Nd9"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dIE-io-qGn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2813.5999999999999" y="456.52173913043481"/>
         </scene>
     </scenes>
     <resources>
+        <image name="catImgPlaceholder3" width="345.60000610351562" height="460.79998779296875"/>
         <image name="catInitalPlaceholder" width="799.67999267578125" height="799.67999267578125"/>
         <image name="icons8-adopt" width="25" height="25"/>
         <image name="icons8-adopt_filled" width="25" height="25"/>

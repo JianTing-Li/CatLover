@@ -12,7 +12,7 @@ import UIKit
             //--FIXED(compare count w/ count instead of index in enumerated)
             //new problem:  during refresh, the cats are not a alphabet order
 
-class CatBreedsController: UIViewController {
+class CatsController: UIViewController {
     
     @IBOutlet weak var catTableView: UITableView!
     @IBOutlet weak var catSearchBar: UISearchBar!
@@ -106,7 +106,7 @@ class CatBreedsController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let indexPath = catTableView.indexPathForSelectedRow,
-            let detailVC = segue.destination as? CatBreedsDetailController else { fatalError("indexPath or destination controller not found") }
+            let detailVC = segue.destination as? CatsDetailController else { fatalError("indexPath or destination controller not found") }
 
         let cat = allCats[indexPath.row]
         detailVC.cat = cat
@@ -115,7 +115,7 @@ class CatBreedsController: UIViewController {
 }
 
 
-extension CatBreedsController: UITableViewDataSource {
+extension CatsController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return allCats.count
     }
@@ -131,13 +131,13 @@ extension CatBreedsController: UITableViewDataSource {
     }
 }
 
-extension CatBreedsController: UITableViewDelegate {
+extension CatsController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 150
     }
 }
 
-extension CatBreedsController: UISearchBarDelegate {
+extension CatsController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
         guard let searchText = searchBar.text?.lowercased() else { return }

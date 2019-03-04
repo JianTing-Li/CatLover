@@ -8,6 +8,10 @@
 
 import UIKit
 
+// pic
+// name
+// age, breed
+// city state zipcode
 class PetfinderController: UIViewController {
     
     var pets = [Pet]() {

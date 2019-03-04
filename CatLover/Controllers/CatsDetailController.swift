@@ -13,7 +13,7 @@ import UIKit
 //nsattributed string
     //2***how to make part of the text Bold?
 
-class CatBreedsDetailController: UIViewController {
+class CatsDetailController: UIViewController {
 
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var catName: UILabel!
