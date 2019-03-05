@@ -29,7 +29,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="151.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="catInitalPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="ZiI-JM-Xk4">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="catImgPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="ZiI-JM-Xk4">
                                                     <rect key="frame" x="20" y="16" width="160" height="120"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="ZiI-JM-Xk4" secondAttribute="height" multiplier="4:3" id="RWm-IG-Rbe"/>
@@ -181,7 +181,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RYr-Uz-EDp">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="catImgPlaceholder2" translatesAutoresizingMaskIntoConstraints="NO" id="RYr-Uz-EDp">
                                 <rect key="frame" x="0.0" y="115" width="375" height="211"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="RYr-Uz-EDp" secondAttribute="height" multiplier="16:9" id="Qen-sZ-SOR"/>
@@ -396,6 +396,9 @@
                     <navigationItem key="navigationItem" id="vAa-D8-y7F">
                         <barButtonItem key="rightBarButtonItem" title="Location" id="VsY-H5-D5L"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="petfinderCollectionView" destination="iLp-rc-HFe" id="7da-om-zHy"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gbu-ek-B5G" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -404,12 +407,12 @@
         <!--Pet's Name-->
         <scene sceneID="FAH-Vb-3sG">
             <objects>
-                <viewController id="99u-qx-fVn" customClass="PetfinderDetailController" customModule="CatLover" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PetfinderDetailController" id="99u-qx-fVn" customClass="PetfinderDetailController" customModule="CatLover" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Bm7-5Z-Vff">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oqo-89-4tH">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="catInitalPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="oqo-89-4tH">
                                 <rect key="frame" x="0.0" y="64" width="375" height="267"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Breed · Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ns6-jM-M0X">
@@ -454,6 +457,10 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="P6c-zQ-VXr">
+                                <rect key="frame" x="169" y="179" width="37" height="37"/>
+                                <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </activityIndicatorView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="m00-QH-0pk">
                                 <rect key="frame" x="16" y="461" width="343" height="186"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -469,10 +476,12 @@
                             <constraint firstItem="ns6-jM-M0X" firstAttribute="top" secondItem="5g0-qG-x0H" secondAttribute="bottom" constant="8" id="4Oq-fH-LT8"/>
                             <constraint firstItem="5g0-qG-x0H" firstAttribute="top" secondItem="oqo-89-4tH" secondAttribute="bottom" constant="8" id="4qd-7c-Dq3"/>
                             <constraint firstItem="oqo-89-4tH" firstAttribute="trailing" secondItem="gAR-7P-0IG" secondAttribute="trailing" id="5U6-B0-NE7"/>
+                            <constraint firstItem="P6c-zQ-VXr" firstAttribute="centerY" secondItem="oqo-89-4tH" secondAttribute="centerY" id="8WB-aL-6nH"/>
                             <constraint firstItem="oqo-89-4tH" firstAttribute="top" secondItem="gAR-7P-0IG" secondAttribute="top" id="KI6-JU-bF8"/>
                             <constraint firstItem="gAR-7P-0IG" firstAttribute="trailing" secondItem="ZNm-D6-AZY" secondAttribute="trailing" constant="16" id="NOk-jD-2lF"/>
                             <constraint firstItem="oqo-89-4tH" firstAttribute="leading" secondItem="gAR-7P-0IG" secondAttribute="leading" id="PPd-oB-cRO"/>
                             <constraint firstItem="m00-QH-0pk" firstAttribute="leading" secondItem="gAR-7P-0IG" secondAttribute="leading" constant="16" id="Q2u-vd-WuU"/>
+                            <constraint firstItem="P6c-zQ-VXr" firstAttribute="centerX" secondItem="oqo-89-4tH" secondAttribute="centerX" id="Rqf-6l-Fpe"/>
                             <constraint firstItem="rsB-Yk-zEC" firstAttribute="top" secondItem="ns6-jM-M0X" secondAttribute="bottom" constant="8" id="Rxv-jA-xwV"/>
                             <constraint firstItem="ZNm-D6-AZY" firstAttribute="top" secondItem="ns6-jM-M0X" secondAttribute="bottom" constant="8" id="aKC-jD-53Q"/>
                             <constraint firstItem="NcX-Wb-YL9" firstAttribute="top" secondItem="ZNm-D6-AZY" secondAttribute="bottom" constant="8" id="d7R-xT-KOw"/>
@@ -492,6 +501,15 @@
                     <navigationItem key="navigationItem" title="Pet's Name" id="K2a-PA-Pvs">
                         <barButtonItem key="rightBarButtonItem" title="Favorite" id="Ebm-RE-BI5"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="activityIndicator" destination="P6c-zQ-VXr" id="JRJ-91-kfw"/>
+                        <outlet property="breedAndLocationLabel" destination="ns6-jM-M0X" id="ss2-T0-5L1"/>
+                        <outlet property="petAgeAndGenderLabel" destination="5g0-qG-x0H" id="gjl-Xh-ZO8"/>
+                        <outlet property="petContactEmailLabel" destination="ZNm-D6-AZY" id="Bf6-IG-DER"/>
+                        <outlet property="petContactNumberLabel" destination="NcX-Wb-YL9" id="Hbb-SE-uXl"/>
+                        <outlet property="petDescriptionTextView" destination="m00-QH-0pk" id="i03-4v-Lrm"/>
+                        <outlet property="petImageView" destination="oqo-89-4tH" id="oQx-OS-LtZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nlx-QQ-bpu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -641,6 +659,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="catImgPlaceholder" width="626" height="626"/>
+        <image name="catImgPlaceholder2" width="108.10089111328125" height="112.90538024902344"/>
         <image name="catImgPlaceholder3" width="345.60000610351562" height="460.79998779296875"/>
         <image name="catInitalPlaceholder" width="799.67999267578125" height="799.67999267578125"/>
         <image name="icons8-adopt" width="25" height="25"/>

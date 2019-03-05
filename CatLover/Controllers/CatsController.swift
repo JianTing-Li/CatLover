@@ -7,10 +7,6 @@
 //
 
 import UIKit
-//TO DO List:
-    //1) Not getting all data for allCatBreedsWithImage
-            //--FIXED(compare count w/ count instead of index in enumerated)
-            //new problem:  during refresh, the cats are not a alphabet order
 
 class CatsController: UIViewController {
     

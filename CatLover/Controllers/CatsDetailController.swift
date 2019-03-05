@@ -8,11 +8,6 @@
 
 import UIKit
 
-//add activity indicator & cache
-//remodel UI so Description is so not cramped
-//nsattributed string
-    //2***how to make part of the text Bold?
-
 class CatsDetailController: UIViewController {
 
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!

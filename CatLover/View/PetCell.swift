@@ -15,7 +15,7 @@ class PetCell: UICollectionViewCell {
     @IBOutlet weak var petAgeAndBreedLabel: UILabel!
     @IBOutlet weak var petLocationLabel: UILabel!
     
-    private func configureCell(pet: Pet) {
+    public func configureCell(pet: Pet) {
         petNameLabel.text = pet.name.petName
         petAgeAndBreedLabel.text = "\(pet.age.age) · \(pet.breeds.breed.breedName)"
         petLocationLabel.text = "\(pet.contact.city.city), \(pet.contact.state.state) \(pet.contact.zip.zipCode)"
@@ -31,15 +31,19 @@ class PetCell: UICollectionViewCell {
                 break
             }
         }
-        activityIndicator.startAnimating()
-        ImageHelper.fetchImage(urlString: imageURLString) { [weak self] (appError, image) in
-            DispatchQueue.main.async {
-                if let appError = appError {
-                    print(appError.errorMessage())
-                } else if let image = image {
-                    self?.petImageView.image = image
+        if let image = ImageHelper.shared.getImageFromCache(forKey: imageURLString as NSString) {
+            petImageView.image = image
+        } else {
+            activityIndicator.startAnimating()
+            ImageHelper.fetchImage(urlString: imageURLString) { [weak self] (appError, image) in
+                DispatchQueue.main.async {
+                    if let appError = appError {
+                        print(appError.errorMessage())
+                    } else if let image = image {
+                        self?.petImageView.image = image
+                    }
+                    self?.activityIndicator.stopAnimating()
                 }
-                self?.activityIndicator.stopAnimating()
             }
         }
     }
