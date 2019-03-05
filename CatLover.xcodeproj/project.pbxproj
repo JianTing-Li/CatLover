@@ -26,6 +26,7 @@
 		D6B5CB37222E45D6003A9EC1 /* SecretKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B5CB36222E45D6003A9EC1 /* SecretKeys.swift */; };
 		D6B5CB39222E4846003A9EC1 /* CatFilterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B5CB38222E4846003A9EC1 /* CatFilterController.swift */; };
 		D6B5CB3B222ED2A5003A9EC1 /* LoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6B5CB3A222ED2A5003A9EC1 /* LoginView.xib */; };
+		D6B5CB3D222F1097003A9EC1 /* CatPropertyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B5CB3C222F1097003A9EC1 /* CatPropertyButton.swift */; };
 		D6BEF30921D18C84000BF117 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BEF30821D18C84000BF117 /* AppDelegate.swift */; };
 		D6BEF30B21D18C84000BF117 /* CatsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BEF30A21D18C84000BF117 /* CatsController.swift */; };
 		D6BEF30E21D18C85000BF117 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6BEF30C21D18C85000BF117 /* Main.storyboard */; };
@@ -64,6 +65,7 @@
 		D6B5CB36222E45D6003A9EC1 /* SecretKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretKeys.swift; sourceTree = "<group>"; };
 		D6B5CB38222E4846003A9EC1 /* CatFilterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatFilterController.swift; sourceTree = "<group>"; };
 		D6B5CB3A222ED2A5003A9EC1 /* LoginView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginView.xib; sourceTree = "<group>"; };
+		D6B5CB3C222F1097003A9EC1 /* CatPropertyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatPropertyButton.swift; sourceTree = "<group>"; };
 		D6BEF30521D18C84000BF117 /* CatLover.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CatLover.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6BEF30821D18C84000BF117 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D6BEF30A21D18C84000BF117 /* CatsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatsController.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 				D69B01A721D9B96400690788 /* CatBreedWithNoImage.swift */,
 				D69B01AD21D9C09D00690788 /* CatBreedWithImage.swift */,
 				D6B5CB23222C8D16003A9EC1 /* Pet.swift */,
+				D6B5CB3C222F1097003A9EC1 /* CatPropertyButton.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -363,6 +366,7 @@
 				D6B5CB26222C93EA003A9EC1 /* PetfinderController.swift in Sources */,
 				D6BEF30B21D18C84000BF117 /* CatsController.swift in Sources */,
 				D63127A1222719A700DC60B5 /* UserDefaultsKeys.swift in Sources */,
+				D6B5CB3D222F1097003A9EC1 /* CatPropertyButton.swift in Sources */,
 				D6BEF31E21D18D48000BF117 /* NetworkHelper.swift in Sources */,
 				D63127812226509500DC60B5 /* CatBreedModel.swift in Sources */,
 				D6B5CB32222E44A4003A9EC1 /* PetfinderAPIClient.swift in Sources */,
