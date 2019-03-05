@@ -37,7 +37,9 @@ class CatCell: UITableViewCell {
                         self?.catImg.image = image
                     }
                 }
-                self?.activityIndicator.stopAnimating()
+                DispatchQueue.main.async {
+                    self?.activityIndicator.stopAnimating()
+                }
             }
         }
     }

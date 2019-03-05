@@ -24,6 +24,8 @@
 		D6B5CB30222D947C003A9EC1 /* PetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B5CB2F222D947C003A9EC1 /* PetCell.swift */; };
 		D6B5CB32222E44A4003A9EC1 /* PetfinderAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B5CB31222E44A4003A9EC1 /* PetfinderAPIClient.swift */; };
 		D6B5CB37222E45D6003A9EC1 /* SecretKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B5CB36222E45D6003A9EC1 /* SecretKeys.swift */; };
+		D6B5CB39222E4846003A9EC1 /* CatFilterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B5CB38222E4846003A9EC1 /* CatFilterController.swift */; };
+		D6B5CB3B222ED2A5003A9EC1 /* LoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6B5CB3A222ED2A5003A9EC1 /* LoginView.xib */; };
 		D6BEF30921D18C84000BF117 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BEF30821D18C84000BF117 /* AppDelegate.swift */; };
 		D6BEF30B21D18C84000BF117 /* CatsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BEF30A21D18C84000BF117 /* CatsController.swift */; };
 		D6BEF30E21D18C85000BF117 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6BEF30C21D18C85000BF117 /* Main.storyboard */; };
@@ -60,6 +62,8 @@
 		D6B5CB2F222D947C003A9EC1 /* PetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetCell.swift; sourceTree = "<group>"; };
 		D6B5CB31222E44A4003A9EC1 /* PetfinderAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetfinderAPIClient.swift; sourceTree = "<group>"; };
 		D6B5CB36222E45D6003A9EC1 /* SecretKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretKeys.swift; sourceTree = "<group>"; };
+		D6B5CB38222E4846003A9EC1 /* CatFilterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatFilterController.swift; sourceTree = "<group>"; };
+		D6B5CB3A222ED2A5003A9EC1 /* LoginView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginView.xib; sourceTree = "<group>"; };
 		D6BEF30521D18C84000BF117 /* CatLover.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CatLover.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6BEF30821D18C84000BF117 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D6BEF30A21D18C84000BF117 /* CatsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatsController.swift; sourceTree = "<group>"; };
@@ -163,6 +167,7 @@
 				D69B01B121D9D6E800690788 /* CatCell.swift */,
 				D671907421E31E2F0039C4CD /* CatCellBackgroundColor.swift */,
 				D6B5CB2F222D947C003A9EC1 /* PetCell.swift */,
+				D6B5CB3A222ED2A5003A9EC1 /* LoginView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -171,6 +176,7 @@
 			isa = PBXGroup;
 			children = (
 				D6BEF30A21D18C84000BF117 /* CatsController.swift */,
+				D6B5CB38222E4846003A9EC1 /* CatFilterController.swift */,
 				D6BEF32221D18EE8000BF117 /* CatsDetailController.swift */,
 				D6B5CB25222C93EA003A9EC1 /* PetfinderController.swift */,
 				D6B5CB27222CF0D2003A9EC1 /* PetfinderDetailController.swift */,
@@ -289,6 +295,7 @@
 			files = (
 				D6BEF31321D18C89000BF117 /* LaunchScreen.storyboard in Resources */,
 				D6BEF31021D18C89000BF117 /* Assets.xcassets in Resources */,
+				D6B5CB3B222ED2A5003A9EC1 /* LoginView.xib in Resources */,
 				D6BEF30E21D18C85000BF117 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -369,6 +376,7 @@
 				D6E6AF0C22249B2F000A8396 /* FavoriteCatModel.swift in Sources */,
 				D6BEF32021D18D54000BF117 /* ImageHelper.swift in Sources */,
 				D69B01B221D9D6E800690788 /* CatCell.swift in Sources */,
+				D6B5CB39222E4846003A9EC1 /* CatFilterController.swift in Sources */,
 				D69B01AE21D9C09E00690788 /* CatBreedWithImage.swift in Sources */,
 				D6BEF30921D18C84000BF117 /* AppDelegate.swift in Sources */,
 				D69B01AC21D9BD6A00690788 /* CatAPIClient.swift in Sources */,
@@ -521,7 +529,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 79H8CH9S4F;
+				DEVELOPMENT_TEAM = VXCS37P548;
 				INFOPLIST_FILE = CatLover/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -540,7 +548,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 79H8CH9S4F;
+				DEVELOPMENT_TEAM = VXCS37P548;
 				INFOPLIST_FILE = CatLover/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

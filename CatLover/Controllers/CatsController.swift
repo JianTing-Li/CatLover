@@ -61,11 +61,31 @@ class CatsController: UIViewController {
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let indexPath = catTableView.indexPathForSelectedRow,
+            let detailVC = segue.destination as? CatsDetailController else { fatalError("indexPath or destination controller not found") }
+
+        let cat = allCats[indexPath.row]
+        detailVC.cat = cat
+    }
+    
+    @IBAction func filterButtonPressed(_ sender: UIBarButtonItem) {
+        let storyBoard = UIStoryboard.init(name: "Main", bundle: nil)
+        guard let navController = storyBoard.instantiateViewController(withIdentifier: "CatFilterNav") as? UINavigationController else { fatalError("CatFilterNav is nil") }
+        //let navControlller = UINavigationController(rootViewController: destinationVC)
+        navController.modalPresentationStyle = .fullScreen
+        present(navController, animated: true, completion: nil)
+    }
+    
+}
+
+
+// Initial Setup Functions
+extension CatsController {
     private func setDelegatesAndTitle() {
         catTableView.dataSource = self
         catTableView.delegate = self
         catSearchBar.delegate = self
-        title = "Cat Breeds"
     }
     
     private func getAllCatsWithNoImage() {
@@ -79,7 +99,7 @@ class CatsController: UIViewController {
             }
         }
     }
-
+    
     private func setupRefreshControl() {
         refreshControl = UIRefreshControl()
         catTableView.refreshControl = refreshControl
@@ -99,15 +119,6 @@ class CatsController: UIViewController {
             }
         }
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let indexPath = catTableView.indexPathForSelectedRow,
-            let detailVC = segue.destination as? CatsDetailController else { fatalError("indexPath or destination controller not found") }
-
-        let cat = allCats[indexPath.row]
-        detailVC.cat = cat
-    }
-    
 }
 
 
@@ -126,12 +137,12 @@ extension CatsController: UITableViewDataSource {
         return cell
     }
 }
-
 extension CatsController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 150
     }
 }
+
 
 extension CatsController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
