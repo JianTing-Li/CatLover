@@ -690,6 +690,7 @@
                         <viewLayoutGuide key="safeArea" id="CY9-4d-1zO"/>
                     </view>
                     <navigationItem key="navigationItem" id="vAa-D8-y7F">
+                        <barButtonItem key="leftBarButtonItem" title="Map" id="ttz-HN-RiP"/>
                         <barButtonItem key="rightBarButtonItem" title="Location" id="VsY-H5-D5L"/>
                     </navigationItem>
                     <connections>

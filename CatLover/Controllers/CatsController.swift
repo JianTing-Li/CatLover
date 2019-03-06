@@ -15,6 +15,7 @@ class CatsController: UIViewController {
     
     private var refreshControl: UIRefreshControl!
     private var cellBackgroundColor = CatCellBackgroundColor.lightBlue
+    var catFilters = [String:Bool]()
     
     private var allCatBreedsWithoutImage = [CatBreedWithNoImage]()
     private var allCats = [Cat]() {
@@ -56,8 +57,16 @@ class CatsController: UIViewController {
         let allCats = CatBreedModel.fetchAllCats()
         if !allCats.isEmpty {
             self.allCats = allCats
+            print("cat breeds already downloaded")
         } else {
+            print("first time running")
             getAllCatsWithNoImage()
+        }
+        
+        if let catFilters = UserDefaults.standard.object(forKey: UserDefaultsKeys.catFilters) as? [String:Bool] {
+            print("filters: \(catFilters)")
+        } else {
+            print("no user defaults")
         }
     }
     
@@ -88,6 +97,10 @@ extension CatsController {
         catSearchBar.delegate = self
     }
     
+    private func skfdslkfjldk() {
+        
+    }
+    
     private func getAllCatsWithNoImage() {
         CatAPIClient.getAllCats { (appError, catBreeds) in
             if let appError = appError {
@@ -103,21 +116,12 @@ extension CatsController {
     private func setupRefreshControl() {
         refreshControl = UIRefreshControl()
         catTableView.refreshControl = refreshControl
-        refreshControl.addTarget(self, action: #selector(fetchCats), for: .valueChanged)
+        refreshControl.addTarget(self, action: #selector(getAllCatsBack), for: .valueChanged)
     }
-    @objc private func fetchCats() {
+    @objc private func getAllCatsBack() {
         refreshControl.beginRefreshing()
-        CatAPIClient.getAllCats() { (appError, allCats) in
-            if let appError = appError {
-                print(appError.errorMessage())
-            } else if let allCats = allCats {
-                self.allCatBreedsWithoutImage = allCats
-                self.apiCall1GetAllCatsFinished = true
-            }
-            DispatchQueue.main.async {
-                self.refreshControl.endRefreshing()
-            }
-        }
+        allCats = CatBreedModel.fetchAllCats()
+        refreshControl.endRefreshing()
     }
 }
 

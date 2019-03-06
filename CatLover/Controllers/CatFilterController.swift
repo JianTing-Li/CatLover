@@ -7,28 +7,17 @@
 
 import UIKit
 
-//enum buttons: Int {
-//    case affectionYes = 0
-//    case affectionNo
-//    case energeticYes
-//    case energeticNo
-//    case intelligentYes
-//    case intelligentNo
-//    case vocalYes
-//    case vocalNo
-//}
-
-// default
-    // text C0C0C0
-    // button EBEBEB
-
-// pressed (active)
-    // text  white
-    // button #4b7bec
+enum CatProperty: String {
+    case affection
+    case energy
+    case intelligent
+    case vocal
+}
 
 class CatFilterController: UIViewController {
 
     @IBOutlet var buttons: [CatPropertyButton]!
+    var catFilters = [String: Bool]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,26 +28,33 @@ class CatFilterController: UIViewController {
     
     @IBAction func propertyButtonPressed(_ sender: CatPropertyButton) {
         let pressedButton = buttons[sender.tag]
-        let associatedButton = buttons[pressedButton.associateButtonTag]
-        
-        // set user default
         switch pressedButton.tag {
-        case 0...1:     // affection
-            break
-        case 2...3:     // energetic
-            break
-        case 4...5:     // intelligent
-            break
-        case 6...7:     // vocal
-            break
+        case 0...1:
+            setFilterSetting(pressedButton: pressedButton, catProperty: CatProperty.affection)
+        case 2...3:
+            setFilterSetting(pressedButton: pressedButton, catProperty: CatProperty.energy)
+        case 4...5:
+            setFilterSetting(pressedButton: pressedButton, catProperty: CatProperty.intelligent)
+        case 6...7:
+            setFilterSetting(pressedButton: pressedButton, catProperty: CatProperty.vocal)
         default:
             break
         }
-
+        print(catFilters)
+    }
+    
+    private func setFilterSetting(pressedButton: CatPropertyButton, catProperty: CatProperty) {
+        let associatedButton = buttons[pressedButton.associateButtonTag]
         if pressedButton.active {
+            catFilters[catProperty.rawValue] = nil
             pressedButton.switchButtonActivity()
             pressedButton.setButtonOffUI()
         } else {
+            if pressedButton.tag % 2 == 0 {
+                catFilters[catProperty.rawValue] = true
+            } else {
+                catFilters[catProperty.rawValue] = false
+            }
             pressedButton.switchButtonActivity()
             pressedButton.setButtonOnUI()
             associatedButton.active = false
@@ -71,6 +67,7 @@ class CatFilterController: UIViewController {
     }
     
     @IBAction func applyFilterPressed(_ sender: UIButton) {
+        UserDefaults.standard.set(catFilters, forKey: UserDefaultsKeys.catFilters)
         dismiss(animated: true, completion: nil)
     }
 }
