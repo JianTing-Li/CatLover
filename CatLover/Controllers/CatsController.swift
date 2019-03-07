@@ -15,8 +15,8 @@ class CatsController: UIViewController {
     
     private var refreshControl: UIRefreshControl!
     private var cellBackgroundColor = CatCellBackgroundColor.lightBlue
-    //var catFilters = [String:Bool]()
     
+    private var petfinderBreeds = [CatBreed]()
     private var allCatBreedsWithoutImage = [CatBreedWithNoImage]()
     private var allCats = [Cat]() {
         didSet {
@@ -55,14 +55,15 @@ class CatsController: UIViewController {
         setDelegatesAndTitle()
         setupRefreshControl()
         checkFirstTimeRun()
+        setPetfinderBreeds()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let indexPath = catTableView.indexPathForSelectedRow,
             let detailVC = segue.destination as? CatsDetailController else { fatalError("indexPath or destination controller not found") }
-
         let cat = allCats[indexPath.row]
         detailVC.cat = cat
+        detailVC.petfinderBreeds = petfinderBreeds
     }
     
     @IBAction func filterButtonPressed(_ sender: UIBarButtonItem) {
@@ -122,6 +123,16 @@ extension CatsController {
         refreshControl.beginRefreshing()
         allCats = CatBreedModel.fetchAllCats()
         refreshControl.endRefreshing()
+    }
+    
+    private func setPetfinderBreeds() {
+        PetfinderAPIClient.allCatBreedsForAdoption { [weak self] (appError, catBreeds) in
+            if let appError = appError {
+                print(appError.errorMessage())
+            } else if let catBreeds = catBreeds {
+                self?.petfinderBreeds = catBreeds
+            }
+        }
     }
 }
 

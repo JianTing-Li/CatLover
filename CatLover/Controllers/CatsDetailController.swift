@@ -21,6 +21,7 @@ class CatsDetailController: UIViewController {
     @IBOutlet weak var vocalisation: UILabel!
     @IBOutlet weak var intelligence: UILabel!
     @IBOutlet weak var catDescription: UITextView!
+    @IBOutlet weak var adoptButton: UIBarButtonItem!
     
     var cat: Cat!
     var catWithImage: CatBreedWithImage? {
@@ -28,15 +29,17 @@ class CatsDetailController: UIViewController {
             setCatImage(imageURLString: (catWithImage!.url.absoluteString))
         }
     }
+    var petfinderBreeds: [CatBreed]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = ""
         updateCatUI()
         setCatImage(imageURLString: cat.imageURL.absoluteString)
+        checkBreedInPetfinder()
     }
     
     private func updateCatUI() {
+        title = ""
         catName.text = cat.breed
         temperament.text = "\(cat.temperament)"
         origin.text = "Origin: \(cat.origin)"
@@ -86,8 +89,23 @@ class CatsDetailController: UIViewController {
         }
     }
     
+    private func checkBreedInPetfinder() {
+        for breed in petfinderBreeds {
+            if breed.breed == cat.breed {
+                adoptButton.isEnabled = true
+            }
+        }
+    }
+}
+
+extension CatsDetailController {
     @IBAction func getNewCatPic(_ sender: UIButton) {
         setNewCatImage()
     }
-
+    
+    @IBAction func adoptMeButtonPressed(_ sender: UIBarButtonItem) {
+        
+        print("adopt me pressed")
+    }
+    
 }

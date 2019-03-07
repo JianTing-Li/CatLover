@@ -14,7 +14,7 @@ final class PetfinderAPIClient {
     static func getPets(location: String, breed: String?, completion: @escaping (AppError?, [Pet]?) -> Void) {
         let endpointUrlString = "http://api.petfinder.com/pet.find?key=\(SecretKeys.petFinderKey)&location=\(location)&breed=\(breed ?? "")&animal=cat&count=5&format=json".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
         
-        NetworkHelper.shared.performDataTask(endpointURLString: endpointUrlString, httpMethod: "Get", httpBody: nil) { (appError, data) in
+        NetworkHelper.shared.performDataTask(endpointURLString: endpointUrlString, httpMethod: "GET", httpBody: nil) { (appError, data) in
             if let appError = appError {
                 completion(appError, nil)
             } else if let data = data {
@@ -23,6 +23,22 @@ final class PetfinderAPIClient {
                     completion(nil, pets)
                 } catch {
                     completion(AppError.jsonDecodingError(error) ,nil)
+                }
+            }
+        }
+    }
+    
+    static func allCatBreedsForAdoption(completion: @escaping (AppError?, [CatBreed]?) -> Void) {
+        let endpointUrlString = "http://api.petfinder.com/breed.list?key=b87922925c4c858cc57f2794a0e7130a&animal=cat&format=json"
+        NetworkHelper.shared.performDataTask(endpointURLString: endpointUrlString, httpMethod: "GET", httpBody: nil) { (appError, data) in
+            if let appError = appError {
+                completion(appError, nil)
+            } else if let data = data {
+                do {
+                    let catBreeds = try JSONDecoder().decode(PetfinderOuter.self, from: data).petfinder.breeds.breed
+                    completion(nil, catBreeds)
+                } catch {
+                    completion(AppError.jsonDecodingError(error), nil)
                 }
             }
         }

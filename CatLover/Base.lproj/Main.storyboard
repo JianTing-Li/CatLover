@@ -526,10 +526,15 @@
                         <viewLayoutGuide key="safeArea" id="9cj-jv-fys"/>
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="dRY-Of-ZEl">
-                        <barButtonItem key="rightBarButtonItem" title="Adopt Me" id="fQd-Ey-oYk"/>
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="Adopt Me" id="fQd-Ey-oYk">
+                            <connections>
+                                <action selector="adoptMeButtonPressed:" destination="ryO-ht-cW2" id="bYG-Dy-vJS"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="activityIndicator" destination="IQ0-ez-Eh3" id="m3m-NQ-fzQ"/>
+                        <outlet property="adoptButton" destination="fQd-Ey-oYk" id="wjZ-Ae-3JN"/>
                         <outlet property="affectionLevel" destination="iIg-L1-jRV" id="g7D-TD-jMN"/>
                         <outlet property="catDescription" destination="jWh-w1-CM3" id="2ge-8a-iMd"/>
                         <outlet property="catImage" destination="RYr-Uz-EDp" id="6TA-Sz-fjL"/>
