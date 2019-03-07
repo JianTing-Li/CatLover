@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol CatFilterDelegate: AnyObject {
+    func applyButtonPressed(catFilters: [String:Bool])
+}
+
 enum CatProperty: String {
     case affection
     case energy
@@ -15,9 +19,11 @@ enum CatProperty: String {
 }
 
 class CatFilterController: UIViewController {
-
+    
+    weak var delegate: CatFilterDelegate?
+    
     @IBOutlet var buttons: [CatPropertyButton]!
-    var catFilters = [String: Bool]()
+    var catFilters = [String:Bool]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,6 +74,7 @@ class CatFilterController: UIViewController {
     
     @IBAction func applyFilterPressed(_ sender: UIButton) {
         UserDefaults.standard.set(catFilters, forKey: UserDefaultsKeys.catFilters)
+        delegate?.applyButtonPressed(catFilters: catFilters)
         dismiss(animated: true, completion: nil)
     }
 }

@@ -15,7 +15,7 @@ class CatsController: UIViewController {
     
     private var refreshControl: UIRefreshControl!
     private var cellBackgroundColor = CatCellBackgroundColor.lightBlue
-    var catFilters = [String:Bool]()
+    //var catFilters = [String:Bool]()
     
     private var allCatBreedsWithoutImage = [CatBreedWithNoImage]()
     private var allCats = [Cat]() {
@@ -54,20 +54,7 @@ class CatsController: UIViewController {
         super.viewDidLoad()
         setDelegatesAndTitle()
         setupRefreshControl()
-        let allCats = CatBreedModel.fetchAllCats()
-        if !allCats.isEmpty {
-            self.allCats = allCats
-            print("cat breeds already downloaded")
-        } else {
-            print("first time running")
-            getAllCatsWithNoImage()
-        }
-        
-        if let catFilters = UserDefaults.standard.object(forKey: UserDefaultsKeys.catFilters) as? [String:Bool] {
-            print("filters: \(catFilters)")
-        } else {
-            print("no user defaults")
-        }
+        checkFirstTimeRun()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -81,11 +68,16 @@ class CatsController: UIViewController {
     @IBAction func filterButtonPressed(_ sender: UIBarButtonItem) {
         let storyBoard = UIStoryboard.init(name: "Main", bundle: nil)
         guard let navController = storyBoard.instantiateViewController(withIdentifier: "CatFilterNav") as? UINavigationController else { fatalError("CatFilterNav is nil") }
-        //let navControlller = UINavigationController(rootViewController: destinationVC)
+        guard let catFilterVC = storyBoard.instantiateViewController(withIdentifier: "CatFilterController") as? CatFilterController else { fatalError("CatFilterVC is nil") }
+        catFilterVC.delegate = self
+        navController.viewControllers = [catFilterVC]
         navController.modalPresentationStyle = .fullScreen
         present(navController, animated: true, completion: nil)
     }
     
+    @IBAction func resetButtonPressed(_ sender: UIBarButtonItem) {
+        allCats = CatBreedModel.fetchAllCats()
+    }
 }
 
 
@@ -95,10 +87,18 @@ extension CatsController {
         catTableView.dataSource = self
         catTableView.delegate = self
         catSearchBar.delegate = self
+        
     }
     
-    private func skfdslkfjldk() {
-        
+    private func checkFirstTimeRun() {
+        let allCats = CatBreedModel.fetchAllCats()
+        if !allCats.isEmpty {
+            self.allCats = allCats
+            print("cat breeds already downloaded")
+        } else {
+            print("first time running")
+            getAllCatsWithNoImage()
+        }
     }
     
     private func getAllCatsWithNoImage() {
@@ -152,24 +152,56 @@ extension CatsController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
         guard let searchText = searchBar.text?.lowercased() else { return }
+        let allCats = CatBreedModel.fetchAllCats()
         
-        CatAPIClient.getAllCats() { (appError, allCats) in
-            if let appError = appError {
-                print(appError.errorMessage())
-            } else if let allCats = allCats {
-                if searchText.trimmingCharacters(in: .whitespaces) == "" {
-                    self.allCatBreedsWithoutImage = allCats
-                    self.apiCall1GetAllCatsFinished = true
-                } else {
-                    self.allCatBreedsWithoutImage = allCats.filter { $0.name.lowercased().contains(searchText) }
-                    self.apiCall1GetAllCatsFinished = true
-                }
-            }
-            DispatchQueue.main.async {
-                searchBar.text = ""
-            }
+        if searchText.trimmingCharacters(in: .whitespaces) == "" {
+            self.allCats = allCats
+        } else {
+            self.allCats = allCats.filter { $0.breed.lowercased().contains(searchText) }
         }
+        searchBar.text = ""
     }
 }
 
 
+extension CatsController: CatFilterDelegate {
+    func applyButtonPressed(catFilters: [String : Bool]) {
+        print("Apply Button Pressed")
+        if catFilters.isEmpty { return }
+        var allCats = CatBreedModel.fetchAllCats()
+        catFilters.forEach { (catProperty) in
+            allCats = allCats.filter { (cat) -> Bool in
+                switch catProperty.key {
+                case CatProperty.affection.rawValue:
+                    if catProperty.value {
+                        return cat.affection >= 3
+                    } else {
+                        return cat.affection <= 3
+                    }
+                case CatProperty.energy.rawValue:
+                    if catProperty.value {
+                        return cat.energy >= 3
+                    } else {
+                        return cat.energy <= 3
+                    }
+                case CatProperty.intelligent.rawValue:
+                    if catProperty.value {
+                        return cat.intelligence >= 3
+                    } else {
+                        return cat.intelligence <= 3
+                    }
+                case CatProperty.vocal.rawValue:
+                    if catProperty.value {
+                        return cat.vocalisation >= 3
+                    } else {
+                        return cat.vocalisation <= 3
+                    }
+                default:
+                    return true
+                }
+            }
+        }
+        self.allCats = allCats
+    }
+    
+}

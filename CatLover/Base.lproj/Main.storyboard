@@ -386,6 +386,11 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Cat Breeds" id="cki-GT-Q9U">
+                        <barButtonItem key="leftBarButtonItem" title="Reset" image="icons8-reset" id="2Xq-i2-ssv">
+                            <connections>
+                                <action selector="resetButtonPressed:" destination="BYZ-38-t0r" id="2KY-ki-hzh"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Filter" image="icons8-filter" id="ihf-81-RS5">
                             <connections>
                                 <action selector="filterButtonPressed:" destination="BYZ-38-t0r" id="wK6-u3-x5o"/>
@@ -690,8 +695,8 @@
                         <viewLayoutGuide key="safeArea" id="CY9-4d-1zO"/>
                     </view>
                     <navigationItem key="navigationItem" id="vAa-D8-y7F">
-                        <barButtonItem key="leftBarButtonItem" title="Map" id="ttz-HN-RiP"/>
-                        <barButtonItem key="rightBarButtonItem" title="Location" id="VsY-H5-D5L"/>
+                        <barButtonItem key="leftBarButtonItem" title="Map" image="icons8-map" id="ttz-HN-RiP"/>
+                        <barButtonItem key="rightBarButtonItem" title="Location" image="icons8-location" id="VsY-H5-D5L"/>
                     </navigationItem>
                     <connections>
                         <outlet property="petfinderCollectionView" destination="iLp-rc-HFe" id="7da-om-zHy"/>
@@ -977,5 +982,8 @@
         <image name="icons8-favorite" width="32" height="32"/>
         <image name="icons8-favorite_filled" width="32" height="32"/>
         <image name="icons8-filter" width="25" height="25"/>
+        <image name="icons8-location" width="25" height="25"/>
+        <image name="icons8-map" width="25" height="25"/>
+        <image name="icons8-reset" width="25" height="25"/>
     </resources>
 </document>
