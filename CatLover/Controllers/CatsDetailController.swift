@@ -9,6 +9,7 @@
 import UIKit
 
 class CatsDetailController: UIViewController {
+    
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var catName: UILabel!
     @IBOutlet weak var catImage: UIImageView!
@@ -103,12 +104,7 @@ extension CatsDetailController {
     }
     
     @IBAction func adoptMeButtonPressed(_ sender: UIBarButtonItem) {
-        // TODO: present modally PetfinderVC with some way of dismiss
-        print("adopt me pressed")
-        let storyBoard = UIStoryboard.init(name: "Main", bundle: nil)
-        guard let navController = storyBoard.instantiateViewController(withIdentifier: "PetfinderNav") as? UINavigationController else { fatalError("PetfinderNav is nil") }
-        navController.modalPresentationStyle = .fullScreen
-        present(navController, animated: true, completion: nil)
+        CatBreedSession.setCatBreed(breed: cat.breed)
+        tabBarController?.selectedIndex = 1
     }
-    
 }

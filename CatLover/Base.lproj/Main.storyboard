@@ -321,7 +321,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="151.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="catImgPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="ZiI-JM-Xk4">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="catImgPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="ZiI-JM-Xk4">
                                                     <rect key="frame" x="20" y="16" width="160" height="120"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="ZiI-JM-Xk4" secondAttribute="height" multiplier="4:3" id="RWm-IG-Rbe"/>
@@ -550,10 +550,10 @@
             </objects>
             <point key="canvasLocation" x="2815" y="-288"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Cat Tab Bar Controller-->
         <scene sceneID="dFj-bD-9rF">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="iZV-I8-C5H" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="CatTabBarController" automaticallyAdjustsScrollViewInsets="NO" id="iZV-I8-C5H" customClass="CatTabBarController" customModule="CatLover" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="NYg-xz-HeU">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
@@ -612,7 +612,7 @@
         <!--Petfinder Controller-->
         <scene sceneID="itW-By-03H">
             <objects>
-                <viewController id="pjS-lM-iWu" customClass="PetfinderController" customModule="CatLover" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PetfinderController" id="pjS-lM-iWu" customClass="PetfinderController" customModule="CatLover" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="c6J-Qn-WWV">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -738,33 +738,9 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="catlover@kittycat.kitten" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZNm-D6-AZY">
-                                <rect key="frame" x="74" y="403" width="285" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(cat) cat-cats" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NcX-Wb-YL9">
-                                <rect key="frame" x="81" y="432" width="278" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rsB-Yk-zEC">
-                                <rect key="frame" x="16" y="403" width="53" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="53" id="21y-e6-h1u"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JKQ-TU-Xli">
-                                <rect key="frame" x="16" y="432" width="60" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="60" id="0zq-bm-1PZ"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <rect key="frame" x="16" y="403" width="55.5" height="21.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -772,40 +748,62 @@
                                 <rect key="frame" x="169" y="179" width="37" height="37"/>
                                 <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </activityIndicatorView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="m00-QH-0pk">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="m00-QH-0pk">
                                 <rect key="frame" x="16" y="461" width="343" height="186"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="catlover@kittycat.kitten" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="OAS-aO-bei">
+                                <rect key="frame" x="71.5" y="396" width="287.5" height="28.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" textContentType="email"/>
+                                <dataDetectorType key="dataDetectorTypes" link="YES"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JKQ-TU-Xli">
+                                <rect key="frame" x="16" y="432.5" width="60" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="(cat) cat-cats" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="fXI-RB-zSR">
+                                <rect key="frame" x="76" y="425.5" width="283" height="27.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <dataDetectorType key="dataDetectorTypes" phoneNumber="YES"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="ns6-jM-M0X" firstAttribute="leading" secondItem="gAR-7P-0IG" secondAttribute="leading" constant="16" id="0Py-ut-iUT"/>
-                            <constraint firstItem="rsB-Yk-zEC" firstAttribute="leading" secondItem="gAR-7P-0IG" secondAttribute="leading" constant="16" id="3kl-vJ-EFt"/>
                             <constraint firstItem="ns6-jM-M0X" firstAttribute="top" secondItem="5g0-qG-x0H" secondAttribute="bottom" constant="8" id="4Oq-fH-LT8"/>
                             <constraint firstItem="5g0-qG-x0H" firstAttribute="top" secondItem="oqo-89-4tH" secondAttribute="bottom" constant="8" id="4qd-7c-Dq3"/>
                             <constraint firstItem="oqo-89-4tH" firstAttribute="trailing" secondItem="gAR-7P-0IG" secondAttribute="trailing" id="5U6-B0-NE7"/>
                             <constraint firstItem="P6c-zQ-VXr" firstAttribute="centerY" secondItem="oqo-89-4tH" secondAttribute="centerY" id="8WB-aL-6nH"/>
+                            <constraint firstItem="fXI-RB-zSR" firstAttribute="bottom" secondItem="JKQ-TU-Xli" secondAttribute="bottom" id="GWO-jU-SX8"/>
+                            <constraint firstItem="OAS-aO-bei" firstAttribute="top" secondItem="ns6-jM-M0X" secondAttribute="bottom" constant="1" id="J0q-ma-Y8v"/>
                             <constraint firstItem="oqo-89-4tH" firstAttribute="top" secondItem="gAR-7P-0IG" secondAttribute="top" id="KI6-JU-bF8"/>
-                            <constraint firstItem="gAR-7P-0IG" firstAttribute="trailing" secondItem="ZNm-D6-AZY" secondAttribute="trailing" constant="16" id="NOk-jD-2lF"/>
+                            <constraint firstItem="gAR-7P-0IG" firstAttribute="trailing" secondItem="fXI-RB-zSR" secondAttribute="trailing" constant="16" id="NzK-sG-HSY"/>
+                            <constraint firstItem="gAR-7P-0IG" firstAttribute="trailing" secondItem="OAS-aO-bei" secondAttribute="trailing" constant="16" id="Ogg-rA-FmY"/>
                             <constraint firstItem="oqo-89-4tH" firstAttribute="leading" secondItem="gAR-7P-0IG" secondAttribute="leading" id="PPd-oB-cRO"/>
+                            <constraint firstItem="fXI-RB-zSR" firstAttribute="leading" secondItem="JKQ-TU-Xli" secondAttribute="trailing" id="PmH-rV-iI4"/>
                             <constraint firstItem="m00-QH-0pk" firstAttribute="leading" secondItem="gAR-7P-0IG" secondAttribute="leading" constant="16" id="Q2u-vd-WuU"/>
                             <constraint firstItem="P6c-zQ-VXr" firstAttribute="centerX" secondItem="oqo-89-4tH" secondAttribute="centerX" id="Rqf-6l-Fpe"/>
-                            <constraint firstItem="rsB-Yk-zEC" firstAttribute="top" secondItem="ns6-jM-M0X" secondAttribute="bottom" constant="8" id="Rxv-jA-xwV"/>
-                            <constraint firstItem="ZNm-D6-AZY" firstAttribute="top" secondItem="ns6-jM-M0X" secondAttribute="bottom" constant="8" id="aKC-jD-53Q"/>
-                            <constraint firstItem="NcX-Wb-YL9" firstAttribute="top" secondItem="ZNm-D6-AZY" secondAttribute="bottom" constant="8" id="d7R-xT-KOw"/>
+                            <constraint firstItem="OAS-aO-bei" firstAttribute="bottom" secondItem="rsB-Yk-zEC" secondAttribute="bottom" id="VMH-JH-Kgc"/>
+                            <constraint firstItem="OAS-aO-bei" firstAttribute="leading" secondItem="rsB-Yk-zEC" secondAttribute="trailing" id="Z6P-Oa-CFS"/>
+                            <constraint firstItem="rsB-Yk-zEC" firstAttribute="top" secondItem="ns6-jM-M0X" secondAttribute="bottom" constant="8" id="b7l-1X-ndp"/>
                             <constraint firstItem="5g0-qG-x0H" firstAttribute="leading" secondItem="gAR-7P-0IG" secondAttribute="leading" constant="16" id="dyM-ff-OVd"/>
-                            <constraint firstItem="NcX-Wb-YL9" firstAttribute="leading" secondItem="JKQ-TU-Xli" secondAttribute="trailing" constant="5" id="kAS-lC-aup"/>
                             <constraint firstItem="oqo-89-4tH" firstAttribute="height" secondItem="Bm7-5Z-Vff" secondAttribute="height" multiplier="0.4" id="l15-p6-Hrs"/>
-                            <constraint firstItem="JKQ-TU-Xli" firstAttribute="leading" secondItem="gAR-7P-0IG" secondAttribute="leading" constant="16" id="p2w-bj-Rvi"/>
-                            <constraint firstItem="ZNm-D6-AZY" firstAttribute="leading" secondItem="rsB-Yk-zEC" secondAttribute="trailing" constant="5" id="pX4-8G-sWW"/>
+                            <constraint firstItem="JKQ-TU-Xli" firstAttribute="top" secondItem="rsB-Yk-zEC" secondAttribute="bottom" constant="8" id="lBR-hY-m48"/>
+                            <constraint firstItem="JKQ-TU-Xli" firstAttribute="leading" secondItem="gAR-7P-0IG" secondAttribute="leading" constant="16" id="lTl-qZ-sOc"/>
+                            <constraint firstItem="rsB-Yk-zEC" firstAttribute="leading" secondItem="gAR-7P-0IG" secondAttribute="leading" constant="16" id="o54-QV-Knj"/>
+                            <constraint firstItem="fXI-RB-zSR" firstAttribute="top" secondItem="OAS-aO-bei" secondAttribute="bottom" constant="1" id="pal-5W-vn9"/>
+                            <constraint firstItem="m00-QH-0pk" firstAttribute="top" secondItem="fXI-RB-zSR" secondAttribute="bottom" constant="8" id="sB4-ah-fnI"/>
                             <constraint firstItem="gAR-7P-0IG" firstAttribute="bottom" secondItem="m00-QH-0pk" secondAttribute="bottom" constant="20" id="sa3-5f-ivT"/>
-                            <constraint firstItem="m00-QH-0pk" firstAttribute="top" secondItem="NcX-Wb-YL9" secondAttribute="bottom" constant="8" id="vZe-ae-4Q7"/>
-                            <constraint firstItem="gAR-7P-0IG" firstAttribute="trailing" secondItem="NcX-Wb-YL9" secondAttribute="trailing" constant="16" id="vce-uC-m17"/>
                             <constraint firstItem="gAR-7P-0IG" firstAttribute="trailing" secondItem="m00-QH-0pk" secondAttribute="trailing" constant="16" id="vdE-o1-JyM"/>
-                            <constraint firstItem="JKQ-TU-Xli" firstAttribute="top" secondItem="rsB-Yk-zEC" secondAttribute="bottom" constant="8" id="zzb-Cj-Flm"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="gAR-7P-0IG"/>
                     </view>
@@ -816,15 +814,15 @@
                         <outlet property="activityIndicator" destination="P6c-zQ-VXr" id="JRJ-91-kfw"/>
                         <outlet property="breedAndLocationLabel" destination="ns6-jM-M0X" id="ss2-T0-5L1"/>
                         <outlet property="petAgeAndGenderLabel" destination="5g0-qG-x0H" id="gjl-Xh-ZO8"/>
-                        <outlet property="petContactEmailLabel" destination="ZNm-D6-AZY" id="Bf6-IG-DER"/>
-                        <outlet property="petContactNumberLabel" destination="NcX-Wb-YL9" id="Hbb-SE-uXl"/>
+                        <outlet property="petContactEmailTextView" destination="OAS-aO-bei" id="EBT-sH-xwx"/>
+                        <outlet property="petContactNumberTextView" destination="fXI-RB-zSR" id="lsY-22-0AW"/>
                         <outlet property="petDescriptionTextView" destination="m00-QH-0pk" id="i03-4v-Lrm"/>
                         <outlet property="petImageView" destination="oqo-89-4tH" id="oQx-OS-LtZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nlx-QQ-bpu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3753" y="891"/>
+            <point key="canvasLocation" x="3752.8000000000002" y="890.10494752623697"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="wMN-3z-5Ia">

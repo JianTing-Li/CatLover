@@ -13,13 +13,14 @@ class PetfinderDetailController: UIViewController {
     @IBOutlet weak var petImageView: UIImageView!
     @IBOutlet weak var petAgeAndGenderLabel: UILabel!
     @IBOutlet weak var breedAndLocationLabel: UILabel!
-    @IBOutlet weak var petContactEmailLabel: UILabel!
-    @IBOutlet weak var petContactNumberLabel: UILabel!
+    @IBOutlet weak var petContactEmailTextView: UITextView!
+    @IBOutlet weak var petContactNumberTextView: UITextView!
     @IBOutlet weak var petDescriptionTextView: UITextView!
-    
+    // catlover@kittycat.kitten
+    // (cat) cat-cats
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     var pet: Pet!
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
@@ -30,8 +31,8 @@ class PetfinderDetailController: UIViewController {
         title = pet.name.petName
         petAgeAndGenderLabel.text = "\(pet.age.age) · \(pet.sex.sex)"
         breedAndLocationLabel.text = "\(pet.breeds.breed.breedName) · \(pet.contact.city.city), \(pet.contact.state.state) \(pet.contact.zip.zipCode)"
-        petContactEmailLabel.text = pet.contact.email.email
-        petContactNumberLabel.text = pet.contact.phone.phoneNum
+        petContactEmailTextView.text = pet.contact.email.email
+        petContactNumberTextView.text = pet.contact.phone.phoneNum
         petDescriptionTextView.text = pet.description.description
     }
     

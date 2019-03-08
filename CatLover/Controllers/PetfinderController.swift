@@ -21,11 +21,19 @@ class PetfinderController: UIViewController {
     }
     var zipCode = ""
     
+    public var catBreed: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         petfinderCollectionView.delegate = self
         petfinderCollectionView.dataSource = self
         fetchPetsForAdoption(location: "10023", breed: nil)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        fetchPetsForAdoption(location: "10023", breed: "\(CatBreedSession.getCatBreed())")
+//        print("current breed is \(CatBreedSession.getCatBreed())")
     }
     
     private func fetchPetsForAdoption(location: String, breed: String?) {
