@@ -11,15 +11,14 @@ import Foundation
 struct FavoriteCatModel {
     private init() {}
     private static let filename = "FavoriteCatModel.plist"
-    private static var favoriteCats = [Cat]()
+    private static var favoriteCats = [FavoriteCat]()
     
-    static func fetchAllCats() -> [Cat] {
+    static func fetchAllCats() -> [FavoriteCat] {
         let path = DataPersistenceManager.filepathToDocumentsDirectory(filename: filename).path
         if FileManager.default.fileExists(atPath: path) {
             if let data = FileManager.default.contents(atPath: path) {
                 do {
-                    let cats = try PropertyListDecoder().decode([Cat].self, from: data)
-                    favoriteCats = cats.sorted { $0.breed < $1.breed}
+                    self.favoriteCats = try PropertyListDecoder().decode([FavoriteCat].self, from: data)
                 } catch {
                     print("Property list decoding error: \(error)")
                 }
@@ -42,7 +41,7 @@ struct FavoriteCatModel {
         }
     }
     
-    static func favoriteCat(newFavoriteCat: Cat) {
+    static func favoriteCat(newFavoriteCat: FavoriteCat) {
         favoriteCats.append(newFavoriteCat)
         saveFavoriteCats()
     }

@@ -808,7 +808,11 @@
                         <viewLayoutGuide key="safeArea" id="gAR-7P-0IG"/>
                     </view>
                     <navigationItem key="navigationItem" title="Pet's Name" id="K2a-PA-Pvs">
-                        <barButtonItem key="rightBarButtonItem" title="Favorite" id="Ebm-RE-BI5"/>
+                        <barButtonItem key="rightBarButtonItem" title="Favorite" id="Ebm-RE-BI5">
+                            <connections>
+                                <action selector="favoritePetButtonPressed:" destination="99u-qx-fVn" id="3fP-1g-1Q1"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="activityIndicator" destination="P6c-zQ-VXr" id="JRJ-91-kfw"/>
@@ -832,9 +836,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No favorite pets. You can find and favorite potential pets in the Petfinder tab." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bL3-4A-pxi">
+                                <rect key="frame" x="16" y="305" width="343" height="72"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="l0F-Eb-KOB">
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
-                                <color key="backgroundColor" red="0.90303797370000005" green="1" blue="0.994254741" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="LuK-35-Bkb">
                                     <size key="itemSize" width="375" height="374"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -856,9 +866,13 @@
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="bL3-4A-pxi" firstAttribute="leading" secondItem="Wlm-Rt-Xya" secondAttribute="leading" constant="16" id="0Uc-sG-lgu"/>
                             <constraint firstItem="Wlm-Rt-Xya" firstAttribute="bottom" secondItem="l0F-Eb-KOB" secondAttribute="bottom" id="0k5-us-A4I"/>
                             <constraint firstItem="l0F-Eb-KOB" firstAttribute="leading" secondItem="Wlm-Rt-Xya" secondAttribute="leading" id="C8t-KX-zfA"/>
+                            <constraint firstItem="Wlm-Rt-Xya" firstAttribute="trailing" secondItem="bL3-4A-pxi" secondAttribute="trailing" constant="16" id="Pt6-NO-laW"/>
+                            <constraint firstItem="bL3-4A-pxi" firstAttribute="centerX" secondItem="Wlm-Rt-Xya" secondAttribute="centerX" id="Ttz-3t-wg9"/>
                             <constraint firstItem="Wlm-Rt-Xya" firstAttribute="trailing" secondItem="l0F-Eb-KOB" secondAttribute="trailing" id="gOG-Kp-Pb1"/>
+                            <constraint firstItem="bL3-4A-pxi" firstAttribute="centerY" secondItem="Wlm-Rt-Xya" secondAttribute="centerY" id="gpw-dQ-uh3"/>
                             <constraint firstItem="l0F-Eb-KOB" firstAttribute="top" secondItem="Wlm-Rt-Xya" secondAttribute="top" id="rbg-Bb-0eN"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Wlm-Rt-Xya"/>

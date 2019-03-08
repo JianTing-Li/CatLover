@@ -16,8 +16,7 @@ class PetfinderDetailController: UIViewController {
     @IBOutlet weak var petContactEmailTextView: UITextView!
     @IBOutlet weak var petContactNumberTextView: UITextView!
     @IBOutlet weak var petDescriptionTextView: UITextView!
-    // catlover@kittycat.kitten
-    // (cat) cat-cats
+
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     var pet: Pet!
         
@@ -59,5 +58,10 @@ class PetfinderDetailController: UIViewController {
                 }
             }
         }
+    }
+    
+    
+    @IBAction func favoritePetButtonPressed(_ sender: UIBarButtonItem) {
+        // create an instance of favorte pet
     }
 }
