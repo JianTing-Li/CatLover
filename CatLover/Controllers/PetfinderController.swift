@@ -19,14 +19,16 @@ class PetfinderController: UIViewController {
             }
         }
     }
+    var zipCode = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         petfinderCollectionView.delegate = self
         petfinderCollectionView.dataSource = self
-        fectPetsForAdoption(location: "10023", breed: nil)
+        fetchPetsForAdoption(location: "10023", breed: nil)
     }
     
-    private func fectPetsForAdoption(location: String, breed: String?) {
+    private func fetchPetsForAdoption(location: String, breed: String?) {
         PetfinderAPIClient.getPets(location: location, breed: breed) { (appError, pets) in
             if let appError = appError {
                 print(appError.errorMessage())
@@ -34,6 +36,29 @@ class PetfinderController: UIViewController {
                 self.pets = pets
             }
         }
+    }
+    
+    @IBAction func locationButtonPressed(_ sender: UIBarButtonItem) {
+        let alert = UIAlertController(title: "Enter a Zipcode", message: nil, preferredStyle: .alert)
+        alert.addTextField { (textField) in
+            textField.placeholder = "Enter Zipcode Here"
+        }
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
+            let textField = alert!.textFields![0]
+            self.zipCode = textField.text ?? "no comment"
+            ZipCodeHelper.getLocationName(from: self.zipCode) { (error, locationName) in
+                if let error = error {
+                    print("Invalid Zipcode Entered: \(self.zipCode)")
+                    self.showAlert(title: "Invalid ZipCode", message: "\(error)")
+                } else if let _ = locationName {
+                    self.fetchPetsForAdoption(location: self.zipCode, breed: nil)
+                }
+            }
+        }))
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (alert: UIAlertAction!) -> Void in
+        }
+        alert.addAction(cancelAction)
+        self.present(alert, animated: true, completion: nil)
     }
 }
 

@@ -185,9 +185,9 @@ extension CatsController: CatFilterDelegate {
                 switch catProperty.key {
                 case CatProperty.affection.rawValue:
                     if catProperty.value {
-                        return cat.affection >= 3
+                        return cat.affection >= 4
                     } else {
-                        return cat.affection <= 3
+                        return cat.affection <= 4
                     }
                 case CatProperty.energy.rawValue:
                     if catProperty.value {
@@ -197,9 +197,9 @@ extension CatsController: CatFilterDelegate {
                     }
                 case CatProperty.intelligent.rawValue:
                     if catProperty.value {
-                        return cat.intelligence >= 3
+                        return cat.intelligence >= 4
                     } else {
-                        return cat.intelligence <= 3
+                        return cat.intelligence <= 4
                     }
                 case CatProperty.vocal.rawValue:
                     if catProperty.value {

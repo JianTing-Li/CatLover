@@ -593,7 +593,7 @@
         <!--Pet Finder-->
         <scene sceneID="OjU-ra-B91">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="kvE-H8-jVZ" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="PetfinderNav" automaticallyAdjustsScrollViewInsets="NO" id="kvE-H8-jVZ" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Pet Finder" image="icons8-adopt" selectedImage="icons8-adopt_filled" id="Mhn-aj-1kV"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="frd-ku-Wdr">
@@ -701,7 +701,11 @@
                     </view>
                     <navigationItem key="navigationItem" id="vAa-D8-y7F">
                         <barButtonItem key="leftBarButtonItem" title="Map" image="icons8-map" id="ttz-HN-RiP"/>
-                        <barButtonItem key="rightBarButtonItem" title="Location" image="icons8-location" id="VsY-H5-D5L"/>
+                        <barButtonItem key="rightBarButtonItem" title="Location" image="icons8-location" id="VsY-H5-D5L">
+                            <connections>
+                                <action selector="locationButtonPressed:" destination="pjS-lM-iWu" id="uHL-7o-5PK"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="petfinderCollectionView" destination="iLp-rc-HFe" id="7da-om-zHy"/>
