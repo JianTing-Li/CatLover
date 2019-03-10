@@ -817,6 +817,7 @@
                     <connections>
                         <outlet property="activityIndicator" destination="P6c-zQ-VXr" id="JRJ-91-kfw"/>
                         <outlet property="breedAndLocationLabel" destination="ns6-jM-M0X" id="ss2-T0-5L1"/>
+                        <outlet property="favoriteButton" destination="Ebm-RE-BI5" id="f55-Kd-CX6"/>
                         <outlet property="petAgeAndGenderLabel" destination="5g0-qG-x0H" id="gjl-Xh-ZO8"/>
                         <outlet property="petContactEmailTextView" destination="OAS-aO-bei" id="EBT-sH-xwx"/>
                         <outlet property="petContactNumberTextView" destination="fXI-RB-zSR" id="lsY-22-0AW"/>
@@ -828,10 +829,10 @@
             </objects>
             <point key="canvasLocation" x="3752.8000000000002" y="890.10494752623697"/>
         </scene>
-        <!--View Controller-->
+        <!--Favorite Controller-->
         <scene sceneID="wMN-3z-5Ia">
             <objects>
-                <viewController id="vaU-Qv-9CQ" sceneMemberID="viewController">
+                <viewController id="vaU-Qv-9CQ" customClass="FavoriteController" customModule="CatLover" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="H2a-yV-IRU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -852,14 +853,68 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="7xY-Dk-2Va">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FavoritePetCell" id="7xY-Dk-2Va" customClass="FavoritePetCell" customModule="CatLover" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="374"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="374"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="catImgPlaceholder3" translatesAutoresizingMaskIntoConstraints="NO" id="iKH-in-eyu">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="187"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pet's Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RVe-rh-QfS">
+                                                    <rect key="frame" x="16" y="195" width="343" height="30"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="25"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="City, State ZipCode" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r3x-tz-cJQ">
+                                                    <rect key="frame" x="16" y="262" width="343" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Age · Breed" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ao-2a-o41">
+                                                    <rect key="frame" x="16" y="233" width="343" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0My-7F-YaP">
+                                                    <rect key="frame" x="162.5" y="299" width="50" height="50"/>
+                                                    <state key="normal" image="icons8-more"/>
+                                                    <connections>
+                                                        <action selector="optionButtonPressed:" destination="7xY-Dk-2Va" eventType="touchUpInside" id="pSh-vo-6Bf"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
                                         </view>
                                         <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="iKH-in-eyu" secondAttribute="trailing" id="3nS-pS-22z"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="RVe-rh-QfS" secondAttribute="trailing" constant="8" id="DFq-jk-g0y"/>
+                                            <constraint firstItem="4ao-2a-o41" firstAttribute="top" secondItem="RVe-rh-QfS" secondAttribute="bottom" constant="8" id="Fv6-xx-5bH"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="r3x-tz-cJQ" secondAttribute="trailing" constant="8" id="JBz-18-P1s"/>
+                                            <constraint firstItem="0My-7F-YaP" firstAttribute="top" secondItem="r3x-tz-cJQ" secondAttribute="bottom" constant="16" id="bvB-tS-HXc"/>
+                                            <constraint firstItem="r3x-tz-cJQ" firstAttribute="top" secondItem="4ao-2a-o41" secondAttribute="bottom" constant="8" id="cnS-tK-5Fh"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="4ao-2a-o41" secondAttribute="trailing" constant="8" id="e18-oz-Wbm"/>
+                                            <constraint firstItem="RVe-rh-QfS" firstAttribute="top" secondItem="iKH-in-eyu" secondAttribute="bottom" constant="8" id="fCo-Dn-Rbx"/>
+                                            <constraint firstItem="0My-7F-YaP" firstAttribute="centerX" secondItem="r3x-tz-cJQ" secondAttribute="centerX" id="h4D-LO-c9E"/>
+                                            <constraint firstItem="iKH-in-eyu" firstAttribute="height" secondItem="7xY-Dk-2Va" secondAttribute="height" multiplier="0.5" id="hF6-hC-j1P"/>
+                                            <constraint firstItem="r3x-tz-cJQ" firstAttribute="leading" secondItem="7xY-Dk-2Va" secondAttribute="leadingMargin" constant="8" id="ltW-D5-H7E"/>
+                                            <constraint firstItem="4ao-2a-o41" firstAttribute="leading" secondItem="7xY-Dk-2Va" secondAttribute="leadingMargin" constant="8" id="qJ1-OE-GIS"/>
+                                            <constraint firstItem="RVe-rh-QfS" firstAttribute="leading" secondItem="7xY-Dk-2Va" secondAttribute="leadingMargin" constant="8" id="rAQ-ti-2iI"/>
+                                            <constraint firstItem="iKH-in-eyu" firstAttribute="top" secondItem="7xY-Dk-2Va" secondAttribute="top" id="w3J-LL-FyQ"/>
+                                            <constraint firstItem="iKH-in-eyu" firstAttribute="leading" secondItem="7xY-Dk-2Va" secondAttribute="leading" id="xfl-9L-wZh"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="optionButton" destination="0My-7F-YaP" id="APD-3H-YOz"/>
+                                            <outlet property="petAgeAndBreedLabel" destination="4ao-2a-o41" id="4mH-5n-zAZ"/>
+                                            <outlet property="petImageView" destination="iKH-in-eyu" id="RKy-MJ-4od"/>
+                                            <outlet property="petLocationLabel" destination="r3x-tz-cJQ" id="YBx-WT-1gW"/>
+                                            <outlet property="petNameLabel" destination="RVe-rh-QfS" id="GfN-3A-LZ3"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -878,6 +933,9 @@
                         <viewLayoutGuide key="safeArea" id="Wlm-Rt-Xya"/>
                     </view>
                     <navigationItem key="navigationItem" id="Pc2-na-4Zf"/>
+                    <connections>
+                        <outlet property="favoriteCatsCollectionView" destination="l0F-Eb-KOB" id="j10-ls-bg1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rt1-v6-ZGC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -902,7 +960,7 @@
             </objects>
             <point key="canvasLocation" x="756" y="1213.9430284857572"/>
         </scene>
-        <!--Item-->
+        <!--Profile-->
         <scene sceneID="CAR-Xt-Sja">
             <objects>
                 <viewController id="SSf-ul-cQW" customClass="ProfileController" customModule="CatLover" customModuleProvider="target" sceneMemberID="viewController">
@@ -941,7 +999,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="GME-Rc-x6w"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" image="icons8-cat_profile" selectedImage="icons8-cat_profile_filled" id="X6U-m0-AbG"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="icons8-cat_profile" selectedImage="icons8-cat_profile_filled" id="X6U-m0-AbG"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6ES-YW-aSC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1005,6 +1063,7 @@
         <image name="icons8-filter" width="25" height="25"/>
         <image name="icons8-location" width="25" height="25"/>
         <image name="icons8-map" width="25" height="25"/>
+        <image name="icons8-more" width="50" height="50"/>
         <image name="icons8-reset" width="25" height="25"/>
     </resources>
 </document>

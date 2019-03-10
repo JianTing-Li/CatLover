@@ -9,7 +9,7 @@
 import Foundation
 
 struct FavoriteCat: Codable {
-    let imageData: Data
+    let imageData: Data?
     let catAge: String
     let catGender: String
     let catContactEmail: String
@@ -18,4 +18,6 @@ struct FavoriteCat: Codable {
     let catCity: String
     let catState: String
     let catZipCode: String
+    let catName: String
+    let catBreed: String
 }

@@ -50,22 +50,5 @@ final class CatAPIClient {
             }
         }
     }
-    
-//    public static func getCatWithImageFromImageId(catImageId: String, completionHandler: @escaping (AppError?, CatBreedWithImage?) -> Void) {
-//        let urlEnpointString = "https://api.thecatapi.com/v1/images/\(catImageId)"
-//
-//        NetworkHelper.shared.performDataTask(endpointURLString: urlEnpointString, httpMethod: "GET", httpBody: nil) { (appError, data) in
-//            if let appError = appError {
-//                completionHandler(appError, nil)
-//            } else if let data = data {
-//                do {
-//                    let catWithImage = try JSONDecoder().decode(CatBreedWithImage.self, from: data)
-//                    completionHandler(nil, catWithImage)
-//                } catch {
-//                    completionHandler(AppError.jsonDecodingError(error), nil)
-//                }
-//            }
-//        }
-//    }
 }
 
