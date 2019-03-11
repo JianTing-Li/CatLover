@@ -10,4 +10,7 @@ import Foundation
 
 struct UserDefaultsKeys {
     static let catFilters = "catFilters"
+    static let loginCheck = "loginCheck"
+    static let currentUser = "currentUser"
+    static let appFirstLaunch = "appFirstLaunch"
 }

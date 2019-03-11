@@ -12,7 +12,7 @@ final class PetfinderAPIClient {
     private init() {}
     
     static func getPets(location: String, breed: String?, completion: @escaping (AppError?, [Pet]?) -> Void) {
-        let endpointUrlString = "http://api.petfinder.com/pet.find?key=\(SecretKeys.petFinderKey)&location=\(location)&breed=\(breed ?? "")&animal=cat&count=2&format=json".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+        let endpointUrlString = "http://api.petfinder.com/pet.find?key=\(SecretKeys.petFinderKey)&location=\(location)&breed=\(breed ?? "")&animal=cat&count=3&format=json".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
         
         NetworkHelper.shared.performDataTask(endpointURLString: endpointUrlString, httpMethod: "GET", httpBody: nil) { (appError, data) in
             if let appError = appError {

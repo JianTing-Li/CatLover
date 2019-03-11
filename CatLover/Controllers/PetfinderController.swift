@@ -19,7 +19,8 @@ class PetfinderController: UIViewController {
             }
         }
     }
-    var zipCode = ""
+    private var zipCode = ""
+    private var refreshControl: UIRefreshControl!
     
     public var catBreed: String?
     
@@ -27,13 +28,27 @@ class PetfinderController: UIViewController {
         super.viewDidLoad()
         petfinderCollectionView.delegate = self
         petfinderCollectionView.dataSource = self
-        fetchPetsForAdoption(location: "10023", breed: nil)
+        setupRefreshControl()
+        // fetchPetsForAdoption(location: "10023", breed: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         fetchPetsForAdoption(location: "10023", breed: "\(CatBreedSession.getCatBreed())")
-//        print("current breed is \(CatBreedSession.getCatBreed())")
+        
+        print("current breed is \(CatBreedSession.getCatBreed())")
+    }
+    
+    private func setupRefreshControl() {
+        refreshControl = UIRefreshControl()
+        petfinderCollectionView.refreshControl = refreshControl
+        refreshControl.addTarget(self, action: #selector(getAllCatsBack), for: .valueChanged)
+    }
+    @objc private func getAllCatsBack() {
+        refreshControl.beginRefreshing()
+        CatBreedSession.setCatBreed(breed: "")
+        fetchPetsForAdoption(location: "10023", breed: "\(CatBreedSession.getCatBreed())")
+        refreshControl.endRefreshing()
     }
     
     private func fetchPetsForAdoption(location: String, breed: String?) {

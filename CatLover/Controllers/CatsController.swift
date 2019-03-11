@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class CatsController: UIViewController {
     
     @IBOutlet weak var catTableView: UITableView!
@@ -52,6 +53,7 @@ class CatsController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        playFirstLaunchVideo()
         setDelegatesAndTitle()
         setupRefreshControl()
         checkFirstTimeRun()
@@ -109,7 +111,7 @@ extension CatsController {
             } else if let catBreeds = catBreeds {
                 self.allCatBreedsWithoutImage = catBreeds
                 self.apiCall1GetAllCatsFinished = true
-                print("noImage: \(self.allCatBreedsWithoutImage.count)")
+                // print("noImage: \(self.allCatBreedsWithoutImage.count)")
             }
         }
     }

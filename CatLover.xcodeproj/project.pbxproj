@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D607F03F2236FD4800D5811A /* LoginView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D607F03E2236FD4800D5811A /* LoginView.storyboard */; };
+		D607F0422236FDAA00D5811A /* RegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D607F0412236FDAA00D5811A /* RegisterController.swift */; };
+		D607F04B2237281000D5811A /* CatFirstTimeVideo.MP4 in Resources */ = {isa = PBXBuildFile; fileRef = D607F04A2237281000D5811A /* CatFirstTimeVideo.MP4 */; };
 		D63127812226509500DC60B5 /* CatBreedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63127802226509500DC60B5 /* CatBreedModel.swift */; };
 		D63127A1222719A700DC60B5 /* UserDefaultsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63127A0222719A700DC60B5 /* UserDefaultsKeys.swift */; };
 		D671907521E31E2F0039C4CD /* CatCellBackgroundColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D671907421E31E2F0039C4CD /* CatCellBackgroundColor.swift */; };
@@ -52,6 +55,9 @@
 /* Begin PBXFileReference section */
 		0417E3A56A5AFE2BE7D885BB /* Pods_CatLover.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CatLover.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5B2E13966449F7A1B729EF7 /* Pods-CatLover.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CatLover.release.xcconfig"; path = "Target Support Files/Pods-CatLover/Pods-CatLover.release.xcconfig"; sourceTree = "<group>"; };
+		D607F03E2236FD4800D5811A /* LoginView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginView.storyboard; sourceTree = "<group>"; };
+		D607F0412236FDAA00D5811A /* RegisterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterController.swift; sourceTree = "<group>"; };
+		D607F04A2237281000D5811A /* CatFirstTimeVideo.MP4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = CatFirstTimeVideo.MP4; sourceTree = "<group>"; };
 		D63127802226509500DC60B5 /* CatBreedModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatBreedModel.swift; sourceTree = "<group>"; };
 		D63127A0222719A700DC60B5 /* UserDefaultsKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKeys.swift; sourceTree = "<group>"; };
 		D671907421E31E2F0039C4CD /* CatCellBackgroundColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatCellBackgroundColor.swift; sourceTree = "<group>"; };
@@ -117,6 +123,15 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		D607F0402236FD7700D5811A /* LoginControllers */ = {
+			isa = PBXGroup;
+			children = (
+				D6B5CB2D222CF258003A9EC1 /* LoginController.swift */,
+				D607F0412236FDAA00D5811A /* RegisterController.swift */,
+			);
+			path = LoginControllers;
+			sourceTree = "<group>";
+		};
 		D69B01A621D9A75F00690788 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -133,6 +148,7 @@
 		D6BEF2FC21D18C84000BF117 = {
 			isa = PBXGroup;
 			children = (
+				D607F04A2237281000D5811A /* CatFirstTimeVideo.MP4 */,
 				D6BEF30721D18C84000BF117 /* CatLover */,
 				D6BEF30621D18C84000BF117 /* Products */,
 				8EC2558D96520EB415CD6137 /* Pods */,
@@ -152,6 +168,7 @@
 			isa = PBXGroup;
 			children = (
 				D6BEF30C21D18C85000BF117 /* Main.storyboard */,
+				D607F03E2236FD4800D5811A /* LoginView.storyboard */,
 				D69B01B921DC27F200690788 /* AppError.swift */,
 				D63127A0222719A700DC60B5 /* UserDefaultsKeys.swift */,
 				D6B5CB36222E45D6003A9EC1 /* SecretKeys.swift */,
@@ -193,6 +210,7 @@
 		D6BEF31C21D18D2D000BF117 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				D607F0402236FD7700D5811A /* LoginControllers */,
 				D6BEF30A21D18C84000BF117 /* CatsController.swift */,
 				D6B5CB38222E4846003A9EC1 /* CatFilterController.swift */,
 				D6BEF32221D18EE8000BF117 /* CatsDetailController.swift */,
@@ -200,7 +218,6 @@
 				D6B5CB27222CF0D2003A9EC1 /* PetfinderDetailController.swift */,
 				D6B5CB2B222CF136003A9EC1 /* FavoriteController.swift */,
 				D6B5CB29222CF0E5003A9EC1 /* ProfileController.swift */,
-				D6B5CB2D222CF258003A9EC1 /* LoginController.swift */,
 				D67C8E8A2232D4A100E2134B /* CatTabBarController.swift */,
 			);
 			path = Controllers;
@@ -318,6 +335,8 @@
 				D6BEF31021D18C89000BF117 /* Assets.xcassets in Resources */,
 				D6B5CB3B222ED2A5003A9EC1 /* LoginView.xib in Resources */,
 				D6BEF30E21D18C85000BF117 /* Main.storyboard in Resources */,
+				D607F03F2236FD4800D5811A /* LoginView.storyboard in Resources */,
+				D607F04B2237281000D5811A /* CatFirstTimeVideo.MP4 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -383,6 +402,7 @@
 				D69B01BA21DC27F200690788 /* AppError.swift in Sources */,
 				D6E6AF0E22249B98000A8396 /* Cat.swift in Sources */,
 				D6B5CB26222C93EA003A9EC1 /* PetfinderController.swift in Sources */,
+				D607F0422236FDAA00D5811A /* RegisterController.swift in Sources */,
 				D6BEF30B21D18C84000BF117 /* CatsController.swift in Sources */,
 				D67C8E8B2232D4A200E2134B /* CatTabBarController.swift in Sources */,
 				D63127A1222719A700DC60B5 /* UserDefaultsKeys.swift in Sources */,
