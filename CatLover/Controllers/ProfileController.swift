@@ -17,6 +17,7 @@ class ProfileController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = UIColor(hexString: "#34ace0")
         setupImagePickerViewController()
     }
     

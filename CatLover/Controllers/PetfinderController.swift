@@ -26,6 +26,7 @@ class PetfinderController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = UIColor(hexString: "#6c5ce7")
         petfinderCollectionView.delegate = self
         petfinderCollectionView.dataSource = self
         setupRefreshControl()
@@ -94,6 +95,9 @@ extension PetfinderController: UICollectionViewDataSource {
         guard let cell = petfinderCollectionView.dequeueReusableCell(withReuseIdentifier: "PetCell", for: indexPath) as? PetCell else { return UICollectionViewCell() }
         let pet = pets[indexPath.row]
         cell.configureCell(pet: pet)
+        cell.layer.cornerRadius = 50
+        cell.layer.borderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        cell.layer.borderWidth = 3
         return cell
     }
 }

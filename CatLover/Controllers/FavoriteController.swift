@@ -26,6 +26,7 @@ class FavoriteController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = UIColor(hexString: "#ff6b81")
         favoriteCatsCollectionView.dataSource = self
         favoriteCatsCollectionView.delegate = self
     }
@@ -47,6 +48,9 @@ extension FavoriteController: UICollectionViewDataSource {
         let currentFavoriteCat = favoriteCats[indexPath.row]
         cell.configureCell(favoriteCat: currentFavoriteCat, indexPath: indexPath)
         cell.delegate = self
+        cell.layer.cornerRadius = 50
+        cell.layer.borderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        cell.layer.borderWidth = 3
         return cell
     }
 }

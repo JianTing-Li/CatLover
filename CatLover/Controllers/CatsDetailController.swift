@@ -53,7 +53,9 @@ class CatsDetailController: UIViewController {
     private func setCatImage(imageURLString: String) {
         if let image = ImageHelper.shared.getImageFromCache(forKey: imageURLString as NSString) {
             DispatchQueue.main.async {
-                self.catImage.image = image
+                UIView.transition(with: self.catImage, duration: 1.0, options: [.transitionCrossDissolve], animations: {
+                    self.catImage.image = image
+                })
             }
         } else {
             DispatchQueue.main.async {
@@ -64,7 +66,9 @@ class CatsDetailController: UIViewController {
                     if let appError = appError {
                         print(appError.errorMessage())
                     } else if let image = image {
-                        self?.catImage.image = image
+                        UIView.transition(with: self!.catImage, duration: 1.0, options: [.transitionCrossDissolve], animations: {
+                            self?.catImage.image = image
+                        })
                     }
                     self?.activityIndicator.stopAnimating()
                 }

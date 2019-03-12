@@ -24,6 +24,11 @@ class FavoritePetCell: UICollectionViewCell {
     
     public func configureCell(favoriteCat: FavoriteCat, indexPath: IndexPath) {
         optionButton.tag = indexPath.row
+        petImageView.layer.cornerRadius = 50
+        petImageView.layer.borderWidth = 1
+        petImageView.layer.borderColor = UIColor(hexString: "#ffffff").cgColor
+        petImageView.clipsToBounds = true
+        petImageView.layer.masksToBounds = true
         if let imageData = favoriteCat.imageData { petImageView.image = UIImage(data: imageData) }
         petNameLabel.text = favoriteCat.catName
         petAgeAndBreedLabel.text = "\(favoriteCat.catAge) · \(favoriteCat.catBreed)"

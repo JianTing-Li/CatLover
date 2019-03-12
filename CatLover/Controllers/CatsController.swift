@@ -53,6 +53,7 @@ class CatsController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = UIColor(hexString: "#0984e3")
         playFirstLaunchVideo()
         setDelegatesAndTitle()
         setupRefreshControl()

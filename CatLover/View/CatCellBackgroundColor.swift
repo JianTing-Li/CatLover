@@ -10,20 +10,20 @@ import UIKit
 
 //TO DO: Study the extension
 enum CatCellBackgroundColor: String {
-    case lightBlue = "#A8D8EA"
-    case lightViolet = "#AA96DA"
-    case lightPink = "#FCBAD3"
-    case lightYellow = "#FFFFD2"
+    case lightBlue = "#74b9ff"
+    case lightViolet = "#a29bfe"
+    case lightGreen = "#81ecec"  // light green
+    case lightGrey = "#dfe6e9"
     
     public mutating func getNextColor() {
         switch self {
         case .lightBlue:
             self = .lightViolet
         case .lightViolet:
-            self = .lightPink
-        case .lightPink:
-            self = .lightYellow
-        case .lightYellow:
+            self = .lightGreen
+        case .lightGreen:
+            self = .lightGrey
+        case .lightGrey:
             self = .lightBlue
         }
     }

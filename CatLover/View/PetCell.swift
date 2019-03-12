@@ -16,6 +16,11 @@ class PetCell: UICollectionViewCell {
     @IBOutlet weak var petLocationLabel: UILabel!
     
     public func configureCell(pet: Pet) {
+        petImageView.layer.cornerRadius = 50
+        petImageView.layer.borderWidth = 1
+        petImageView.layer.borderColor = UIColor(hexString: "#ffffff").cgColor
+        petImageView.clipsToBounds = true
+        petImageView.layer.masksToBounds = true
         petNameLabel.text = pet.name.petName
         petAgeAndBreedLabel.text = "\(pet.age.age) · \(pet.breeds.breed.breedName)"
         petLocationLabel.text = "\(pet.contact.city.city), \(pet.contact.state.state) \(pet.contact.zip.zipCode)"
@@ -31,6 +36,7 @@ class PetCell: UICollectionViewCell {
                 break
             }
         }
+        
         if let image = ImageHelper.shared.getImageFromCache(forKey: imageURLString as NSString) {
             petImageView.image = image
         } else {
