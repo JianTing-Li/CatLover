@@ -2,7 +2,7 @@
 Welcome to my first passion app, “CatLover,” an app for people who love cats. My main motivation to make this app is that I am a huge cat fan. I personally own a cat myself 🐱. His name is Mocha. 
 
 # Introduction
-Having trouble finding the right cat to adopt? Have you ever wonder what are the different type of cats, cat breeds, and their differences? You can look these answers up on the web browser, but sometimes you just want something quick and simple like a mobile app.
+Having trouble finding the right cat to adopt? Have you ever wondered what are the different type of cats, cat breeds, and their differences? You can look these answers up on your web browser, but sometimes you need answers quicker. In order to fill this gap I have created CatLover, a simple mobile app. 
 
 # Features
 
@@ -22,7 +22,7 @@ The user can save potential cats he / she wants to adopt to favorites.
 ![]()
  
 # Challenges
-One of the biggest challenges I encountered while making the app is making multiple network requests to get the data I want. I used one endpoint to get a list of cat breeds sorted alphabetically. However, that endpoint doesn’t contain any images. To solve the problem, I plug the cat id I got from the first request as a parameter for another endpoint to get images for each cat breed. 
+One of the biggest challenges I encountered while making the app is making multiple network requests to get the data I want. I used one endpoint to get a list of cat breeds sorted alphabetically. However, that endpoint does not contain any images. To solve the problem, I plug the cat ID I got from the first request as a parameter for another endpoint to get images for each cat breed. 
 
 # Future Version
 Eventually I want to submit the app to the AppStore. Here are the features I would like to implement before pushing to the app store.
