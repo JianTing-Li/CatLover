@@ -8,6 +8,29 @@
 
 import Foundation
 
+enum UnknownValueDecodingError: Error {
+    case noValueFound
+    case emptyDictionary
+}
+
+extension Decodable {
+    // Allows you to decode a value that is either in an array or a dictionary
+    static func decodeUnknown<T>(value: T) throws -> [T] {
+        if let dictionaryValue = value as? [String : T] {
+            if dictionaryValue.keys.count > 0 {
+                let indexValue = dictionaryValue.keys.first!
+                return [dictionaryValue[indexValue]!] // An array of 1 breed
+            } else {
+                throw UnknownValueDecodingError.emptyDictionary
+            }
+        } else if let arrayValue = value as? [T] {
+            return arrayValue
+        }
+        throw UnknownValueDecodingError.noValueFound
+    }
+}
+
+
 struct PetfinderData: Codable {
     let petfinder: Petfinder
 }
@@ -104,10 +127,25 @@ struct Pet: Codable {
     
     struct Breeds: Codable {
         struct Breed: Codable {
+//            let breedName: [String]
             let breedName: String
             private enum CodingKeys: String, CodingKey {
                 case breedName = "$t"
             }
+            
+//            init(from decoder: Decoder) throws {
+//                let container = try decoder.container(keyedBy: CodingKeys.self)
+//
+//                let breedName = try container.decode(String.self, forKey: .breedName)
+//                let decodedValue = try Breed.decodeUnknown(value: breedName)
+//
+//
+////                guard case let decodedValue as? String = try self.decodeUnknown(value: breedName) else {
+////                    throw DecodingError.keyNotFound(CodingKeys.breedName, DecodingError.Context.init(codingPath: [CodingKeys.breedName], debugDescription: "Could not decode breedName"))
+////                }
+//
+//                self.breedName = decodedValue
+//            }
         }
         let breed: Breed
     }

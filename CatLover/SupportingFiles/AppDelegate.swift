@@ -16,18 +16,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        
-        window = UIWindow(frame: UIScreen.main.bounds)
-        if let isUserLogin = UserDefaults.standard.object(forKey: UserDefaultsKeys.loginCheck) as? Bool, isUserLogin == true {
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let catTabBarController = storyboard.instantiateViewController(withIdentifier: "CatTabBarController") as! UITabBarController
-            window?.rootViewController = catTabBarController
-        } else {
-            let storyboard = UIStoryboard(name: "LoginView", bundle: nil)
-            let loginViewController = storyboard.instantiateViewController(withIdentifier: "LoginController") as! LoginController
-            window?.rootViewController = UINavigationController(rootViewController: loginViewController)
-        }
-        window?.makeKeyAndVisible()
+        Thread.sleep(forTimeInterval: 0.7)
+//        window = UIWindow(frame: UIScreen.main.bounds)
+//        if let isUserLogin = UserDefaults.standard.object(forKey: UserDefaultsKeys.loginCheck) as? Bool, isUserLogin == true {
+//            let storyboard = ?qUIStoryboard(name: "Main", bundle: nil)
+//            let catTabBarController = storyboard.instantiateViewController(withIdentifier: "CatTabBarController") as! UITabBarController
+        //            window?.rootViewController = catTabBarController
+//        } else {
+//            let storyboard = UIStoryboard(name: "LoginView", bundle: nil)
+//            let loginViewController = storyboard.instantiateViewController(withIdentifier: "LoginController") as! LoginController
+//            window?.rootViewController = UINavigationController(rootViewController: loginViewController)
+//        }
+//        window?.makeKeyAndVisible()
         return true
     }
 

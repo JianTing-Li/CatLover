@@ -10,7 +10,7 @@ import UIKit
 
 class CatTabBarController: UITabBarController {
     
-    public var catBreed: String?
+    public var catBreed: [String]?
     
     override func viewDidLoad() {
         super.viewDidLoad()

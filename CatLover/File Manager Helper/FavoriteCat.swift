@@ -19,5 +19,6 @@ struct FavoriteCat: Codable {
     let catState: String
     let catZipCode: String
     let catName: String
+//    let catBreed: [String]
     let catBreed: String
 }

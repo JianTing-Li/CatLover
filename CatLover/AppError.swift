@@ -8,7 +8,6 @@
 
 import Foundation
 
-//Need Clarafication
 enum AppError: Error {
     case badURL(String)
     case networkError(Error)
