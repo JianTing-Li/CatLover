@@ -15,25 +15,26 @@ Having trouble finding the right cat to adopt? Have you ever wondered what are t
 * When the user clicks on a cat breed, it would go to a new screen that displays an image of the cat and information about the cat's temperament, intelligence, affectionate level, vocal level, energy level, and a short description of the breed.
 
 ![BrowsingCats](https://github.com/JianTing-Li/CatLover/blob/master/Images/BrowsingCats.gif)
-
+<br/><br/>
 
 
 * If the user is interested in adopting a specific cat, he / she can press the "adopt me" button at the top right corner of the screen. It would bring them to the Petfinder tab showing a list of cats of the selected breed ready to adopt around the user.
 * The user can email or make a phone call to inquire information about cats that the user is interested in adopting.
 
 ![AdoptingCatBreed](https://github.com/JianTing-Li/CatLover/blob/master/Images/AdoptingCats.gif)
-
+<br/><br/>
 
 
 * Alternatively, the user can search cats for adoption based on location.
 
 ![AdoptCatLocation](https://github.com/JianTing-Li/CatLover/blob/master/Images/AdoptCatLocation.gif)
-
+<br/><br/>
 
 
 * The user can save potential cats he / she wants to adopt to favorites.
 
 ![FavoriteCats](https://github.com/JianTing-Li/CatLover/blob/master/Images/FavoriteCats.gif)
+<br/>
  
 # Challenges
 One of the biggest challenges I encountered while making the app is making multiple network requests to get the data I want. I used one endpoint to get a list of cat breeds sorted alphabetically. However, that endpoint does not contain any images. To solve the problem, I plug the cat ID I got from the first request as a parameter for another endpoint to get images for each cat breed. 
