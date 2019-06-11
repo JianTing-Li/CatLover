@@ -17,15 +17,18 @@ Having trouble finding the right cat to adopt? Have you ever wondered what are t
 ![BrowsingCats](https://github.com/JianTing-Li/CatLover/blob/master/Images/BrowsingCats.gif)
 
 
+
 * If the user is interested in adopting a specific cat, he / she can press the "adopt me" button at the top right corner of the screen. It would bring them to the Petfinder tab showing a list of cats of the selected breed ready to adopt around the user.
 * The user can email or make a phone call to inquire information about cats that the user is interested in adopting.
 
 ![AdoptingCatBreed](https://github.com/JianTing-Li/CatLover/blob/master/Images/AdoptingCats.gif)
 
 
+
 * Alternatively, the user can search cats for adoption based on location.
 
 ![AdoptCatLocation](https://github.com/JianTing-Li/CatLover/blob/master/Images/AdoptCatLocation.gif)
+
 
 
 * The user can save potential cats he / she wants to adopt to favorites.
